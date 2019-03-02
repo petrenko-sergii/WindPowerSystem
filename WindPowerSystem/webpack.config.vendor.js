@@ -65,7 +65,9 @@ module.exports = (env) => {
             new webpack.DllPlugin({
                 path: path.join(__dirname, 'wwwroot', 'dist', '[name]-manifest.json'),
                 name: '[name]_[hash]'
-            })
+			}),
+			new webpack.ContextReplacementPlugin(/\@angular(\\|\/)core(\\|\/)esm5/,
+				path.join(__dirname, './ClientApp')) // Workaround for https://github.com/angular/angular/issues/20357
         ].concat(isDevBuild ? [] : [
             new webpack.optimize.UglifyJsPlugin()
         ])
