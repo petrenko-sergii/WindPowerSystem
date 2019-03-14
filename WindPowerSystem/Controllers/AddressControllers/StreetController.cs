@@ -22,7 +22,6 @@ namespace WindPowerSystem.Controllers.AddressControllers
 			streets.Clear();
 			var foundStreets = new List<StreetViewModel>();
 
-
 			streets.Add(new StreetViewModel() { Id = 1, Name = "Haderslevvej", TownId = 4, PostcodeId = 4});
 			streets.Add(new StreetViewModel() { Id = 2, Name = "Ndr Ringvej", TownId = 4, PostcodeId = 4});
 			streets.Add(new StreetViewModel() { Id = 3, Name = "Sdr Ringvej", TownId = 4, PostcodeId = 4});

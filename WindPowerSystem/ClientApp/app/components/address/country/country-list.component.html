@@ -1,0 +1,25 @@
+﻿<h1><strong>Countries</strong></h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!countries"><em>Loading...</em></p>
+
+<table class='table' *ngIf="countries">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Towns</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let country of countries">
+			<td>{{ country.Id }}</td>
+			<td>{{ country.Name }}</td>
+			<td>
+				<a href="api/Town/ShowTownsForCountry/{{ country.Id }}">Towns</a>
+				<!--<a href="test.html">Towns</a>-->
+			</td>
+		</tr>
+	</tbody>
+</table>

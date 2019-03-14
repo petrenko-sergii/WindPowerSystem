@@ -8,7 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mapster" Version="3.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+		<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,15 +30,51 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\components\about\about.component.ts" />
+    <None Remove="ClientApp\app\components\address\country\country-list.component.ts" />
+    <None Remove="ClientApp\app\components\address\country\country.component.ts" />
+    <None Remove="ClientApp\app\components\answer\answer-edit.component.ts" />
+    <None Remove="ClientApp\app\components\answer\answer-list.component.ts" />
+    <None Remove="ClientApp\app\components\login\login.component.ts" />
+    <None Remove="ClientApp\app\components\pagenotfound\pagenotfound.component.ts" />
+    <None Remove="ClientApp\app\components\question\question-edit.component.ts" />
+    <None Remove="ClientApp\app\components\question\question-list.component.ts" />
+    <None Remove="ClientApp\app\components\quiz\quiz-edit.component.ts" />
     <None Remove="ClientApp\app\components\quiz\quiz-list.component.ts" />
     <None Remove="ClientApp\app\components\quiz\quiz.component.ts" />
+    <None Remove="ClientApp\app\components\result\result-edit.component.ts" />
+    <None Remove="ClientApp\app\components\result\result-list.component.ts" />
+    <None Remove="ClientApp\app\components\turbine\turbine.component.ts" />
+    <None Remove="ClientApp\app\interfaces\answer.ts" />
+    <None Remove="ClientApp\app\interfaces\country.ts" />
+    <None Remove="ClientApp\app\interfaces\question.ts" />
     <None Remove="ClientApp\app\interfaces\quiz.ts" />
+    <None Remove="ClientApp\app\interfaces\result.ts" />
+    <None Remove="ClientApp\app\interfaces\turbine.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\components\about\about.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\address\country\country-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\address\country\country.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\answer\answer-edit.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\answer\answer-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\login\login.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\pagenotfound\pagenotfound.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\question\question-edit.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\question\question-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\quiz\quiz-edit.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\quiz\quiz-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\quiz\quiz.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\result\result-edit.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\result\result-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\turbine\turbine.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\interfaces\answer.ts" />
+    <TypeScriptCompile Include="ClientApp\app\interfaces\country.ts" />
+    <TypeScriptCompile Include="ClientApp\app\interfaces\question.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\quiz.ts" />
+    <TypeScriptCompile Include="ClientApp\app\interfaces\result.ts" />
+    <TypeScriptCompile Include="ClientApp\app\interfaces\turbine.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
@@ -59,6 +104,7 @@
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </ResolvedFileToPublish>
+			<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
     </ItemGroup>
   </Target>
 

@@ -1,0 +1,20 @@
+﻿<h1><strong>Turbines</strong></h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!turbines"><em>Loading...</em></p>
+
+<table class='table' *ngIf="turbines">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Serial number</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let turbine of turbines">
+			<td>{{ turbine.Id }}</td>
+			<td>{{ turbine.SerialNumber }}</td>
+		</tr>
+	</tbody>
+</table>

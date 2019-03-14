@@ -11,23 +11,49 @@
         </div>
         <div class='clearfix'></div>
         <div class='navbar-collapse collapse'>
-            <ul class='nav navbar-nav'>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/home']">
-                        <span class='glyphicon glyphicon-home'></span> Home
-                    </a>
-                </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/counter']">
-                        <span class='glyphicon glyphicon-education'></span> Counter
-                    </a>
-                </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/fetch-data']">
-                        <span class='glyphicon glyphicon-th-list'></span> Fetch data
-                    </a>
-                </li>
-            </ul>
+			<ul class='nav navbar-nav'>
+				<li [routerLinkActive]="['link-active']">
+					<a [routerLink]="['/home']">
+						<span class='glyphicon glyphicon-home'></span> Home
+					</a>
+				</li>
+				<li [routerLinkActive]="['link-active']">
+					<a [routerLink]="['/about']">
+						<span class='glyphicon glyphicon-info-sign'></span> About
+					</a>
+				</li>
+				<li [routerLinkActive]="['link-active']">
+					<a [routerLink]="['/login']">
+						<span class='glyphicon glyphicon-log-in'></span> Login
+					</a>
+				</li>
+				<li [routerLinkActive]="['link-active']">
+					<a [routerLink]="['/counter']">
+						<span class='glyphicon glyphicon-education'></span> Counter
+					</a>
+				</li>
+				<li [routerLinkActive]="['link-active']">
+					<a [routerLink]="['/fetch-data']">
+						<span class='glyphicon glyphicon-th-list'></span> Fetch data
+					</a>
+				</li>
+				<li [routerLinkActive]="['link-active']">
+					<a [routerLink]="['/quiz/create']">
+						<span class='glyphicon glyphicon-log-in'></span> Create
+						Quiz
+					</a>
+				</li>
+				<li [routerLinkActive]="['link-active']">
+					<a [routerLink]="['/country-list']">
+						<span class='glyphicon glyphicon-globe'></span> Countries
+					</a>
+				</li>
+				<li [routerLinkActive]="['link-active']">
+					<a [routerLink]="['/turbine-list']">
+						<span class='glyphicon glyphicon-flash'></span> Turbines
+					</a>
+				</li>
+			</ul>
         </div>
     </div>
 </div>
