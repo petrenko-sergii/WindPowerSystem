@@ -3,27 +3,28 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
-	selector: "turbine",
-	templateUrl: './turbine.component.html',
-	styleUrls: ['./turbine.component.css']
+	selector: "share",
+	templateUrl: './share.component.html',
+	styleUrls: ['./share.component.css']
 })
-export class TurbineComponent {
-	turbine: Turbine;
+export class ShareComponent {
+	share: Share;
 
 	constructor(private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private http: HttpClient,
 		@Inject('BASE_URL') private baseUrl: string) {
 
-		this.turbine = <Turbine>{};
+		// create an empty object from the Share interface
+		this.share = <Share>{};
 
 		var id = +this.activatedRoute.snapshot.params["id"];
 		console.log(id);
 
 		if (id) {
-			var url = this.baseUrl + "api/turbine/" + id;
-			this.http.get<Turbine>(url).subscribe(result => {
-				this.turbine = result;
+			var url = this.baseUrl + "api/share/" + id;
+			this.http.get<Share>(url).subscribe(result => {
+				this.share = result;
 			}, error => console.error(error));
 		}
 		else {
@@ -33,16 +34,16 @@ export class TurbineComponent {
 	}
 
 	onEdit() {
-		this.router.navigate(["turbine/edit", this.turbine.Id]);
+		this.router.navigate(["share/edit", this.share.Id]);
 	}
 
 	onDelete() {
-		if (confirm("Do you really want to delete this turbine?")) {
-			var url = this.baseUrl + "api/turbine/" + this.turbine.Id;
+		if (confirm("Do you really want to delete this share?")) {
+			var url = this.baseUrl + "api/share/" + this.share.Id;
 			this.http
 				.delete(url)
 				.subscribe(result => {
-					console.log("Turbine " + this.turbine.Id + " has been deleted.");
+					console.log("Share " + this.share.Id + " has been deleted.");
 					this.router.navigate(["home"]);
 				}, error => console.log(error));
 		}

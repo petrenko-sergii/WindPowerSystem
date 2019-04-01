@@ -1,17 +1,17 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace WindPowerSystem.ViewModels
 {
 	[JsonObject(MemberSerialization.OptOut)]
-	public class TurbineViewModel
+	public class ShareViewModel
 	{
 		#region Constructor
 
-		public TurbineViewModel()
+		public ShareViewModel()
 		{
 		}
 
@@ -20,8 +20,9 @@ namespace WindPowerSystem.ViewModels
 		#region Properties
 
 		public int Id { get; set; }
-		public string SerialNumber { get; set; }
-		public int TurbineTypeId { get; set; }
+		public decimal Percent { get; set; }
+		public decimal Price { get; set; }
+		public int TurbineId { get; set; }
 
 		#endregion
 	}

@@ -1,0 +1,15 @@
+﻿<div>
+	<h3><strong>Share test page</strong></h3>
+
+	<div *ngIf="share">
+		<h4 class="share"><strong> The share with id {{share.Id}}: </strong></h4>
+		<h4> Percent: {{share.Percent}} </h4>
+		<h4>Price: {{share.Price}} </h4>
+		<h4>TurbineId: {{share.TurbineId}}</h4>
+	</div>
+
+	<div>
+		<input type="button" value="Edit" (click)="onEdit()" />
+		<input type="button" value="Delete this share" (click)="onDelete()" />
+	</div>
+</div>

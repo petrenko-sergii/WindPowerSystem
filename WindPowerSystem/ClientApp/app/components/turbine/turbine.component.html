@@ -2,6 +2,17 @@
 	<h3><strong>Turbine test page</strong></h3>
 
 	<div *ngIf="turbine">
-		<h2 class="turbine">The turbine with id {{turbine.Id}}: <strong>{{turbine.SerialNumber}}</strong></h2>
+		<h4 class="turbine">The turbine with id {{turbine.Id}}: </h4>
+		<h4 class="turbine">Serial number {{turbine.SerialNumber}}</h4>
+		<a href="api/Share/ShowSharesForTurbine/{{ turbine.Id }}">Shares</a>
 	</div>
+
+	<div>
+		<input type="button" value="Edit" (click)="onEdit()" />
+		<input type="button" value="Delete this turbine" (click)="onDelete()" />
+	</div>
+
+	<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
+		<span class=" glyphicon glyphicon-arrow-left"></span> <strong>Back to previous page</strong>
+	</a>
 </div>

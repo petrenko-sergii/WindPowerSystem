@@ -1,20 +1,51 @@
-﻿<h1><strong>Turbines</strong></h1>
+﻿<div class="jumbotron">
+	<h2><strong>Turbines</strong></h2>
 
-<p>This component demonstrates fetching data from the server.</p>
+	<p *ngIf="!turbines"><em>Loading...</em></p>
 
-<p *ngIf="!turbines"><em>Loading...</em></p>
+	<table class='table' *ngIf="turbines">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Serial number</th>
+				<th>Shares</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let turbine of turbines; let i= index">
+				<td> {{i+1}}</td>
+				<td>{{ turbine.SerialNumber }}</td>
+				<td>
+					<a href="api/Share/ShowSharesForTurbine/{{ turbine.Id }}">Shares</a>
+				</td>
+				<td>
+					<a href="turbine/{{ turbine.Id }}">Details</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 
-<table class='table' *ngIf="turbines">
-	<thead>
-		<tr>
-			<th>Id</th>
-			<th>Serial number</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let turbine of turbines">
-			<td>{{ turbine.Id }}</td>
-			<td>{{ turbine.SerialNumber }}</td>
-		</tr>
-	</tbody>
-</table>
+	<div class="row">
+		<div class="col-md-6 margin-top-20">
+			<a href="/turbine/create" class="btn btn-primary btn-large btn-block">
+				<span class="glyphicon glyphicon-plus-sign"></span> Create a turbine
+			</a>
+			<a href="/turbine-type-list" class="btn btn-primary btn-large btn-block">
+				<span class="glyphicon glyphicon-flash"></span> Turbine types
+			</a>
+		</div>
+		<div class="col-md-6 margin-top-20">
+			<a href="/share-list" class="btn btn-primary btn-large btn-block">
+				<span class="glyphicon glyphicon-list-alt"></span> Shares
+			</a>
+			<a href="/windfarm-list" class="btn btn-primary btn-large btn-block">
+				<span class="glyphicon glyphicon-flash"></span> Wind farms
+			</a>
+		</div>
+	</div>
+	<br />
+	<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
+		<span class=" glyphicon glyphicon-arrow-left"></span> <strong>Back to previous page</strong>
+	</a>
+</div>

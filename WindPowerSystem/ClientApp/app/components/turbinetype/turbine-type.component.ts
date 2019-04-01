@@ -3,27 +3,27 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
-	selector: "turbine",
-	templateUrl: './turbine.component.html',
-	styleUrls: ['./turbine.component.css']
+	selector: "turbine-type",
+	templateUrl: './turbine-type.component.html',
+	styleUrls: ['./turbine-type.component.css']
 })
-export class TurbineComponent {
-	turbine: Turbine;
+export class TurbineTypeComponent {
+	turbineType: TurbineType;
 
 	constructor(private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private http: HttpClient,
 		@Inject('BASE_URL') private baseUrl: string) {
 
-		this.turbine = <Turbine>{};
+		this.turbineType = <TurbineType>{};
 
 		var id = +this.activatedRoute.snapshot.params["id"];
 		console.log(id);
 
 		if (id) {
-			var url = this.baseUrl + "api/turbine/" + id;
-			this.http.get<Turbine>(url).subscribe(result => {
-				this.turbine = result;
+			var url = this.baseUrl + "api/turbinetype/" + id;
+			this.http.get<TurbineType>(url).subscribe(result => {
+				this.turbineType = result;
 			}, error => console.error(error));
 		}
 		else {
@@ -31,18 +31,17 @@ export class TurbineComponent {
 			this.router.navigate(["home"]);
 		}
 	}
-
 	onEdit() {
-		this.router.navigate(["turbine/edit", this.turbine.Id]);
+		this.router.navigate(["turbine-type/edit", this.turbineType.Id]);
 	}
 
 	onDelete() {
-		if (confirm("Do you really want to delete this turbine?")) {
-			var url = this.baseUrl + "api/turbine/" + this.turbine.Id;
+		if (confirm("Do you really want to delete this turbineType?")) {
+			var url = this.baseUrl + "api/turbineType/" + this.turbineType.Id;
 			this.http
 				.delete(url)
 				.subscribe(result => {
-					console.log("Turbine " + this.turbine.Id + " has been deleted.");
+					console.log("TurbineType " + this.turbineType.Id + " has been deleted.");
 					this.router.navigate(["home"]);
 				}, error => console.log(error));
 		}

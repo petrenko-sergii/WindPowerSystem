@@ -44,8 +44,18 @@ namespace WindPowerSystem.Data
 			modelBuilder.Entity<Result>().Property(i => i.Id).ValueGeneratedOnAdd();
 			modelBuilder.Entity<Result>().HasOne(i => i.Quiz).WithMany(u => u.Results);
 
+			modelBuilder.Entity<TurbineType>().ToTable("TurbineType");
+			modelBuilder.Entity<TurbineType>().Property(i => i.Id).ValueGeneratedOnAdd();
+			modelBuilder.Entity<TurbineType>().HasMany(i => i.Turbines).WithOne(c => c.TurbineType);
+
 			modelBuilder.Entity<Turbine>().ToTable("Turbine");
 			modelBuilder.Entity<Turbine>().Property(i => i.Id).ValueGeneratedOnAdd();
+			modelBuilder.Entity<Turbine>().HasOne(i => i.TurbineType).WithMany(u => u.Turbines);
+			modelBuilder.Entity<Turbine>().HasMany(i => i.Shares).WithOne(c => c.Turbine);
+
+			modelBuilder.Entity<Share>().ToTable("StockShare");
+			modelBuilder.Entity<Share>().Property(i => i.Id).ValueGeneratedOnAdd();
+			modelBuilder.Entity<Share>().HasOne(i => i.Turbine).WithMany(u => u.Shares);
 
 			modelBuilder.Entity<Country>().ToTable("Country");
 			modelBuilder.Entity<Country>().Property(i => i.Id).ValueGeneratedOnAdd();
@@ -64,7 +74,9 @@ namespace WindPowerSystem.Data
 		public DbSet<Answer> Answers { get; set; }
 		public DbSet<Result> Results { get; set; }
 
+		public DbSet<TurbineType> TurbineTypes { get; set; }
 		public DbSet<Turbine> Turbines { get; set; }
+		public DbSet<Share> Shares { get; set; }
 		public DbSet<Country> Countries { get; set; }
 		public DbSet<Town> Towns { get; set; }
 

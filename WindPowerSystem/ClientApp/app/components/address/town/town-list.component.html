@@ -1,23 +1,23 @@
-﻿<h1><strong>Countries</strong></h1>
+﻿<h1><strong>Towns</strong></h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
-<p *ngIf="!countries"><em>Loading...</em></p>
+<p *ngIf="!towns"><em>Loading...</em></p>
 
-<table class='table' *ngIf="countries">
+<table class='table' *ngIf="towns">
 	<thead>
 		<tr>
 			<th>Id</th>
 			<th>Name</th>
-			<th>Towns</th>
+			<th>Country</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let country of countries">
-			<td>{{ country.Id }}</td>
-			<td>{{ country.Name }}</td>
+		<tr *ngFor="let town of towns">
+			<td>{{ town.Id }}</td>
+			<td>{{ town.Name }}</td>
 			<td>
-				<a href="api/Town/ShowTownsForCountry/{{ country.Id }}">Towns</a>
+				<a href="country/{{town.CountryId}}">Country (details)</a>
 			</td>
 		</tr>
 	</tbody>

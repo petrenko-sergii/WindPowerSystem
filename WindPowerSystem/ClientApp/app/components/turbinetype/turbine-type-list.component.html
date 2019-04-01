@@ -1,0 +1,39 @@
+﻿<div class="jumbotron">
+	<h2><strong>Turbine types</strong></h2>
+
+	<p *ngIf="!turbineTypes"><em>Loading...</em></p>
+
+	<table class='table' *ngIf="turbineTypes">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Model</th>
+				<th>Capacity</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let turbineType of turbineTypes; let i= index">
+				<td>{{i+1}}</td>
+				<td>{{turbineType.Model}}</td>
+				<td>{{turbineType.Capacity}}</td>
+				<td>
+					<a href="turbine-type/{{ turbineType.Id }}">Details</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="row">
+		<div class="col-md-3 margin-top-20">
+			<a href="/turbine-type/create" class="btn btn-primary btn-large btn-block">
+				<span class="glyphicon glyphicon-plus-sign"></span> Create a turbine type
+			</a>
+		</div>
+	</div>
+	<br />
+
+	<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
+		<span class=" glyphicon glyphicon-arrow-left"></span> <strong>Back to previous page</strong>
+	</a>
+</div>

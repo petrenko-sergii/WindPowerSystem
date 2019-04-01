@@ -19,8 +19,14 @@ namespace WindPowerSystem.Data
 			// Create default Quizzes (if there are none) together with their set of Q&A
 			if (!dbContext.Quizzes.Any()) CreateQuizzes(dbContext);
 
+			// Create default TurbineTypes (if there are none)
+			if (!dbContext.TurbineTypes.Any()) CreateTurbineTypes(dbContext);
+
 			// Create default Turbines (if there are none)
 			if (!dbContext.Turbines.Any()) CreateTurbines(dbContext);
+
+			// Create default Shares (if there are none)
+			if (!dbContext.Shares.Any()) CreateShares(dbContext);
 
 			// Create default Countries (if there are none)
 			if (!dbContext.Countries.Any()) CreateCountries(dbContext);
@@ -241,15 +247,51 @@ namespace WindPowerSystem.Data
 			dbContext.SaveChanges();
 		}
 
+		private static void CreateTurbineTypes(ApplicationDbContext dbContext)
+		{
+			var typeV = new TurbineType() { Model = "V39/600", Capacity = 600 };
+			var typeSG = new TurbineType() { Model = "SG 2.1-114", Capacity = 1140 };
+			var typeN = new TurbineType() { Model = "N43", Capacity = 800 };
+			var typeE = new TurbineType() { Model = "E-44", Capacity = 900 };
+
+			// Insert turbine types into the Database
+			dbContext.TurbineTypes.AddRange(typeV, typeSG, typeN, typeE);
+
+			dbContext.SaveChanges();
+		}
+
 		private static void CreateTurbines(ApplicationDbContext dbContext)
 		{
-			var turbineV = new Turbine() { SerialNumber = "V52/850/2014-dk/kol-863" };
-			var turbineSG = new Turbine() { SerialNumber = "SG2.1-114/2013-dk/kol-605" };
-			var turbineN = new Turbine() { SerialNumber = "N43/2011-dk/kol-536" };
-			var turbineE = new Turbine() { SerialNumber = "E-44/2016-dk/kol-221" };
+			var turbineV = new Turbine() { SerialNumber = "V52/850/2014-dk/kol-863", TurbineTypeId = 1 };
+			var turbineSG = new Turbine() { SerialNumber = "SG2.1-114/2013-dk/kol-605", TurbineTypeId = 2 };
+			var turbineN = new Turbine() { SerialNumber = "N43/2011-dk/kol-536", TurbineTypeId = 3 };
+			var turbineE = new Turbine() { SerialNumber = "E-44/2016-dk/kol-221" , TurbineTypeId = 4 };
 
 			// Insert turbines into the Database
 			dbContext.Turbines.AddRange(turbineV, turbineSG, turbineN, turbineE);
+
+			dbContext.SaveChanges();
+		}
+
+		private static void CreateShares(ApplicationDbContext dbContext)
+		{
+			var share1 = new Share() { Percent = 40, Price = 40000, TurbineId = 1 };
+			var share2 = new Share() { Percent = 25, Price = 25000, TurbineId = 1 };
+			var share3 = new Share() { Percent = 35, Price = 35000, TurbineId = 1 };
+
+			var share4 = new Share() { Percent = 35, Price = 70000, TurbineId = 2 };
+			var share5 = new Share() { Percent = 65, Price = 130000, TurbineId = 2};
+
+			var share6 = new Share() { Percent = 20, Price = 20000, TurbineId = 3 };
+			var share7 = new Share() { Percent = 20, Price = 20000, TurbineId = 3 };
+			var share8 = new Share() { Percent = 60, Price = 60000, TurbineId = 3 };
+
+			var share9 = new Share() { Percent = 50, Price = 35000, TurbineId = 4 };
+			var share10 = new Share() { Percent = 50, Price = 35000, TurbineId = 4 };
+
+			// Insert shares into the Database
+			dbContext.Shares.AddRange(share1, share2, share3, share4, share5,
+				share6, share7, share8, share9, share10);
 
 			dbContext.SaveChanges();
 		}

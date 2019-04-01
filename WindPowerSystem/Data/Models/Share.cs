@@ -7,43 +7,38 @@ using System.Threading.Tasks;
 
 namespace WindPowerSystem.Data.Models
 {
-	public class Turbine
+	public class Share
 	{
 		#region Constructor
-
-		public Turbine()
+		public Share()
 		{
 
 		}
-
 		#endregion
 
 		#region Properties
-
 		[Key]
 		[Required]
 		public int Id { get; set; }
 
 		[Required]
-		public string SerialNumber { get; set; }
+		public decimal Percent { get; set; }
 
 		[Required]
-		public int TurbineTypeId { get; set; }
+		public decimal Price { get; set; }
+
+		[Required]
+		public int TurbineId { get; set; }
 
 		#endregion
 
 		#region Lazy-Load Properties
 
 		/// <summary>
-		/// The parent turbine type.
+		/// The parent turbine.
 		/// </summary>
-		[ForeignKey("TurbineTypeId")]
-		public virtual TurbineType TurbineType { get; set; }
-
-		/// <summary>
-		/// A list containing all the shares related to this turbine.
-		/// </summary>
-		public virtual List<Share> Shares { get; set; }
+		[ForeignKey("TurbineId")]
+		public virtual Turbine Turbine { get; set; }
 
 		#endregion
 	}

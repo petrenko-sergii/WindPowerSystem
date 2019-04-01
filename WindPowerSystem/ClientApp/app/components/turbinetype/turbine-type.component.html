@@ -1,0 +1,13 @@
+﻿<div>
+	<h3><strong>Turbine type test page</strong></h3>
+
+	<div *ngIf="turbineType">
+		<h4 class="turbineType"><strong> The turbine-type with id {{turbineType.Id}}: </strong></h4>
+		<h4> Model: {{turbineType.Model}} </h4>
+		<h4>Capacity: {{turbineType.Capacity}} </h4>
+	</div>
+	<div>
+		<input type="button" value="Edit" (click)="onEdit()" />
+		<input type="button" value="Delete this Turbine type" (click)="onDelete()" />
+	</div>
+</div>

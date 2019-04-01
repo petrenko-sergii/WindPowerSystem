@@ -26,6 +26,16 @@ import { CountryComponent } from './components/address/country/country.component
 import { TurbineComponent } from './components/turbine/turbine.component';
 import { TurbineListComponent } from './components/turbine/turbine-list.component';
 import { CountryListComponent } from './components/address/country/country-list.component';
+import { ShareComponent } from './components/share/share.component';
+import { ShareListComponent } from './components/share/share-list.component';
+import { ShareEditComponent } from './components/share/share-edit.component';
+import { TownComponent } from './components/address/town/town.component';
+import { TownListComponent } from './components/address/town/town-list.component';
+import { TurbineTypeComponent } from './components/turbinetype/turbine-type.component';
+import { TurbineTypeEditComponent } from './components/turbinetype/turbine-type-edit.component';
+import { TurbineEditComponent } from './components/turbine/turbine-edit.component';
+import { TurbineTypeListComponent } from './components/turbinetype/turbine-type-list.component';
+
 
 @NgModule({
     declarations: [
@@ -49,7 +59,16 @@ import { CountryListComponent } from './components/address/country/country-list.
 		CountryComponent,
 		TurbineComponent,
 		TurbineListComponent,
-		CountryListComponent
+		CountryListComponent,
+		ShareComponent,
+		ShareEditComponent,
+		ShareListComponent,
+		TownComponent,
+		TownListComponent,
+		TurbineTypeComponent,
+		TurbineTypeListComponent,
+		TurbineTypeEditComponent,
+		TurbineEditComponent
     ],
     imports: [
 		CommonModule,
@@ -73,9 +92,21 @@ import { CountryListComponent } from './components/address/country/country-list.
 			{ path: 'about', component: AboutComponent },
 			{ path: 'login', component: LoginComponent },
 			{ path: 'country/:id', component: CountryComponent },
+			{ path: 'turbine/create', component: TurbineEditComponent },   // we need to insert before     "path: 'turbine/:id'"
+			{ path: 'turbine/edit/:id', component: TurbineEditComponent }, // we need to insert before     "path: 'turbine/:id'"
 			{ path: 'turbine/:id', component: TurbineComponent },
+			{ path: 'turbine-type/create', component: TurbineTypeEditComponent },
+			{ path: 'turbine-type/edit/:id', component: TurbineTypeEditComponent },
+			{ path: 'turbine-type/:id', component: TurbineTypeComponent },
 			{ path: 'country-list', component: CountryListComponent },
+			{ path: 'town/:id', component: TownComponent },
+			{ path: 'town-list', component: TownListComponent },
 			{ path: 'turbine-list', component: TurbineListComponent },
+			{ path: 'share/create', component: ShareEditComponent },
+			{ path: 'share/edit/:id', component: ShareEditComponent },
+			{ path: 'share/:id', component: ShareComponent },
+			{ path: 'share-list', component: ShareListComponent },
+			{ path: 'turbine-type-list', component: TurbineTypeListComponent },
 			{ path: '**', component: PageNotFoundComponent } // should be the last router
             //{ path: '**', redirectTo: 'home' } -- redirect to home page
         ])

@@ -1,0 +1,21 @@
+﻿<h2>{{title}}</h2>
+<div class="turbine-edit">
+	<div>
+		<label for="model">Turbine Model:</label>
+		<br />
+		<input type="text" id="model" [(ngModel)]="turbine.SerialNumber" placeholder="enter a serialNumber..." />
+	</div>
+	<div>
+		<label for="turbineTypeId">TurbineType id:</label>
+		<br />
+		<input type="text" id="turbineTypeId" [(ngModel)]="turbine.TurbineTypeId" placeholder="enter a turbineTypeId..." />
+	</div>
+	<div>
+		<input *ngIf="editMode" type="button" value="Apply Changes" (click)="onSubmit(turbine)" />
+		<input *ngIf="!editMode" type="button" value="Create the turbine!" (click)="onSubmit(turbine)" />
+		<input type="button" value="Cancel" (click)="onBack()" />
+	</div>
+
+	<!--<share-list *ngIf="editMode" [turbine]="turbine"></share-list>-->
+
+</div>

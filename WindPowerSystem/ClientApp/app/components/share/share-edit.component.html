@@ -1,0 +1,23 @@
+﻿<h2>{{title}}</h2>
+<div class="share-edit">
+	<div>
+		<label for="percent">Share percent:</label>
+		<br />
+		<input type="text" id="percent" [(ngModel)]="share.Percent" placeholder="enter a percent..." />
+	</div>
+	<div>
+		<label for="price">Share price:</label>
+		<br />
+		<input type="text" id="price" [(ngModel)]="share.Price" placeholder="enter a price..." />
+	</div>
+	<div>
+		<label for="turbineId">Turbine id:</label>
+		<br />
+		<input type="text" id="turbineId" [(ngModel)]="share.TurbineId" placeholder="enter a turbineId..." />
+	</div>
+	<div>
+		<input *ngIf="editMode" type="button" value="Apply Changes" (click)="onSubmit(share)" />
+		<input *ngIf="!editMode" type="button" value="Create the share!" (click)="onSubmit(share)" />
+		<input type="button" value="Cancel" (click)="onBack()" />
+	</div>
+</div>

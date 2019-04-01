@@ -8,26 +8,14 @@ using WindPowerSystem.ViewModels.AddressModels;
 using Mapster;
 using WindPowerSystem.Data;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace WindPowerSystem.Controllers
 {
-	[Route("api/[controller]")]
-	public class CountryController : Controller
+	public class CountryController : BaseApiController
 	{
-		#region Private Fields
-
-		private ApplicationDbContext DbContext;
-
-		#endregion
-
 		#region Constructor
 
 		public CountryController(ApplicationDbContext context)
-		{
-			// Instantiate the ApplicationDbContext through DI
-			DbContext = context;
-		}
+		: base(context) { }
 
 		#endregion Constructor
 
@@ -44,13 +32,9 @@ namespace WindPowerSystem.Controllers
 			var rnd = new Random();
 			int i = rnd.Next(1, countries.Length);
 
-			// output the result in JSON format
 			return new JsonResult(
 				countries[--i].Adapt<CountryViewModel>(),
-				new JsonSerializerSettings()
-				{
-					Formatting = Formatting.Indented
-				});
+				JsonSettings);
 		}
 
 		/// <summary>
@@ -63,14 +47,9 @@ namespace WindPowerSystem.Controllers
 		{
 			var countries = DbContext.Countries.OrderBy(c => c.Id).ToArray();
 			
-
-			// output the result in JSON format
 			return new JsonResult(
 				countries.Adapt<CountryViewModel[]>(),
-				new JsonSerializerSettings()
-				{
-					Formatting = Formatting.Indented
-				});
+				JsonSettings);
 		}
 
 		#region RESTful conventions methods
@@ -86,12 +65,8 @@ namespace WindPowerSystem.Controllers
 		{
 			var country = DbContext.Countries.Where(c => c.Id == id).FirstOrDefault();
 
-			// output the result in JSON format
 			return new JsonResult( country.Adapt<CountryViewModel>(),
-				new JsonSerializerSettings()
-				{
-					Formatting = Formatting.Indented
-				});
+				JsonSettings);
 		}
 
 		/// <summary>

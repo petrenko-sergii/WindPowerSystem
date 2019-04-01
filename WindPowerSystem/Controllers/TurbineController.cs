@@ -7,27 +7,16 @@ using Newtonsoft.Json;
 using WindPowerSystem.ViewModels;
 using Mapster;
 using WindPowerSystem.Data;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using WindPowerSystem.Data.Models;
 
 namespace WindPowerSystem.Controllers
 {
-	[Route("api/[controller]")]
-	public class TurbineController : Controller
+	public class TurbineController : BaseApiController
 	{
-		#region Private Fields
-
-		private ApplicationDbContext DbContext;
-
-		#endregion
-
 		#region Constructor
 
 		public TurbineController(ApplicationDbContext context)
-		{
-			// Instantiate the ApplicationDbContext through DI
-			DbContext = context;
-		}
+			: base(context) { }
 
 		#endregion Constructor
 
@@ -41,13 +30,9 @@ namespace WindPowerSystem.Controllers
 		{
 			var turbines = DbContext.Turbines.OrderBy(t => t.Id).ToArray();
 
-			// output the result in JSON format
 			return new JsonResult(
 				turbines.Adapt<TurbineViewModel[]>(),
-				new JsonSerializerSettings()
-				{
-					Formatting = Formatting.Indented
-				});
+				JsonSettings);
 		}
 
 		#region RESTful conventions methods
@@ -63,30 +48,62 @@ namespace WindPowerSystem.Controllers
 		{
 			var turbine = DbContext.Turbines.Where(i => i.Id ==id).FirstOrDefault();
 
-			return new JsonResult( turbine.Adapt<TurbineViewModel>(), new JsonSerializerSettings()
+			if (turbine == null)
 			{
-				Formatting = Formatting.Indented
-			});
+				return NotFound(new
+				{
+					Error = String.Format("Turbine ID {0} has not been found", id)
+				});
+			}
+
+			return new JsonResult( turbine.Adapt<TurbineViewModel>(),
+				JsonSettings);
 		}
 
 		/// <summary>
 		/// Adds a new Turbine to the Database
 		/// </summary>
-		/// <param name="m">The TurbineViewModel containing the data to insert</param>
+		/// <param name="model">The TurbineViewModel containing the data to insert</param>
 		[HttpPut]
-		public IActionResult Put(TurbineViewModel m)
+		public IActionResult Put([FromBody]TurbineViewModel model)
 		{
-			throw new NotImplementedException();
+			if (model == null) return new StatusCodeResult(500);
+
+			var turbine = model.Adapt<Turbine>();
+
+			DbContext.Turbines.Add(turbine);
+			DbContext.SaveChanges();
+
+			return new JsonResult(
+				turbine.Adapt<TurbineViewModel>(),
+				JsonSettings);
 		}
 
 		/// <summary>
 		/// Edit the Turbine with the given {id}
 		/// </summary>
-		/// <param name="m">The TurbineViewModel containing the data to update</param>
+		/// <param name="model">The TurbineViewModel containing the data to update</param>
 		[HttpPost]
-		public IActionResult Post(TurbineViewModel m)
+		public IActionResult Post([FromBody]TurbineViewModel model)
 		{
-			throw new NotImplementedException();
+			if (model == null) return new StatusCodeResult(500);
+
+			var turbine = DbContext.Turbines.Where(t => t.Id ==
+						model.Id).FirstOrDefault();
+
+			if (turbine == null) return NotFound(new
+			{
+				Error = String.Format("Turbine ID {0} has not been found", model.Id)
+			});
+
+			turbine.SerialNumber = model.SerialNumber;
+			turbine.TurbineTypeId = model.TurbineTypeId;
+
+			DbContext.SaveChanges();
+
+			return new JsonResult(
+				turbine.Adapt<TurbineViewModel>(),
+				JsonSettings);
 		}
 
 		/// <summary>
@@ -96,7 +113,18 @@ namespace WindPowerSystem.Controllers
 		[HttpDelete("{id}")]
 		public IActionResult Delete(int id)
 		{
-			throw new NotImplementedException();
+			var turbine = DbContext.Turbines.Where(i => i.Id == id)
+				.FirstOrDefault();
+
+			if (turbine == null) return NotFound(new
+			{
+				Error = String.Format("Turbine ID {0} has not been found", id)
+			});
+
+			DbContext.Turbines.Remove(turbine);
+			DbContext.SaveChanges();
+
+			return new NoContentResult();
 		}
 
 		#endregion
