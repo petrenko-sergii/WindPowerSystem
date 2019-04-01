@@ -1,20 +1,18 @@
 ﻿<h1><strong>Towns</strong></h1>
 
-<p>This component demonstrates fetching data from the server.</p>
-
 <p *ngIf="!towns"><em>Loading...</em></p>
 
 <table class='table' *ngIf="towns">
 	<thead>
 		<tr>
-			<th>Id</th>
+			<th>#</th>
 			<th>Name</th>
 			<th>Country</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let town of towns">
-			<td>{{ town.Id }}</td>
+		<tr *ngFor="let town of towns; let i= index">
+			<td>{{ i+1 }}</td>
 			<td>{{ town.Name }}</td>
 			<td>
 				<a href="country/{{town.CountryId}}">Country (details)</a>
