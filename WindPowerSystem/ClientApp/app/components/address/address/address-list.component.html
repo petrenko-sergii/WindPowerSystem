@@ -1,0 +1,26 @@
+﻿<h1><strong>Address -- Test page</strong></h1>
+
+<p *ngIf="!countries"><em>Loading...</em></p>
+
+<table class='table' *ngIf="countries">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Towns</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let country of countries; let i= index">
+			<td>{{ i+1 }}</td>
+			<td>{{ country.Name }}</td>
+			<td>
+				<a href="api/Town/ShowTownsForCountry/{{ country.Id }}">Towns</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
+	<span class=" glyphicon glyphicon-arrow-left"></span> <strong>Back to previous page</strong>
+</a>

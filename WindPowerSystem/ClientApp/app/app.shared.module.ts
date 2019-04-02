@@ -35,6 +35,7 @@ import { TurbineTypeComponent } from './components/turbinetype/turbine-type.comp
 import { TurbineTypeEditComponent } from './components/turbinetype/turbine-type-edit.component';
 import { TurbineEditComponent } from './components/turbine/turbine-edit.component';
 import { TurbineTypeListComponent } from './components/turbinetype/turbine-type-list.component';
+import { AddressListComponent } from './components/address/address/address-list.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { TurbineTypeListComponent } from './components/turbinetype/turbine-type-
 		CountryComponent,
 		TurbineComponent,
 		TurbineListComponent,
+		AddressListComponent,
 		CountryListComponent,
 		ShareComponent,
 		ShareEditComponent,
@@ -98,6 +100,7 @@ import { TurbineTypeListComponent } from './components/turbinetype/turbine-type-
 			{ path: 'turbine-type/create', component: TurbineTypeEditComponent },
 			{ path: 'turbine-type/edit/:id', component: TurbineTypeEditComponent },
 			{ path: 'turbine-type/:id', component: TurbineTypeComponent },
+			{ path: 'address-list', component: AddressListComponent },
 			{ path: 'country-list', component: CountryListComponent },
 			{ path: 'town/:id', component: TownComponent },
 			{ path: 'town-list', component: TownListComponent },
