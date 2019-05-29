@@ -1,4 +1,4 @@
-﻿<h1><strong>Address -- Test page</strong></h1>
+﻿<p><strong>Address -- Test page</strong></p>
 
 <p *ngIf="!countries"><em>Loading...</em></p>
 
@@ -15,11 +15,41 @@
 			<td>{{ i+1 }}</td>
 			<td>{{ country.Name }}</td>
 			<td>
-				<a href="api/Town/ShowTownsForCountry/{{ country.Id }}">Towns</a>
+				<a href="api/Town/GetTownsForCountry/{{ country.Id }}">Towns</a>
 			</td>
 		</tr>
 	</tbody>
 </table>
+
+<div>
+	<label>Select country</label>
+	<select id="countryComboBox" name="value" (change)="onSelectCountry($event.target.value)">
+		<option value="0">--Select country--</option>
+		<option *ngFor="let country of countries" value={{country.Id}}>{{country.Name}}</option>
+	</select>
+
+	<br />
+	<br />
+
+	<label>Select town</label>
+	<select id="townComboBox" name="value" (change)="onSelectTown($event.target.value)">
+		<option value="0">--Select town--</option>
+		<option *ngFor="let town of towns" value={{town.Id}}>{{town.Name}}</option>
+	</select>
+
+	<br />
+	<br />
+
+	<label>Select street</label>
+	<select id="streetComboBox" name="value">
+		<option value="0">--Select street--</option>
+		<option *ngFor="let street of streets" value={{street.Id}}>{{street.Name}}</option>
+	</select>
+
+	<br />
+	<br />
+</div>
+
 
 <a href="javascript:history.go(-1)" class="btn btn-link btn-large">
 	<span class=" glyphicon glyphicon-arrow-left"></span> <strong>Back to previous page</strong>

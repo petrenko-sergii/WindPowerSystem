@@ -19,9 +19,9 @@ namespace WindPowerSystem.Controllers.AddressControllers
 
 		#endregion Constructor
 
-		// GET api/country/showtownsforcountry
-		[HttpGet("ShowTownsForCountry/{countryId}")]
-		public IActionResult ShowTownsForCountry(int countryId)
+		// GET api/country/gettownsforcountry
+		[HttpGet("GetTownsForCountry/{countryId}")]
+		public IActionResult GetTownsForCountry(int countryId)
 		{
 			var towns = DbContext.Towns.Where(t => t.CountryId == countryId).ToArray();
 

@@ -61,6 +61,7 @@
     <None Remove="ClientApp\app\interfaces\quiz.ts" />
     <None Remove="ClientApp\app\interfaces\result.ts" />
     <None Remove="ClientApp\app\interfaces\share.ts" />
+    <None Remove="ClientApp\app\interfaces\street.ts" />
     <None Remove="ClientApp\app\interfaces\town.ts" />
     <None Remove="ClientApp\app\interfaces\turbine-type.ts" />
     <None Remove="ClientApp\app\interfaces\turbine.ts" />
@@ -93,6 +94,7 @@
     <TypeScriptCompile Include="ClientApp\app\components\turbine\turbine-edit.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\turbine\turbine.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\answer.ts" />
+    <TypeScriptCompile Include="ClientApp\app\interfaces\street.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\town.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\country.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\question.ts" />

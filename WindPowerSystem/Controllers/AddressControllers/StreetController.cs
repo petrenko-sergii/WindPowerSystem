@@ -15,9 +15,9 @@ namespace WindPowerSystem.Controllers.AddressControllers
 	{
 		public static List<StreetViewModel> streets = new List<StreetViewModel>();
 
-		// GET api/street/showstreetsfortown
-		[HttpGet("ShowStreetsForTown/{townId}")]
-		public IActionResult ShowStreetsForTown(int townId)
+		// GET api/street/getstreetsfortown
+		[HttpGet("GetStreetsForTown/{townId}")]
+		public IActionResult GetStreetsForTown(int townId)
 		{
 			streets.Clear();
 			var foundStreets = new List<StreetViewModel>();
@@ -27,6 +27,10 @@ namespace WindPowerSystem.Controllers.AddressControllers
 			streets.Add(new StreetViewModel() { Id = 3, Name = "Sdr Ringvej", TownId = 4, PostcodeId = 4});
 			streets.Add(new StreetViewModel() { Id = 4, Name = "Middelfartvej", TownId = 5, PostcodeId = 3});
 			streets.Add(new StreetViewModel() { Id = 5, Name = "Roesskovsvej", TownId = 5, PostcodeId = 3});
+
+			streets.Add(new StreetViewModel() { Id = 6, Name = "Friedrichstrasse", TownId = 7 });
+			streets.Add(new StreetViewModel() { Id = 7, Name = "Kurfürstendamm", TownId = 7 });
+			streets.Add(new StreetViewModel() { Id = 8, Name = "Potsdamer Platz", TownId = 7});
 
 			for (int i = 0; i < streets.Count; i++)
 			{

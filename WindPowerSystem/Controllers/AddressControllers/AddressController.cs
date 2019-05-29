@@ -33,5 +33,15 @@ namespace WindPowerSystem.Controllers.AddressControllers
 				countries.Adapt<CountryViewModel[]>(),
 				JsonSettings);
 		}
+
+		// GET api/address/gettownsforcountry
+		[HttpGet("GetTownsForCountry/{countryId}")]
+		public IActionResult GetTownsForCountry(int countryId)
+		{
+			var towns = DbContext.Towns.Where(t => t.CountryId == countryId).ToArray();
+
+			return new JsonResult(towns.Adapt<TownViewModel[]>(),
+				JsonSettings);
+		}
 	}
 }

@@ -313,7 +313,7 @@ namespace WindPowerSystem.Data
 
 		private static void CreateTowns(ApplicationDbContext dbContext)
 		{
-			string[] danishTowns = new[] { "Kolding", "Odense", "Viborg" };
+			string[] danishTowns = new[] { "Aarhus", "Copenhagen", "Esbjerg", "Kolding", "Odense", "Viborg" };
 			string[] germanTowns = new[] { "Berlin", "Hamburg", "Munich" };
 
 			int countDk = danishTowns.Length;
