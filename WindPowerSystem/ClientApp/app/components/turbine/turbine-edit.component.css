@@ -1,4 +1,4 @@
-﻿.turbine-edit input[type="text"],
+.turbine-edit input[type="text"],
 .turbine-edit textarea {
-	min-width: 500px;
+  min-width: 500px;
 }

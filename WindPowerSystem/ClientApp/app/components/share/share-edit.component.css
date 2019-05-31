@@ -1,4 +1,4 @@
-﻿.share-edit input[type="text"],
+.share-edit input[type="text"],
 .share-edit textarea {
-	min-width: 500px;
+  min-width: 500px;
 }
