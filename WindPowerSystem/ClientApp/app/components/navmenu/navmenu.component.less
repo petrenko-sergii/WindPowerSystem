@@ -1,59 +1,73 @@
-li .glyphicon {
-    margin-right: 10px;
-}
-
-/* Highlighting rules for nav menu items */
-li.link-active a,
-li.link-active a:hover,
-li.link-active a:focus {
-    background-color: #4189C7;
-    color: white;
-}
-
-/* Keep the nav menu independent of scrolling and on top of other items */
 .main-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
+	position: fixed;
+	top: 85px;
+	left: 0;
+	right: 0;
+	z-index: 1;
+
+
+	li {
+		a {
+			cursor: pointer;
+		}
+
+		.glyphicon {
+			margin-right: 10px;
+		}
+
+		&.link-active a,
+		&.link-active a:hover,
+		&.link-active a:focus {
+			background-color: #4189C7;
+			color: white;
+		}
+	}
 }
 
 @media (min-width: 768px) {
-    /* On small screens, convert the nav menu to a vertical sidebar */
 	.main-nav {
-		height: 100%;
+		top: 100px;
 		width: calc(~"25% - 30px");
+		min-width: 180px;
+
+		.navbar {
+			border-radius: 0 15px 15px 0;
+			border-width: 0px;
+			height: 100%;
+
+			a {
+				width: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			ul {
+				float: none;
+			}
+
+			li {
+				float: none;
+				font-size: 15px;
+				margin: 6px;
+
+				a {
+					padding: 10px 16px;
+					border-radius: 4px;
+				}
+			}
+		}
+
+		.navbar-header {
+			float: none;
+		}
+
+		.navbar-collapse {
+			padding: 0px;
+		}
 	}
-    .navbar {
-        border-radius: 0px;
-        border-width: 0px;
-        height: 100%;
-    }
-    .navbar-header {
-        float: none;
-    }
-    .navbar-collapse {
-        border-top: 1px solid #444;
-        padding: 0px;
-    }
-    .navbar ul {
-        float: none;
-    }
-    .navbar li {
-        float: none;
-        font-size: 15px;
-        margin: 6px;
-    }
-    .navbar li a {
-        padding: 10px 16px;
-        border-radius: 4px;
-    }
-    .navbar a {
-        /* If a menu item's text is too long, truncate it */
-        width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+}
+
+.navbar-custom {
+	background-color: limegreen;
 }

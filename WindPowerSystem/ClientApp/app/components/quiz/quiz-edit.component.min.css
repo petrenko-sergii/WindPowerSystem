@@ -1,1 +1,1 @@
-﻿.quiz-edit input[type="text"],.quiz-edit textarea{min-width:500px}
+﻿.quiz-edit{width:80%}@media(max-width:767px){.quiz-edit{width:100%}}.quiz-edit textarea{min-height:100px}

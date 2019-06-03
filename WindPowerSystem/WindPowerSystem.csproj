@@ -44,6 +44,7 @@
     <None Remove="ClientApp\app\components\question\question-list.component.ts" />
     <None Remove="ClientApp\app\components\quiz\quiz-edit.component.ts" />
     <None Remove="ClientApp\app\components\quiz\quiz-list.component.ts" />
+    <None Remove="ClientApp\app\components\quiz\quiz-search.component.ts" />
     <None Remove="ClientApp\app\components\quiz\quiz.component.ts" />
     <None Remove="ClientApp\app\components\result\result-edit.component.ts" />
     <None Remove="ClientApp\app\components\result\result-list.component.ts" />
@@ -68,6 +69,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\logo.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\about\about.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\address\address\address-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\address\country\country-list.component.ts" />
@@ -82,6 +87,7 @@
     <TypeScriptCompile Include="ClientApp\app\components\question\question-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\quiz\quiz-edit.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\quiz\quiz-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\quiz\quiz-search.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\quiz\quiz.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\result\result-edit.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\result\result-list.component.ts" />
@@ -103,6 +109,10 @@
     <TypeScriptCompile Include="ClientApp\app\interfaces\share.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\turbine.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\turbine-type.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\app\components\app\dist\res\img\" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
