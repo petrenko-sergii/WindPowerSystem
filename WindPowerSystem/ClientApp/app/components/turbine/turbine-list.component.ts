@@ -3,7 +3,8 @@ import { Http } from '@angular/http';
 
 @Component({
 	selector: 'turbine-list',
-	templateUrl: './turbine-list.component.html'
+	templateUrl: './turbine-list.component.html',
+	styleUrls: ['./turbine-list.component.css']
 })
 
 export class TurbineListComponent {

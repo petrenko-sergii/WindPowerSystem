@@ -3,7 +3,8 @@ import { Http } from '@angular/http';
 
 @Component({
 	selector: 'share-list',
-	templateUrl: './share-list.component.html'
+	templateUrl: './share-list.component.html',
+	styleUrls: ['./share-list.component.css']
 })
 
 export class ShareListComponent {
