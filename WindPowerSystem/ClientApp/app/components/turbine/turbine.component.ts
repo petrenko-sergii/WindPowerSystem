@@ -43,7 +43,7 @@ export class TurbineComponent {
 				.delete(url)
 				.subscribe(result => {
 					console.log("Turbine " + this.turbine.Id + " has been deleted.");
-					this.router.navigate(["home"]);
+					this.router.navigate(["turbine-list"]);
 				}, error => console.log(error));
 		}
 	}

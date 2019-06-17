@@ -1,4 +1,19 @@
-﻿.turbine-edit input[type="text"],
-.turbine-edit textarea {
-	min-width: 500px;
+﻿.turbine-edit {
+	width: 60%;
+
+	@media (max-width: 767px) {
+		width: 100%;
+	}
+
+	textarea {
+		min-height: 100px;
+	}
+
+	select {
+		max-width: 300px;
+	}
+
+	.commands {
+		margin-top: 20px;
+	}
 }

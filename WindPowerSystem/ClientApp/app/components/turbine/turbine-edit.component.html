@@ -1,21 +1,59 @@
-﻿<h2>{{title}}</h2>
-<div class="turbine-edit">
-	<div>
-		<label for="model">Turbine Model:</label>
-		<br />
-		<input type="text" id="model" [(ngModel)]="turbine.SerialNumber" placeholder="enter a serialNumber..." />
-	</div>
-	<div>
-		<label for="turbineTypeId">TurbineType id:</label>
-		<br />
-		<input type="text" id="turbineTypeId" [(ngModel)]="turbine.TurbineTypeId" placeholder="enter a turbineTypeId..." />
-	</div>
-	<div>
-		<input *ngIf="editMode" type="button" value="Apply Changes" (click)="onSubmit(turbine)" />
-		<input *ngIf="!editMode" type="button" value="Create the turbine!" (click)="onSubmit(turbine)" />
-		<input type="button" value="Cancel" (click)="onBack()" />
-	</div>
+﻿<div class="turbine-edit">
+	<h2>{{title}}</h2>
+	<form [formGroup]="form" (ngSubmit)="onSubmit()">
+		<div class="form-group"
+			 [ngClass]="{ 'has-error has-feedback' : hasError('SerialNumber') }">
+			<label for="title">Turbine serial number:</label>
+			<br />
+			<input type="text" id="serialNumber"
+				   formControlName="SerialNumber" required
+				   [(ngModel)]="turbine.SerialNumber"
+				   placeholder="enter a serial number..."
+				   class="form-control" />
+			<span *ngIf="hasError('SerialNumber')"
+				  class="glyphicon glyphicon-remove form-control-feedback"
+				  aria-hidden="true"></span>
+			<div *ngIf="hasError('SerialNumber')"
+				 class="help-block">
+				Title is a required field: please insert a valid serial number.
+			</div>
+		</div>
 
-	<!--<share-list *ngIf="editMode" [turbine]="turbine"></share-list>-->
+		<div class="form-group"
+			 [ngClass]="{ 'has-error has-feedback' : hasError('TurbineTypeId') }">
+			<label for="TurbineTypeId">Turbine type:</label>
+			<br />
+			<select id="TurbineTypeId"
+					formControlName="TurbineTypeId" required
+					class="form-control">
 
+				<option value="">Pick a turbine type...</option>
+				<option *ngFor="let num of [1,2,3,4]"
+						[value]="num">
+					{{num}}
+				</option>
+			</select>
+			<div *ngIf="hasError('TurbineTypeId')"
+				 class="help-block">
+				Please, select a valid turbine type.
+			</div>
+		</div>
+		<div class="form-group commands">
+			<button *ngIf="editMode" type="submit"
+					[disabled]="form.invalid"
+					class="btn btn-success">
+				Apply Changes
+			</button>
+			<button *ngIf="!editMode" type="submit"
+					[disabled]="form.invalid"
+					class="btn btn-success">
+				Create the Turbine!
+			</button>
+			<button *ngIf="!editMode" type="submit"
+					(click)="onBack()"
+					class="btn btn-default">
+				Cancel
+			</button>
+		</div>
+	</form>
 </div>

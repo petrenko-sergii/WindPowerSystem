@@ -42,7 +42,7 @@ export class TurbineTypeComponent {
 				.delete(url)
 				.subscribe(result => {
 					console.log("TurbineType " + this.turbineType.Id + " has been deleted.");
-					this.router.navigate(["home"]);
+					this.router.navigate(["turbine-type-list"]);
 				}, error => console.log(error));
 		}
 	}

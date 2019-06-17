@@ -1,17 +1,42 @@
 ﻿<div>
-	<h3><strong>Turbine test page</strong></h3>
+	<h3><strong>Turbine details -- {{turbine.SerialNumber}}</strong></h3>
 
-	<div *ngIf="turbine">
-		<h4 class="turbine">The turbine with id {{turbine.Id}}: </h4>
-		<h4 class="turbine">Serial number {{turbine.SerialNumber}}</h4>
-		<a href="api/Share/ShowSharesForTurbine/{{ turbine.Id }}">Shares</a>
+	<div *ngIf="turbine" class="div-width-50-percent">
+		<table class='table table-hover row-bordered'>
+			<thead>
+				<tr>
+					<th>Detail</th>
+					<th>Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{turbine.Id}}</td>
+				</tr>
+				<tr>
+					<th>SerialNumber</th>
+					<td>{{turbine.SerialNumber}}</td>
+				</tr>
+				<tr>
+					<th>TurbineType</th>
+					<td>{{turbine.TurbineTypeId}}</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
 	<div>
-		<input type="button" value="Edit" (click)="onEdit()" />
-		<input type="button" value="Delete this turbine" (click)="onDelete()" />
+		<input type="button" class="btn-warning btn" value="Edit" (click)="onEdit()" />
+		<input type="button" class="btn-danger btn" value="Delete this turbine" (click)="onDelete()" />
 	</div>
 
+	<br />
+	<a href="api/Share/ShowSharesForTurbine/{{ turbine.Id }}" class="btn btn-link btn-large">
+		<span class=" glyphicon glyphicon-list-alt"></span>
+		<strong>Shares</strong>
+	</a>
+	<br />
 	<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
 		<span class=" glyphicon glyphicon-arrow-left"></span> <strong>Back to previous page</strong>
 	</a>

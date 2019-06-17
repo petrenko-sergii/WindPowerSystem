@@ -1,21 +1,54 @@
-﻿<h2>{{title}}</h2>
-<div class="turbine-type-edit">
-	<div>
-		<label for="model">TurbineType Model:</label>
-		<br />
-		<input type="text" id="model" [(ngModel)]="turbineType.Model" placeholder="choose a model..." />
-	</div>
-	<div>
-		<label for="capacity">TurbineType capacity:</label>
-		<br />
-		<input type="text" id="capacity" [(ngModel)]="turbineType.Capacity" placeholder="enter a capacity..." />
-	</div>
-	<div>
-		<input *ngIf="editMode" type="button" value="Apply Changes" (click)="onSubmit(turbineType)" />
-		<input *ngIf="!editMode" type="button" value="Create the turbineType!" (click)="onSubmit(turbineType)" />
-		<input type="button" value="Cancel" (click)="onBack()" />
-	</div>
-
-	<!--<turbine-list *ngIf="editMode" [quiz]="quiz"></turbine-list>-->
-
+﻿<div class="turbine-type-edit">
+	<h2>{{title}}</h2>
+	<form [formGroup]="form" (ngSubmit)="onSubmit()">
+		<div class="form-group div-width-50-percent"
+			 [ngClass]="{ 'has-error has-feedback' : hasError('Model') }">
+			<label for="model">TurbineType Model:</label>
+			<br />
+			<input type="text" id="model"
+				   formControlName="Model" required
+				   [(ngModel)]="turbineType.Model"
+				   placeholder="choose a model..."
+				   class="form-control" />
+			<span *ngIf="hasError('Model')"
+				  class="glyphicon glyphicon-remove form-control-feedback"
+				  aria-hidden="true"></span>
+			<div *ngIf="hasError('Model')"
+				 class="help-block">
+				Title is a required field: please insert a valid model.
+			</div>
+		</div>
+		<div class="form-group div-width-50-percent" 
+			 [ngClass]="{ 'has-error has-feedback' : hasError('Capacity') }">
+			<label for="Capacity">Capacity:</label>
+			<br />
+			<input type="number" id="Capacity" name="Capacity" 
+				   formControlName="Capacity" required
+				   class="form-control" />
+			<span *ngIf="hasError('Capacity')"
+				  class="glyphicon glyphicon-remove form-control-feedback"
+				  aria-hidden="true"></span>
+			<div *ngIf="hasError('Capacity')"
+				 class="help-block">
+				Insert a numeric value: must be more then 0 and max 9 digits.
+			</div>
+		</div>
+		<div class="form-group commands">
+			<button *ngIf="editMode" type="submit"
+					[disabled]="form.invalid"
+					class="btn btn-success">
+				Apply Changes
+			</button>
+			<button *ngIf="!editMode" type="submit"
+					[disabled]="form.invalid"
+					class="btn btn-success">
+				Create the Turbine Type!
+			</button>
+			<button *ngIf="!editMode" type="submit"
+					(click)="onBack()"
+					class="btn btn-default">
+				Cancel
+			</button>
+		</div>
+	</form>
 </div>

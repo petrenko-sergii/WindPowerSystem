@@ -1,3 +1,17 @@
 ﻿.turbine-type {
 	color: blue;
 }
+
+@row-color: lightgrey;
+
+table.row-bordered > thead > tr {
+	border-bottom: 1px solid @row-color;
+	border-top: 1px solid @row-color;
+	width:50%;
+}
+
+table.row-bordered > tbody > tr {
+	border-bottom: 1px solid @row-color;
+	width: 50%;
+}
+

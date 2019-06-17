@@ -1,1 +1,1 @@
-﻿.turbine-edit input[type="text"],.turbine-edit textarea{min-width:500px}
+﻿.turbine-edit{width:60%}@media(max-width:767px){.turbine-edit{width:100%}}.turbine-edit textarea{min-height:100px}.turbine-edit select{max-width:300px}.turbine-edit .commands{margin-top:20px}

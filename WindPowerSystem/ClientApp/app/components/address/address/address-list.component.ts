@@ -31,6 +31,7 @@ export class AddressListComponent implements OnChanges {
 		this.http.get<Town[]>(url).subscribe(result => {
 			debugger;
 			this.towns = result;
+			this.streets = [];
 		}, error => console.error(error));
 	}
 

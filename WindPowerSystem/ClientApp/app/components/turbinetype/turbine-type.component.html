@@ -1,13 +1,32 @@
 ﻿<div>
-	<h3><strong>Turbine type test page</strong></h3>
-
+	<h3><strong>Turbine type details -- {{turbineType.Model}}</strong></h3>
 	<div *ngIf="turbineType">
-		<h4 class="turbineType"><strong> The turbine-type with id {{turbineType.Id}}: </strong></h4>
-		<h4> Model: {{turbineType.Model}} </h4>
-		<h4>Capacity: {{turbineType.Capacity}} </h4>
+		<table class='table table-hover row-bordered'>
+			<thead>
+				<tr>
+					<th>Detail</th>
+					<th>Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{turbineType.Id}}</td>
+				</tr>
+				<tr>
+					<th>Model</th>
+					<td>{{turbineType.Model}}</td>
+				</tr>
+				<tr>
+					<th>Capacity, kW</th>
+					<td>{{turbineType.Capacity}}</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
+
 	<div>
-		<input type="button" value="Edit" (click)="onEdit()" />
-		<input type="button" value="Delete this Turbine type" (click)="onDelete()" />
+		<input type="button" class="btn-warning btn" value="Edit" (click)="onEdit()" />
+		<input type="button" class="btn-danger btn" value="Delete this Turbine type" (click)="onDelete()" />
 	</div>
 </div>

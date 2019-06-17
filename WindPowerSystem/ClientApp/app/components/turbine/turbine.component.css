@@ -1,3 +1,13 @@
 .turbine {
   color: blue;
 }
+.div-width-50-percent {
+  width: 50%;
+}
+table.row-bordered > thead > tr {
+  border-bottom: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
+}
+table.row-bordered > tbody > tr {
+  border-bottom: 1px solid lightgrey;
+}

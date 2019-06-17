@@ -1,25 +1,4 @@
-﻿<p><strong>Address -- Test page</strong></p>
-
-<p *ngIf="!countries"><em>Loading...</em></p>
-
-<table class='table' *ngIf="countries">
-	<thead>
-		<tr>
-			<th>#</th>
-			<th>Name</th>
-			<th>Towns</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let country of countries; let i= index">
-			<td>{{ i+1 }}</td>
-			<td>{{ country.Name }}</td>
-			<td>
-				<a href="api/Town/GetTownsForCountry/{{ country.Id }}">Towns</a>
-			</td>
-		</tr>
-	</tbody>
-</table>
+﻿<h3><strong>Address -- Test page</strong></h3>
 
 <div class="col-xs-3">
 	<label>Select country</label>

@@ -3,13 +3,13 @@
 
 	<p *ngIf="!turbineTypes"><em>Loading...</em></p>
 
-	<table class='table row-bordered' *ngIf="turbineTypes">
+	<table class='table table-hover row-bordered' *ngIf="turbineTypes">
 		<thead>
 			<tr>
 				<th>#</th>
 				<th>Model</th>
 				<th>Capacity</th>
-				<th>Details</th>
+				<th>Options</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -18,8 +18,9 @@
 				<td>{{turbineType.Model}}</td>
 				<td>{{turbineType.Capacity}}</td>
 				<td>
+					<a href="turbine-type/edit/{{ turbineType.Id }}">Edit</a> |
 					<a href="turbine-type/{{ turbineType.Id }}">Details</a>
-				</td>
+				</td> 
 			</tr>
 		</tbody>
 	</table>
