@@ -1,23 +1,78 @@
-﻿<h2>{{title}}</h2>
-<div class="share-edit">
-	<div>
-		<label for="percent">Share percent:</label>
-		<br />
-		<input type="text" id="percent" [(ngModel)]="share.Percent" placeholder="enter a percent..." />
-	</div>
-	<div>
-		<label for="price">Share price:</label>
-		<br />
-		<input type="text" id="price" [(ngModel)]="share.Price" placeholder="enter a price..." />
-	</div>
-	<div>
-		<label for="turbineId">Turbine id:</label>
-		<br />
-		<input type="text" id="turbineId" [(ngModel)]="share.TurbineId" placeholder="enter a turbineId..." />
-	</div>
-	<div>
-		<input *ngIf="editMode" type="button" value="Apply Changes" (click)="onSubmit(share)" />
-		<input *ngIf="!editMode" type="button" value="Create the share!" (click)="onSubmit(share)" />
-		<input type="button" value="Cancel" (click)="onBack()" />
-	</div>
+﻿<div class="share-edit">
+	<h2>{{title}}</h2>
+	<form [formGroup]="form" (ngSubmit)="onSubmit()">
+		<div class="form-group"
+			 [ngClass]="{ 'has-error has-feedback' : hasError('Percent') }">
+			<label for="percent">Percent:</label>
+			<br />
+			<input type="number" id="percent"
+				   formControlName="Percent" required
+				   [(ngModel)]="share.Percent"
+				   placeholder="enter a percent..."
+				   class="form-control" />
+			<span *ngIf="hasError('Percent')"
+				  class="glyphicon glyphicon-remove form-control-feedback"
+				  aria-hidden="true"></span>
+			<div *ngIf="hasError('Percent')"
+				 class="help-block">
+				Percent is a required field: please insert a valid percent (min: 1%, max 100%).
+			</div>
+		</div>
+
+		<div class="form-group"
+			 [ngClass]="{ 'has-error has-feedback' : hasError('Price') }">
+			<label for="price">Price:</label>
+			<br />
+			<input type="number" id="price"
+				   formControlName="Price" required
+				   [(ngModel)]="share.Price"
+				   placeholder="enter a price..."
+				   class="form-control" />
+			<span *ngIf="hasError('Price')"
+				  class="glyphicon glyphicon-remove form-control-feedback"
+				  aria-hidden="true"></span>
+			<div *ngIf="hasError('Price')"
+				 class="help-block">
+				Percent is a required field: please insert a valid price.
+			</div>
+		</div>
+
+		<div class="form-group"
+			 [ngClass]="{ 'has-error has-feedback' : hasError('TurbineId') }">
+			<label for="TurbineId">TurbineId:</label>
+			<br />
+			<select id="TurbineId"
+					formControlName="TurbineId" required
+					class="form-control">
+
+				<option value="">Pick a turbine...</option>
+				<option *ngFor="let num of [1,2,3,4]"
+						[value]="num">
+					{{num}}
+				</option>
+			</select>
+			<div *ngIf="hasError('TurbineId')"
+				 class="help-block">
+				Please, select a valid turbine id.
+			</div>
+		</div>
+
+		<div class="form-group commands">
+			<button *ngIf="editMode" type="submit"
+					[disabled]="form.invalid"
+					class="btn btn-success">
+				Apply Changes
+			</button>
+			<button *ngIf="!editMode" type="submit"
+					[disabled]="form.invalid"
+					class="btn btn-success">
+				Create Share!
+			</button>
+			<button *ngIf="!editMode" type="submit"
+					(click)="onBack()"
+					class="btn btn-default">
+				Cancel
+			</button>
+		</div>
+	</form>
 </div>

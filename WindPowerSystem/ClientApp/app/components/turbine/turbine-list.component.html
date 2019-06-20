@@ -8,6 +8,8 @@
 			<tr>
 				<th>#</th>
 				<th>Serial number</th>
+				<th>Type</th>
+				<th>Capacity</th>
 				<th>Shares</th>
 				<th>Options</th>
 			</tr>
@@ -16,6 +18,8 @@
 			<tr *ngFor="let turbine of turbines; let i= index">
 				<td> {{i+1}}</td>
 				<td>{{ turbine.SerialNumber }}</td>
+				<td>{{ turbine.TurbineType }}</td>
+				<td>--</td>
 				<td>
 					<a href="api/Share/ShowSharesForTurbine/{{ turbine.Id }}">Shares</a>
 				</td>

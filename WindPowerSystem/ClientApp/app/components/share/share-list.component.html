@@ -3,14 +3,14 @@
 
 	<p *ngIf="!shares"><em>Loading...</em></p>
 
-	<table class='table row-bordered' *ngIf="shares">
+	<table class='table table-hover row-bordered' *ngIf="shares">
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Percent</th>
-				<th>Price</th>
+				<th>Percent, %</th>
+				<th>Price, euro</th>
 				<th>TurbineId</th>
-				<th>Details</th>
+				<th>Options</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,6 +22,7 @@
 					<a href="turbine/{{ share.TurbineId  }}">{{ share.TurbineId  }} (details)</a>
 				</td>
 				<td>
+					<a href="share/edit/{{ share.Id }}">Edit</a> |
 					<a href="share/{{ share.Id }}">Details</a>
 				</td>
 			</tr>

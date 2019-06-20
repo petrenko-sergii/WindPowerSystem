@@ -1,15 +1,41 @@
 ﻿<div>
-	<h3><strong>Share test page</strong></h3>
+	<h3><strong>Share #{{share.Id}} details</strong></h3>
 
-	<div *ngIf="share">
-		<h4 class="share"><strong> The share with id {{share.Id}}: </strong></h4>
-		<h4> Percent: {{share.Percent}} </h4>
-		<h4>Price: {{share.Price}} </h4>
-		<h4>TurbineId: {{share.TurbineId}}</h4>
+	<div *ngIf="share" class="div-width-50-percent">
+		<table class='table table-hover row-bordered'>
+			<thead>
+				<tr>
+					<th>Detail</th>
+					<th>Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{share.Id}}</td>
+				</tr>
+				<tr>
+					<th>Percent, %</th>
+					<td>{{share.Percent}}</td>
+				</tr>
+				<tr>
+					<th>Price, euro</th>
+					<td>{{share.Price}}</td>
+				</tr>
+				<tr>
+					<th>TurbineId</th>
+					<td>{{share.TurbineId}}</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
 	<div>
-		<input type="button" value="Edit" (click)="onEdit()" />
-		<input type="button" value="Delete this share" (click)="onDelete()" />
+		<input type="button" class="btn-warning btn" value="Edit" (click)="onEdit()" />
+		<input type="button" class="btn-danger btn" value="Delete this turbine" (click)="onDelete()" />
 	</div>
+
+	<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
+		<span class=" glyphicon glyphicon-arrow-left"></span> <strong>Back to previous page</strong>
+	</a>
 </div>

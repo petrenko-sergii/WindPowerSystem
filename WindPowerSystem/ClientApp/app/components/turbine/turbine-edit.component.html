@@ -3,7 +3,7 @@
 	<form [formGroup]="form" (ngSubmit)="onSubmit()">
 		<div class="form-group"
 			 [ngClass]="{ 'has-error has-feedback' : hasError('SerialNumber') }">
-			<label for="title">Turbine serial number:</label>
+			<label for="serialNumber">Turbine serial number:</label>
 			<br />
 			<input type="text" id="serialNumber"
 				   formControlName="SerialNumber" required
@@ -15,7 +15,7 @@
 				  aria-hidden="true"></span>
 			<div *ngIf="hasError('SerialNumber')"
 				 class="help-block">
-				Title is a required field: please insert a valid serial number.
+				Serial number is a required field: please insert a valid serial number.
 			</div>
 		</div>
 
@@ -47,7 +47,7 @@
 			<button *ngIf="!editMode" type="submit"
 					[disabled]="form.invalid"
 					class="btn btn-success">
-				Create the Turbine!
+				Create Turbine!
 			</button>
 			<button *ngIf="!editMode" type="submit"
 					(click)="onBack()"

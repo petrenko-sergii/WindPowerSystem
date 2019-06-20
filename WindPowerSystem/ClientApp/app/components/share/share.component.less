@@ -1,3 +1,18 @@
 ﻿.share {
 	color: blue;
 }
+
+.div-width-50-percent {
+	width: 50%;
+}
+
+@row-color: lightgrey;
+
+table.row-bordered > thead > tr {
+	border-bottom: 1px solid @row-color;
+	border-top: 1px solid @row-color;
+}
+
+table.row-bordered > tbody > tr {
+	border-bottom: 1px solid @row-color;
+}
