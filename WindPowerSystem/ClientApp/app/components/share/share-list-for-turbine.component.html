@@ -1,0 +1,46 @@
+﻿<div>
+	<h2><strong>Shares for turbine #{{ turbineId }}</strong></h2>
+
+	<p *ngIf="!shares"><em>Loading...</em></p>
+
+	<table class='table table-hover row-bordered' *ngIf="shares">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Percent, %</th>
+				<th>Price, EUR</th>
+				<th>Options</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let share of shares; let i= index">
+				<td>{{i+1}}</td>
+				<td>{{share.Percent}}</td>
+				<td>{{share.Price}}</td>
+				<td>
+					<a href="share/edit/{{ share.Id }}">Edit</a> |
+					<a href="share/{{ share.Id }}">Details</a>
+				</td>
+			</tr>
+			<tr>
+				<td><strong>Total:</strong></td>
+				<td><strong>{{ totalPercentAndPrice[0] }} %</strong></td>
+				<td><strong>{{ totalPercentAndPrice[1] }} EUR</strong></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="row">
+		<div class="col-md-4 margin-top-20">
+			<a href="/share/create" class="btn btn-primary btn-large btn-block">
+				<span class="glyphicon glyphicon-plus-sign"></span> Create a share for a turbine / farm
+			</a>
+		</div>
+	</div>
+	<br />
+
+	<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
+		<span class=" glyphicon glyphicon-arrow-left"></span> <strong>Back to previous page</strong>
+	</a>
+</div>

@@ -9,6 +9,7 @@
 				<th>#</th>
 				<th>Model</th>
 				<th>Capacity</th>
+				<th>Turbines</th>
 				<th>Options</th>
 			</tr>
 		</thead>
@@ -18,9 +19,13 @@
 				<td>{{turbineType.Model}}</td>
 				<td>{{turbineType.Capacity}}</td>
 				<td>
+					<!--add tyrbineType/id -- TO DO -->
+					<a href="turbine-list">Turbines</a>
+				</td>
+				<td>
 					<a href="turbine-type/edit/{{ turbineType.Id }}">Edit</a> |
 					<a href="turbine-type/{{ turbineType.Id }}">Details</a>
-				</td> 
+				</td>
 			</tr>
 		</tbody>
 	</table>

@@ -30,6 +30,7 @@ import { CountryListComponent } from './components/address/country/country-list.
 import { ShareComponent } from './components/share/share.component';
 import { ShareListComponent } from './components/share/share-list.component';
 import { ShareEditComponent } from './components/share/share-edit.component';
+import { ShareListForTurbineComponent } from './components/share/share-list-for-turbine.component';
 import { TownComponent } from './components/address/town/town.component';
 import { TownListComponent } from './components/address/town/town-list.component';
 import { TurbineTypeComponent } from './components/turbinetype/turbine-type.component';
@@ -67,6 +68,7 @@ import { AddressListComponent } from './components/address/address/address-list.
 		ShareComponent,
 		ShareEditComponent,
 		ShareListComponent,
+		ShareListForTurbineComponent,
 		TownComponent,
 		TownListComponent,
 		TurbineTypeComponent,
@@ -112,6 +114,7 @@ import { AddressListComponent } from './components/address/address/address-list.
 			{ path: 'share/edit/:id', component: ShareEditComponent },
 			{ path: 'share/:id', component: ShareComponent },
 			{ path: 'share-list', component: ShareListComponent },
+			{ path: 'share-list-for-turbine/:id', component: ShareListForTurbineComponent },
 			{ path: 'turbine-type-list', component: TurbineTypeListComponent },
 			{ path: '**', component: PageNotFoundComponent } // should be the last router
             //{ path: '**', redirectTo: 'home' } -- redirect to home page

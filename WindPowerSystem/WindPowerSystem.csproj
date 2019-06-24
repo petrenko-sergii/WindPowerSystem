@@ -49,6 +49,7 @@
     <None Remove="ClientApp\app\components\result\result-edit.component.ts" />
     <None Remove="ClientApp\app\components\result\result-list.component.ts" />
     <None Remove="ClientApp\app\components\share\share-edit.component.ts" />
+    <None Remove="ClientApp\app\components\share\share-list-for-turbine.component.ts" />
     <None Remove="ClientApp\app\components\share\share-list.component.ts" />
     <None Remove="ClientApp\app\components\share\share.component.ts" />
     <None Remove="ClientApp\app\components\turbinetype\turbine-type-edit.component.ts" />
@@ -92,6 +93,7 @@
     <TypeScriptCompile Include="ClientApp\app\components\result\result-edit.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\result\result-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\share\share-edit.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\share\share-list-for-turbine.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\share\share-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\share\share.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\turbinetype\turbine-type-edit.component.ts" />
