@@ -13,6 +13,8 @@ namespace WindPowerSystem.ViewModels
 
 		public ShareViewModel()
 		{
+			TurbineType = new TurbineTypeViewModel();
+			Turbines = new List<TurbineViewModel>();
 		}
 
 		#endregion
@@ -23,6 +25,12 @@ namespace WindPowerSystem.ViewModels
 		public decimal Percent { get; set; }
 		public decimal Price { get; set; }
 		public int TurbineId { get; set; }
+
+		public TurbineViewModel Turbine  { get; set; }
+
+		public TurbineTypeViewModel TurbineType { get; set; }
+
+		public List<TurbineViewModel> Turbines { get; set; }
 
 		#endregion
 	}

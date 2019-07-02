@@ -33,7 +33,7 @@ export class TurbineTypeEditComponent {
 			var url = this.baseUrl + "api/turbinetype/" + id;
 			this.http.get<TurbineType>(url).subscribe(result => {
 				this.turbineType = result;
-				this.title = "Edit - " + this.turbineType.Model;
+				this.title = "Edit turbine type: " + this.turbineType.Model;
 
 				this.updateForm();
 			}, error => console.error(error));

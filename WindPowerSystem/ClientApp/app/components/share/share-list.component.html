@@ -8,8 +8,9 @@
 			<tr>
 				<th>#</th>
 				<th>Percent, %</th>
-				<th>Price, euro</th>
-				<th>TurbineId</th>
+				<th>Price, EUR</th>
+				<th>Turbine #</th>
+				<th>Turbine type (Model)</th>
 				<th>Options</th>
 			</tr>
 		</thead>
@@ -17,9 +18,12 @@
 			<tr *ngFor="let share of shares; let i= index">
 				<td>{{i+1}}</td>
 				<td>{{share.Percent}}</td>
-				<td>{{share.Price}}</td>
+				<td>{{formatNumberBySpaces(share.Price)}}</td>
 				<td>
-					<a href="turbine/{{ share.TurbineId  }}">{{ share.TurbineId  }} (details)</a>
+					<a class="a-dodgerblue-color" href="turbine/{{ share.TurbineId }}">{{ share.Turbine.SerialNumber }}</a>
+				</td>
+				<td>
+					<a class="a-dodgerblue-color" href="turbine-type/{{ share.TurbineType.Id }}">{{ share.TurbineType.Model }}</a>
 				</td>
 				<td>
 					<a href="share/edit/{{ share.Id }}">Edit</a> |

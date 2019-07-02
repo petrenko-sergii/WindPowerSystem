@@ -30,9 +30,27 @@ namespace WindPowerSystem.Controllers
 		{
 			var turbines = DbContext.Turbines.OrderBy(t => t.Id).ToArray();
 
-			return new JsonResult(
-				turbines.Adapt<TurbineViewModel[]>(),
-				JsonSettings);
+			foreach (var t in turbines)
+				t.TurbineType = DbContext.TurbineTypes.Where(x => x.Id == t.TurbineTypeId).FirstOrDefault();
+
+			return new JsonResult(turbines.Adapt<TurbineViewModel[]>(), JsonSettings);
+		}
+
+		/// <summary>
+		/// GET: api/turbine/getturbinetypelist
+		/// Retrieves a List of turbine types
+		/// </summary>
+		/// <returns>a List of turbine types</returns>
+		[HttpGet("[action]")]
+		public IActionResult GetTurbineTypeList()
+		{
+			var turbineModel = new TurbineViewModel();
+			var turbineTypes = DbContext.TurbineTypes.OrderBy(t => t.Id).ToArray();
+
+			foreach (var t in turbineTypes)
+				turbineModel.TurbineTypes.Add(t.Adapt<TurbineTypeViewModel>());
+
+			return new JsonResult(turbineModel, JsonSettings);
 		}
 
 		#region RESTful conventions methods
@@ -56,8 +74,17 @@ namespace WindPowerSystem.Controllers
 				});
 			}
 
-			return new JsonResult( turbine.Adapt<TurbineViewModel>(),
-				JsonSettings);
+			var turbineModel = turbine.Adapt<TurbineViewModel>();
+			var turbineTypes = DbContext.TurbineTypes.ToList();
+
+			foreach (var t in turbineTypes)
+				turbineModel.TurbineTypes.Add(t.Adapt<TurbineTypeViewModel>());
+
+			turbineModel.TurbineType = turbineTypes.
+				Where(i => i.Id == turbineModel.TurbineTypeId).FirstOrDefault().
+				Adapt<TurbineTypeViewModel>();
+
+			return new JsonResult(turbineModel, JsonSettings);
 		}
 
 		/// <summary>

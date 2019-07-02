@@ -13,6 +13,7 @@ export class ShareEditComponent {
 	title: string;
 	share: Share;
 	form: FormGroup;
+	turbines: Turbine[];
 
 	editMode: boolean;
 
@@ -33,7 +34,8 @@ export class ShareEditComponent {
 			var url = this.baseUrl + "api/share/" + id;
 			this.http.get<Share>(url).subscribe(result => {
 				this.share = result;
-				this.title = "Edit share #" + this.share.Id + ":";
+				this.title = "Edit share: #" + this.share.Id + ":";
+				this.turbines = this.share.Turbines;
 
 				this.updateForm();
 			}, error => console.error(error));
@@ -41,6 +43,10 @@ export class ShareEditComponent {
 		else {
 			this.editMode = false;
 			this.title = "Create a new Share";
+
+			http.get<Share>(baseUrl + 'api/Share/GetTurbineList').subscribe(result => {
+				this.turbines = result.Turbines as Turbine[];
+			}, error => console.error(error));
 		}
 	}
 

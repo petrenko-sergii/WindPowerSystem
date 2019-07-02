@@ -15,4 +15,8 @@ export class ShareListComponent {
 			this.shares = result.json() as Share[];
 		}, error => console.error(error));
 	}
+
+	formatNumberBySpaces(num: string) {
+		return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+	}
 }

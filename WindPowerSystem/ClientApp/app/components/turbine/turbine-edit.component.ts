@@ -13,6 +13,7 @@ export class TurbineEditComponent {
 	title: string;
 	turbine: Turbine;
 	form: FormGroup;
+	turbineTypes: TurbineType[];
 
 	editMode: boolean;
 
@@ -27,13 +28,15 @@ export class TurbineEditComponent {
 		this.createForm();
 
 		var id = +this.activatedRoute.snapshot.params["id"];
+
 		if (id) {
 			this.editMode = true;
 
 			var url = this.baseUrl + "api/turbine/" + id;
 			this.http.get<Turbine>(url).subscribe(result => {
 				this.turbine = result;
-				this.title = "Edit - Turbine " + this.turbine.SerialNumber;
+				this.title = "Edit turbine: " + this.turbine.SerialNumber;
+				this.turbineTypes = this.turbine.TurbineTypes;
 
 				this.updateForm();
 			}, error => console.error(error));
@@ -41,6 +44,10 @@ export class TurbineEditComponent {
 		else {
 			this.editMode = false;
 			this.title = "Create a new Turbine";
+
+			http.get<Turbine>(baseUrl + 'api/Turbine/GetTurbineTypeList').subscribe(result => {
+				this.turbineTypes = result.TurbineTypes as TurbineType[];
+			}, error => console.error(error));
 		}
 	}
 
@@ -62,8 +69,6 @@ export class TurbineEditComponent {
 	}
 
 	onSubmit() {
-		debugger;
-
 		var tempTurbine = <Turbine>{};
 		tempTurbine.SerialNumber = this.form.value.SerialNumber;
 		tempTurbine.TurbineTypeId = this.form.value.TurbineTypeId;
@@ -76,26 +81,21 @@ export class TurbineEditComponent {
 			this.http
 				.post<Turbine>(url, tempTurbine)
 				.subscribe(result => {
-					debugger;
 					var v = result;
 					console.log("Turbine " + v.Id + " has been updated.");
 					this.router.navigate(["turbine-list"]);
 				}, error => {
-					debugger;
 					console.log(error)
 				});
 		}
 		else {
-			debugger;
 			this.http
 				.put<Turbine>(url, tempTurbine)
 				.subscribe(result => {
-					debugger;
 					var v = result;
 					console.log("Turbine " + v.Id + " has been created.");
 					this.router.navigate(["turbine-list"]);
 				}, error => {
-					debugger;
 					console.log(error)
 				});
 		}
@@ -107,7 +107,6 @@ export class TurbineEditComponent {
 
 	// retrieve a FormControl
 	getFormControl(name: string) {
-		debugger;
 		return this.form.get(name);
 	}
 

@@ -1,4 +1,19 @@
-﻿.share-edit input[type="text"],
-.share-edit textarea {
-	min-width: 500px;
+﻿.share-edit {
+	width: 50%;
+
+	@media (max-width: 767px) {
+		width: 100%;
+	}
+
+	textarea {
+		min-height: 100px;
+	}
+
+	select {
+		max-width: 300px;
+	}
+
+	.commands {
+		margin-top: 20px;
+	}
 }

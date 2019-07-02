@@ -13,6 +13,7 @@ namespace WindPowerSystem.ViewModels
 
 		public TurbineViewModel()
 		{
+			TurbineTypes = new List<TurbineTypeViewModel>();
 		}
 
 		#endregion
@@ -22,6 +23,10 @@ namespace WindPowerSystem.ViewModels
 		public int Id { get; set; }
 		public string SerialNumber { get; set; }
 		public int TurbineTypeId { get; set; }
+
+		public TurbineTypeViewModel TurbineType { get; set; }
+
+		public List<TurbineTypeViewModel> TurbineTypes { get; set; }
 
 		#endregion
 	}

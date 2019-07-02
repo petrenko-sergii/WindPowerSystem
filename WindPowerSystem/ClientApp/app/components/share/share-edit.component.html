@@ -3,7 +3,7 @@
 	<form [formGroup]="form" (ngSubmit)="onSubmit()">
 		<div class="form-group"
 			 [ngClass]="{ 'has-error has-feedback' : hasError('Percent') }">
-			<label for="percent">Percent:</label>
+			<label for="percent">Percent, %:</label>
 			<br />
 			<input type="number" id="percent"
 				   formControlName="Percent" required
@@ -21,7 +21,7 @@
 
 		<div class="form-group"
 			 [ngClass]="{ 'has-error has-feedback' : hasError('Price') }">
-			<label for="price">Price:</label>
+			<label for="price">Price, EUR:</label>
 			<br />
 			<input type="number" id="price"
 				   formControlName="Price" required
@@ -39,16 +39,16 @@
 
 		<div class="form-group"
 			 [ngClass]="{ 'has-error has-feedback' : hasError('TurbineId') }">
-			<label for="TurbineId">TurbineId:</label>
+			<label for="TurbineId">Turbine:</label>
 			<br />
 			<select id="TurbineId"
 					formControlName="TurbineId" required
 					class="form-control">
 
 				<option value="">Pick a turbine...</option>
-				<option *ngFor="let num of [1,2,3,4]"
-						[value]="num">
-					{{num}}
+				<option *ngFor="let turbine of turbines"
+						[value]="turbine.Id">
+					{{turbine.SerialNumber}}
 				</option>
 			</select>
 			<div *ngIf="hasError('TurbineId')"

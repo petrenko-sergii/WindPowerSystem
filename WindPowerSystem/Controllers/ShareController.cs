@@ -41,9 +41,41 @@ namespace WindPowerSystem.Controllers
 		{
 			var shares = DbContext.Shares.OrderBy(s => s.Id).ToArray();
 
+			foreach (var s in shares)
+				s.Turbine = DbContext.Turbines.Where(x => x.Id == s.TurbineId).FirstOrDefault();
+
+			//var turbineModel = turbine.Adapt<TurbineViewModel>();
+			//var turbineTypes = DbContext.TurbineTypes.ToList();
+
+			//foreach (var t in turbineTypes)
+			//	turbineModel.TurbineTypes.Add(t.Adapt<TurbineTypeViewModel>());
+
+			var sharesModel = shares.Adapt<ShareViewModel[]>();
+			var turbineTypes = DbContext.TurbineTypes.ToList();
+
+			foreach (var s in sharesModel)
+				s.TurbineType = turbineTypes.Where(x => x.Id == s.Turbine.TurbineTypeId).FirstOrDefault().Adapt<TurbineTypeViewModel>();
+
 			return new JsonResult(
-				shares.Adapt<ShareViewModel[]>(),
+				sharesModel,
 				JsonSettings);
+		}
+
+		/// <summary>
+		/// GET: api/share/getturbinelist
+		/// Retrieves a List of turbines
+		/// </summary>
+		/// <returns>a List of turbines</returns>
+		[HttpGet("[action]")]
+		public IActionResult GetTurbineList()
+		{
+			var shareModel = new ShareViewModel();
+			var turbines = DbContext.Turbines.OrderBy(t => t.Id).ToArray();
+
+			foreach (var t in turbines)
+				shareModel.Turbines.Add(t.Adapt<TurbineViewModel>());
+
+			return new JsonResult(shareModel, JsonSettings);
 		}
 
 		/// <summary>
@@ -65,8 +97,13 @@ namespace WindPowerSystem.Controllers
 				});
 			}
 
-			return new JsonResult(share.Adapt<ShareViewModel>(),
-				JsonSettings);
+			var shareModel = share.Adapt<ShareViewModel>();
+			var turbines = DbContext.Turbines.ToList();
+
+			foreach (var t in turbines)
+				shareModel.Turbines.Add(t.Adapt<TurbineViewModel>());
+
+			return new JsonResult(shareModel, JsonSettings);
 		}
 
 		/// <summary>

@@ -3,7 +3,7 @@
 
 	<p *ngIf="!shares"><em>Loading...</em></p>
 
-	<table class='table table-hover row-bordered' *ngIf="shares">
+	<table class='table table-hover row-bordered' *ngIf="shares.length > 0">
 		<thead>
 			<tr>
 				<th>#</th>
@@ -16,7 +16,7 @@
 			<tr *ngFor="let share of shares; let i= index">
 				<td>{{i+1}}</td>
 				<td>{{share.Percent}}</td>
-				<td>{{share.Price}}</td>
+				<td>{{formatNumberBySpaces(share.Price)}}</td>
 				<td>
 					<a href="share/edit/{{ share.Id }}">Edit</a> |
 					<a href="share/{{ share.Id }}">Details</a>
@@ -24,12 +24,26 @@
 			</tr>
 			<tr>
 				<td><strong>Total:</strong></td>
-				<td><strong>{{ totalPercentAndPrice[0] }} %</strong></td>
-				<td><strong>{{ totalPercentAndPrice[1] }} EUR</strong></td>
+				<td [ngClass]="{ 'mark-red' : hasPercentError() }">
+					<strong [ngClass]="{ 'mark-yellow' : !hasPercentError() }">{{ totalPercentAndPrice[0] }} %</strong>
+				</td>
+				<td><mark class="mark-yellow"><strong>{{ formatNumberBySpaces(totalPercentAndPrice[1]) }} EUR</strong></mark></td>
 				<td></td>
 			</tr>
 		</tbody>
 	</table>
+
+	<div *ngIf="shares.length == 0">
+		<br />
+		<h3 style="color:blue;"><strong> There are no shares for this turbine! </strong></h3>
+		<br />
+		<br />
+	</div>
+
+	<div *ngIf="hasPercentError()"
+		 class="help-block text-red">
+		<p class="p-font-size"> <strong> Invalid total percent. Check share's percents </strong></p>
+	</div>
 
 	<div class="row">
 		<div class="col-md-4 margin-top-20">

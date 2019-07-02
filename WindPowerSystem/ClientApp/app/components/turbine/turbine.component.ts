@@ -23,6 +23,7 @@ export class TurbineComponent {
 		if (id) {
 			var url = this.baseUrl + "api/turbine/" + id;
 			this.http.get<Turbine>(url).subscribe(result => {
+				debugger;
 				this.turbine = result;
 			}, error => console.error(error));
 		}

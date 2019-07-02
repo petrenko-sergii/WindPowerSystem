@@ -24,6 +24,7 @@ export class ShareListForTurbineComponent {
 		if (id) {
 			var url = this.baseUrl + "api/Share/ShowSharesForTurbine/" + id;
 			this.http.get<Share[]>(url).subscribe(result => {
+				debugger;
 				this.shares = result;
 				this.turbineId = id;
 				this.totalPercentAndPrice = this.calculateTotalPercentAndPrice(this.shares);
@@ -45,5 +46,18 @@ export class ShareListForTurbineComponent {
 		}
 
 		return totalPercentAndPrice;
+	}
+
+	hasPercentError() {
+		let totalPercent = this.totalPercentAndPrice[0];
+
+		if (typeof totalPercent !== "undefined" && totalPercent !== null && (totalPercent > 100 || totalPercent < 0))
+			return true;
+		else
+			return false;
+	}
+
+	formatNumberBySpaces(num: string) {
+		return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 	}
 }

@@ -3,7 +3,7 @@
 	<form [formGroup]="form" (ngSubmit)="onSubmit()">
 		<div class="form-group div-width-50-percent"
 			 [ngClass]="{ 'has-error has-feedback' : hasError('Model') }">
-			<label for="model">TurbineType Model:</label>
+			<label for="model">Model:</label>
 			<br />
 			<input type="text" id="model"
 				   formControlName="Model" required
@@ -20,7 +20,7 @@
 		</div>
 		<div class="form-group div-width-50-percent" 
 			 [ngClass]="{ 'has-error has-feedback' : hasError('Capacity') }">
-			<label for="Capacity">Capacity:</label>
+			<label for="Capacity">Capacity, kW:</label>
 			<br />
 			<input type="number" id="Capacity" name="Capacity" 
 				   formControlName="Capacity" required

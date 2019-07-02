@@ -19,8 +19,8 @@
 					<td>{{turbine.SerialNumber}}</td>
 				</tr>
 				<tr>
-					<th>TurbineType</th>
-					<td>{{turbine.TurbineTypeId}}</td>
+					<th>Turbine type (model)</th>
+					<td>{{turbine.TurbineType.Model}}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -32,7 +32,7 @@
 	</div>
 
 	<br />
-	<a href="api/Share/ShowSharesForTurbine/{{ turbine.Id }}" class="btn btn-link btn-large">
+	<a href="share-list-for-turbine/{{ turbine.Id }}" class="btn btn-link btn-large">
 		<span class=" glyphicon glyphicon-list-alt"></span>
 		<strong>Shares</strong>
 	</a>

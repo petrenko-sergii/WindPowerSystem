@@ -2,5 +2,6 @@
 	Id: number;
 	SerialNumber: string;
 	TurbineTypeId: number;
-	//TurbineType: TurbineType;
+	TurbineType: TurbineType;
+	TurbineTypes: TurbineType[];
 }

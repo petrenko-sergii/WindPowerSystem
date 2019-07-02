@@ -28,9 +28,9 @@
 					class="form-control">
 
 				<option value="">Pick a turbine type...</option>
-				<option *ngFor="let num of [1,2,3,4]"
-						[value]="num">
-					{{num}}
+				<option *ngFor="let type of turbineTypes"
+						[value]="type.Id">
+					{{type.Model}}
 				</option>
 			</select>
 			<div *ngIf="hasError('TurbineTypeId')"

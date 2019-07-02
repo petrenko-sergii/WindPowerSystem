@@ -44,7 +44,7 @@ export class ShareComponent {
 				.delete(url)
 				.subscribe(result => {
 					console.log("Share " + this.share.Id + " has been deleted.");
-					this.router.navigate(["home"]);
+					this.router.navigate(["share-list"]);
 				}, error => console.log(error));
 		}
 	}
