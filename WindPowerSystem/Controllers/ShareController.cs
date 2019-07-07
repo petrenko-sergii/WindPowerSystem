@@ -44,12 +44,6 @@ namespace WindPowerSystem.Controllers
 			foreach (var s in shares)
 				s.Turbine = DbContext.Turbines.Where(x => x.Id == s.TurbineId).FirstOrDefault();
 
-			//var turbineModel = turbine.Adapt<TurbineViewModel>();
-			//var turbineTypes = DbContext.TurbineTypes.ToList();
-
-			//foreach (var t in turbineTypes)
-			//	turbineModel.TurbineTypes.Add(t.Adapt<TurbineTypeViewModel>());
-
 			var sharesModel = shares.Adapt<ShareViewModel[]>();
 			var turbineTypes = DbContext.TurbineTypes.ToList();
 
@@ -102,6 +96,8 @@ namespace WindPowerSystem.Controllers
 
 			foreach (var t in turbines)
 				shareModel.Turbines.Add(t.Adapt<TurbineViewModel>());
+
+			shareModel.Turbine = shareModel.Turbines.Where(i => i.Id == shareModel.TurbineId).FirstOrDefault();
 
 			return new JsonResult(shareModel, JsonSettings);
 		}

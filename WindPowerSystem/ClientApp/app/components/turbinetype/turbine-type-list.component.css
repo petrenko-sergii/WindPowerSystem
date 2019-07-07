@@ -5,3 +5,6 @@ table.row-bordered > thead > tr {
 table.row-bordered > tbody > tr {
   border-bottom: 1px solid lightgrey;
 }
+.gray-color-header {
+  background-color: lightgray;
+}

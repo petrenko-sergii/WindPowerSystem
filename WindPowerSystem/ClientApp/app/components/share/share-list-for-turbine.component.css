@@ -21,3 +21,6 @@ table.row-bordered > tbody > tr {
 .p-font-size {
   font-size: 18px;
 }
+.gray-color-header {
+  background-color: lightgray;
+}
