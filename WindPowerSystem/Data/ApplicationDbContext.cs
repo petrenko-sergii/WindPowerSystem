@@ -10,7 +10,7 @@ using WindPowerSystem.Data.Models.AddressModels;
 
 namespace WindPowerSystem.Data
 {
-	public class ApplicationDbContext : DbContext
+	public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 	{
 		#region Constructor
 		public ApplicationDbContext(DbContextOptions options) : base(options)
@@ -68,7 +68,7 @@ namespace WindPowerSystem.Data
 		#endregion Methods
 
 		#region Properties
-		public DbSet<ApplicationUser> Users { get; set; }
+		//public DbSet<ApplicationUser> Users { get; set; }
 		public DbSet<Quiz> Quizzes { get; set; }
 		public DbSet<Question> Questions { get; set; }
 		public DbSet<Answer> Answers { get; set; }
