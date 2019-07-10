@@ -8,6 +8,8 @@ using WindPowerSystem.ViewModels;
 using Mapster;
 using WindPowerSystem.Data;
 using WindPowerSystem.Data.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 
 namespace WindPowerSystem.Controllers
 {
@@ -15,8 +17,13 @@ namespace WindPowerSystem.Controllers
 	{
 		#region Constructor
 
-		public ShareController(ApplicationDbContext context)
-		: base(context) { }
+		public ShareController(
+			ApplicationDbContext context,
+			RoleManager<IdentityRole> roleManager,
+			UserManager<ApplicationUser> userManager,
+			IConfiguration configuration
+			)
+			: base(context, roleManager, userManager, configuration) { }
 
 		#endregion Constructor
 

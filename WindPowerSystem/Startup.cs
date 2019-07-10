@@ -11,6 +11,9 @@ using WindPowerSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using WindPowerSystem.Data.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace WindPowerSystem
 {
@@ -47,6 +50,35 @@ namespace WindPowerSystem
 				opts.Password.RequiredLength = 7;
 			})
 			.AddEntityFrameworkStores<ApplicationDbContext>();
+
+			// Add Authentication with JWT Tokens
+			services.AddAuthentication(opts =>
+			{
+				opts.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+				opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+				opts.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+			})
+			.AddJwtBearer(cfg =>
+			{
+				cfg.RequireHttpsMetadata = false;
+				cfg.SaveToken = true;
+				cfg.TokenValidationParameters = new TokenValidationParameters()
+				{
+					// standard configuration
+					ValidIssuer = Configuration["Auth:Jwt:Issuer"],
+					IssuerSigningKey = new SymmetricSecurityKey(
+						Encoding.UTF8.GetBytes(Configuration["Auth:Jwt:Key"])),
+					ValidAudience = Configuration["Auth:Jwt:Audience"],
+					ClockSkew = TimeSpan.Zero,
+
+					// security switches
+					RequireExpirationTime = true,
+					ValidateIssuer = true,
+					ValidateIssuerSigningKey = true,
+					ValidateAudience = true
+				};
+				cfg.IncludeErrorDetails = true;
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +108,9 @@ namespace WindPowerSystem
 					context.Context.Response.Headers["Expires"] = Configuration["StaticFiles:Headers:Expires"];
 				}
 			});
+
+			// Add the AuthenticationMiddleware to the pipeline
+			app.UseAuthentication();
 
 			app.UseMvc(routes =>
 			{

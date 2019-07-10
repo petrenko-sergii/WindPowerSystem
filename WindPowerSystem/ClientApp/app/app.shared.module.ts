@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
+import { AuthService } from './services/auth.service';
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
@@ -119,7 +120,10 @@ import { AddressListComponent } from './components/address/address/address-list.
 			{ path: '**', component: PageNotFoundComponent } // should be the last router
             //{ path: '**', redirectTo: 'home' } -- redirect to home page
         ])
-    ]
+	],
+	providers: [
+		AuthService
+	]
 })
 
 export class AppModuleShared {

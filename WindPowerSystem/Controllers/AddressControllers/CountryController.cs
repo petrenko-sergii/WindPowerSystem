@@ -7,6 +7,9 @@ using Newtonsoft.Json;
 using WindPowerSystem.ViewModels.AddressModels;
 using Mapster;
 using WindPowerSystem.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
+using WindPowerSystem.Data.Models;
 
 namespace WindPowerSystem.Controllers
 {
@@ -14,8 +17,13 @@ namespace WindPowerSystem.Controllers
 	{
 		#region Constructor
 
-		public CountryController(ApplicationDbContext context)
-		: base(context) { }
+		public CountryController(
+			ApplicationDbContext context,
+			RoleManager<IdentityRole> roleManager,
+			UserManager<ApplicationUser> userManager,
+			IConfiguration configuration
+			)
+			: base(context, roleManager, userManager, configuration) { }
 
 		#endregion Constructor
 

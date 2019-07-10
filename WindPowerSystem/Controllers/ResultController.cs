@@ -8,6 +8,8 @@ using WindPowerSystem.Data;
 using WindPowerSystem.ViewModels;
 using Mapster;
 using WindPowerSystem.Data.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,8 +18,13 @@ namespace WindPowerSystem.Controllers
 	public class ResultController : BaseApiController
 	{
 		#region Constructor
-		public ResultController(ApplicationDbContext context)
-			: base(context) { }
+		public ResultController(
+			ApplicationDbContext context,
+			RoleManager<IdentityRole> roleManager,
+			UserManager<ApplicationUser> userManager,
+			IConfiguration configuration
+			)
+			: base(context, roleManager, userManager, configuration) { }
 		#endregion
 
 		// GET api/result/all

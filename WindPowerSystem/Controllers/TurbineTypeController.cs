@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Mapster;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using WindPowerSystem.Data;
 using WindPowerSystem.Data.Models;
@@ -18,8 +20,13 @@ namespace WindPowerSystem.Controllers
 
 		#region Constructor
 
-		public TurbineTypeController(ApplicationDbContext context)
-		: base(context) { }
+		public TurbineTypeController(
+			ApplicationDbContext context,
+			RoleManager<IdentityRole> roleManager,
+			UserManager<ApplicationUser> userManager,
+			IConfiguration configuration
+			)
+			: base(context, roleManager, userManager, configuration) { }
 
 		#endregion Constructor
 
