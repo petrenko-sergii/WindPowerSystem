@@ -10,6 +10,7 @@ using WindPowerSystem.Data;
 using WindPowerSystem.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WindPowerSystem.Controllers
 {
@@ -99,6 +100,7 @@ namespace WindPowerSystem.Controllers
 		/// </summary>
 		/// <param name="model">The TurbineViewModel containing the data to insert</param>
 		[HttpPut]
+		[Authorize]
 		public IActionResult Put([FromBody]TurbineViewModel model)
 		{
 			if (model == null) return new StatusCodeResult(500);
@@ -118,6 +120,7 @@ namespace WindPowerSystem.Controllers
 		/// </summary>
 		/// <param name="model">The TurbineViewModel containing the data to update</param>
 		[HttpPost]
+		[Authorize]
 		public IActionResult Post([FromBody]TurbineViewModel model)
 		{
 			if (model == null) return new StatusCodeResult(500);
@@ -145,6 +148,7 @@ namespace WindPowerSystem.Controllers
 		/// </summary>
 		/// <param name="id">The ID of an existing Turbine</param>
 		[HttpDelete("{id}")]
+		[Authorize]
 		public IActionResult Delete(int id)
 		{
 			var turbine = DbContext.Turbines.Where(i => i.Id == id)

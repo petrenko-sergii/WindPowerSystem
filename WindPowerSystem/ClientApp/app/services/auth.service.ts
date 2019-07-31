@@ -7,7 +7,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class AuthService {
 	authKey: string = "auth";
-	clientId: string = "TestMakerFree";
+	clientId: string = "WindPowerSystem";
 
 	constructor(private http: HttpClient,
 		@Inject(PLATFORM_ID) private platformId: any) {

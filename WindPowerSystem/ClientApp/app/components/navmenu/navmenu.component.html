@@ -22,9 +22,15 @@
 						<span class='glyphicon glyphicon-info-sign'></span> About
 					</a>
 				</li>
-				<li [routerLinkActive]="['link-active']">
+				<li *ngIf="!this.auth.isLoggedIn()"
+					[routerLinkActive]="['link-active']">
 					<a [routerLink]="['/login']">
 						<span class='glyphicon glyphicon-log-in'></span> Login
+					</a>
+				</li>
+				<li *ngIf="auth.isLoggedIn()">
+					<a (click)="logout()">
+						<span class='glyphicon glyphicon-log-out'></span> Logout
 					</a>
 				</li>
 				<li [routerLinkActive]="['link-active']">
@@ -37,27 +43,35 @@
 						<span class='glyphicon glyphicon-th-list'></span> Fetch data
 					</a>
 				</li>
-				<li [routerLinkActive]="['link-active']">
+				<li *ngIf="this.auth.isLoggedIn()"
+					[routerLinkActive]="['link-active']">
 					<a [routerLink]="['/quiz/create']">
 						<span class='glyphicon glyphicon-log-in'></span> Create Quiz
 					</a>
 				</li>
-				<li [routerLinkActive]="['link-active']">
+				<li *ngIf="this.auth.isLoggedIn()"
+					[routerLinkActive]="['link-active']">
 					<a [routerLink]="['/turbine-type-list']">
 						<span class='glyphicon glyphicon-flash'></span> Turbine Types
 					</a>
 				</li>
-				<li [routerLinkActive]="['link-active']">
+				<li 
+					*ngIf="this.auth.isLoggedIn()"
+					[routerLinkActive]="['link-active']">
 					<a [routerLink]="['/turbine-list']">
 						<span class='glyphicon glyphicon-flash'></span> Turbines
 					</a>
 				</li>
-				<li [routerLinkActive]="['link-active']">
+				<li 
+					*ngIf="this.auth.isLoggedIn()"
+					[routerLinkActive]="['link-active']">
 					<a [routerLink]="['/share-list']">
 						<span class='glyphicon glyphicon-list-alt'></span> Shares
 					</a>
 				</li>
-				<li [routerLinkActive]="['link-active']">
+				<li 
+					*ngIf="this.auth.isLoggedIn()"
+					[routerLinkActive]="['link-active']">
 					<a [routerLink]="['/address-list']">
 						<span class='glyphicon glyphicon-globe'></span> Find address
 					</a>

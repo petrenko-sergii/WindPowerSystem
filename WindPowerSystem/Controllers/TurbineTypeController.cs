@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -74,6 +75,7 @@ namespace WindPowerSystem.Controllers
 		/// </summary>
 		/// <param name="model">The TurbineTypeViewModel containing the data to insert</param>
 		[HttpPut]
+		[Authorize]
 		public IActionResult Put([FromBody]TurbineTypeViewModel model)
 		{
 			if (model == null) return new StatusCodeResult(500);
@@ -94,6 +96,7 @@ namespace WindPowerSystem.Controllers
 		/// </summary>
 		/// <param name="model">The TurbineTypeViewModel containing the data to update</param>
 		[HttpPost]
+		[Authorize]
 		public IActionResult Post([FromBody]TurbineTypeViewModel model)
 		{
 			if (model == null) return new StatusCodeResult(500);
@@ -124,6 +127,7 @@ namespace WindPowerSystem.Controllers
 		/// </summary>
 		/// <param name="id">The ID of an existing TurbineType</param>
 		[HttpDelete("{id}")]
+		[Authorize]
 		public IActionResult Delete(int id)
 		{
 			var turbineType = DbContext.TurbineTypes.Where(i => i.Id == id)

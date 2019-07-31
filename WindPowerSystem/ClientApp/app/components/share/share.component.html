@@ -30,7 +30,7 @@
 		</table>
 	</div>
 
-	<div>
+	<div *ngIf="auth.isLoggedIn()">
 		<input type="button" class="btn-warning btn" value="Edit" (click)="onEdit()" />
 		<input type="button" class="btn-danger btn" value="Delete this share" (click)="onDelete()" />
 	</div>

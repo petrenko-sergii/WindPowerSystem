@@ -67,6 +67,7 @@
     <None Remove="ClientApp\app\interfaces\town.ts" />
     <None Remove="ClientApp\app\interfaces\turbine-type.ts" />
     <None Remove="ClientApp\app\interfaces\turbine.ts" />
+    <None Remove="ClientApp\app\services\auth.interceptor.ts" />
     <None Remove="ClientApp\app\services\auth.service.ts" />
     <None Remove="ClientApp\app\services\token.response.ts" />
   </ItemGroup>
@@ -113,8 +114,9 @@
     <TypeScriptCompile Include="ClientApp\app\interfaces\share.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\turbine.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\turbine-type.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\auth.interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\auth.service.ts" />
-    <TypeScriptCompile Include="ClientApp\app\services\token.response.ts" />
+    <TypeScriptCompile Include="ClientApp\app\interfaces\token.response.ts" />
   </ItemGroup>
 
   <ItemGroup>

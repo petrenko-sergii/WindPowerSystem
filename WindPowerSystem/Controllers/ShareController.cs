@@ -10,6 +10,7 @@ using WindPowerSystem.Data;
 using WindPowerSystem.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WindPowerSystem.Controllers
 {
@@ -114,6 +115,7 @@ namespace WindPowerSystem.Controllers
 		/// </summary>
 		/// <param name="model">The ShareViewModel containing the data to insert</param>
 		[HttpPut]
+		[Authorize]
 		public IActionResult Put([FromBody]ShareViewModel model)
 		{
 			if (model == null) return new StatusCodeResult(500);
@@ -133,6 +135,7 @@ namespace WindPowerSystem.Controllers
 		/// </summary>
 		/// <param name="model">The ShareViewModel containing the data to update</param>
 		[HttpPost]
+		[Authorize]
 		public IActionResult Post([FromBody]ShareViewModel model)
 		{
 			if (model == null) return new StatusCodeResult(500);
@@ -161,6 +164,7 @@ namespace WindPowerSystem.Controllers
 		/// </summary>
 		/// <param name="id">The ID of an existing Share</param>
 		[HttpDelete("{id}")]
+		[Authorize]
 		public IActionResult Delete(int id)
 		{
 			var share = DbContext.Shares.Where(i => i.Id == id)

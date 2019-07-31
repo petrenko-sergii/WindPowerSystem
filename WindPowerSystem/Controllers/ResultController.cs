@@ -10,6 +10,7 @@ using Mapster;
 using WindPowerSystem.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -71,6 +72,7 @@ namespace WindPowerSystem.Controllers
 		/// </summary>
 		/// <param name="model">The ResultViewModel containing the data to insert</param>
 		[HttpPut]
+		[Authorize]
 		public IActionResult Put([FromBody]ResultViewModel model)
 		{
 			// return a generic HTTP Status 500 (Server Error)
@@ -101,6 +103,7 @@ namespace WindPowerSystem.Controllers
 		/// </summary>
 		/// <param name="model">The ResultViewModel containing the data to update</param>
 		[HttpPost]
+		[Authorize]
 		public IActionResult Post([FromBody]ResultViewModel model)
 		{
 			// return a generic HTTP Status 500 (Server Error)
@@ -146,6 +149,7 @@ namespace WindPowerSystem.Controllers
 		/// </summary>
 		/// <param name="id">The ID of an existing Result</param>
 		[HttpDelete("{id}")]
+		[Authorize]
 		public IActionResult Delete(int id)
 		{
 			// retrieve the result from the Database
