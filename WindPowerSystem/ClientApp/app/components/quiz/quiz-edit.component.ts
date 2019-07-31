@@ -68,7 +68,6 @@ export class QuizEditComponent {
 	}
 
 	onSubmit() {
-		debugger;
 		// build a temporary quiz object from form values
 		var tempQuiz = <Quiz>{};
 		tempQuiz.Title = this.form.value.Title;

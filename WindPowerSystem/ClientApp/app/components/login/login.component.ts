@@ -33,14 +33,12 @@ export class LoginComponent {
 	}
 
 	onSubmit() {
-		debugger;
 		var url = this.baseUrl + "api/token/auth";
 		var username = this.form.value.Username;
 		var password = this.form.value.Password;
 
 		this.authService.login(username, password)
 			.subscribe(res => {
-				debugger;
 				// login successful
 
 				console.log("Login successful! "

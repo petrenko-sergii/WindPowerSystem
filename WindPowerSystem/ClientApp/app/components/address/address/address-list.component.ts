@@ -25,22 +25,18 @@ export class AddressListComponent implements OnChanges {
 	}
 
 	onSelectCountry(countryId: number) {
-		debugger;
 		this.selectedTown = 0;
 		var url = this.baseUrl + "api/address/GetTownsForCountry/" + countryId;
 		this.http.get<Town[]>(url).subscribe(result => {
-			debugger;
 			this.towns = result;
 			this.streets = [];
 		}, error => console.error(error));
 	}
 
 	onSelectTown(townId: number) {
-		debugger;
 		this.selectedStreet = 0;
 		var url = this.baseUrl + "api/street/GetStreetsForTown/" + townId;
 		this.http.get<Street[]>(url).subscribe(result => {
-			debugger;
 			this.streets = result;
 		}, error => console.error(error));
 	}

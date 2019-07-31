@@ -28,7 +28,6 @@ export class AuthService {
 
 		return this.http.post<TokenResponse>(url, data)
 			.map((res) => {
-				debugger;
 				let token = res && res.token;
 				// if the token is there, login has been successful
 				if (token) {

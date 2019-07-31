@@ -24,7 +24,6 @@ export class ShareListForTurbineComponent {
 		if (id) {
 			var url = this.baseUrl + "api/Share/ShowSharesForTurbine/" + id;
 			this.http.get<Share[]>(url).subscribe(result => {
-				debugger;
 				this.shares = result;
 				this.turbineId = id;
 				this.totalPercentAndPrice = this.calculateTotalPercentAndPrice(this.shares);

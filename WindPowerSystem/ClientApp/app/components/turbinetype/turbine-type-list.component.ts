@@ -15,17 +15,4 @@ export class TurbineTypeListComponent {
 			this.turbineTypes = result.json() as TurbineType[];
 		}, error => console.error(error));
 	}
-
-	onDelete() {
-		debugger;
-		if (confirm("Do you really want to delete this turbineType?")) {
-			//var url = this.baseUrl + "api/turbineType/" + this.turbineType.Id;
-			//this.http
-			//	.delete(url)
-			//	.subscribe(result => {
-			//		console.log("TurbineType " + this.turbineType.Id + " has been deleted.");
-			//		this.router.navigate(["home"]);
-			//	}, error => console.log(error));
-		}
-	}
 }

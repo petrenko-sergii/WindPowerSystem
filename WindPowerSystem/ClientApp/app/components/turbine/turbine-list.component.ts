@@ -12,9 +12,7 @@ export class TurbineListComponent {
 
 	constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
 		http.get(baseUrl + 'api/Turbine/GetTurbineList').subscribe(result => {
-			debugger;
 			this.turbines = result.json() as Turbine[];
-			debugger;
 		}, error => console.error(error));
 	}
 }

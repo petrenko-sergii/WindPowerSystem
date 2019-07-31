@@ -13,7 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
 		next: HttpHandler): Observable<HttpEvent<any>> {
 
 		var auth = this.injector.get(AuthService);
-		debugger;
+		
 		var token = (auth.isLoggedIn()) ? auth.getAuth()!.token : null;
 		if (token) {
 			request = request.clone({

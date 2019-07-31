@@ -124,7 +124,6 @@ export class ShareEditComponent {
 
 	// retrieve a FormControl
 	getFormControl(name: string) {
-		debugger;
 		return this.form.get(name);
 	}
 

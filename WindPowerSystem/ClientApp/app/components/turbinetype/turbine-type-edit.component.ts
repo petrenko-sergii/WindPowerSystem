@@ -104,9 +104,7 @@ export class TurbineTypeEditComponent {
 
 	// retrieve a FormControl
 	getFormControl(name: string) {
-		debugger;
-		var test = this.form.get(name);
-		return test;
+		return this.form.get(name);
 	}
 
 	// returns TRUE if the FormControl is valid
