@@ -11,6 +11,19 @@ begin
 end;
 /
 
+------------------------------------- Create trigger for FLAGIMAGE ---------------------------------------
+create or replace trigger trg_flagimage
+   before insert on flagimage for each row
+declare
+   v_id number;
+begin
+   if (:new.id is null or :new.id = 0) then
+      select flagimage_seq.nextval into v_id from dual;
+      :new.id := v_id;
+   end if;
+end;
+/
+
 ------------------------------------- Create trigger for APPIMAGE ---------------------------------------
 create or replace trigger trg_appimage
    before insert on appimage for each row
@@ -188,6 +201,19 @@ declare
 begin
    if (:new.id is null or :new.id = 0) then
       select operator_seq.nextval into v_id from dual;
+      :new.id := v_id;
+   end if;
+end;
+/
+
+------------------------------------- Create trigger for MANUFACTURER ---------------------------------------
+create or replace trigger trg_manufacturer
+   before insert on manufacturer for each row
+declare
+   v_id number;
+begin
+   if (:new.id is null or :new.id = 0) then
+      select manufacturer_seq.nextval into v_id from dual;
       :new.id := v_id;
    end if;
 end;

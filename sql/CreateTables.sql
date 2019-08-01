@@ -24,7 +24,28 @@ comment on column ADDRESSIMAGE.path is 'Path';
 create unique index pk_addressimage on addressimage (id);                                             
 
 alter table addressimage                                                                                
-  add constraint pk_addressimage primary key (id) using index pk_addressimage;   
+  add constraint pk_addressimage primary key (id) using index pk_addressimage; 
+  
+
+------------------------------------- Create table FLAGIMAGE ---------------------------------------
+create table FLAGIMAGE                                                                                 
+(                                                                                                          
+   id         	NUMBER not null,  
+   path         VARCHAR2(500 CHAR) not null
+);                                                                                                          
+                                                                                                           
+-- Add comment to the table                                                                                
+comment on table FLAGIMAGE is 'Country flag image pathes';                                                        
+                                                                                                          
+-- Add comments to the columns                                                                             
+comment on column FLAGIMAGE.id is 'Id';                                                                   
+comment on column FLAGIMAGE.path is 'Path';                                                                   
+                                                                                                           
+-- Create primary, unique and foreign key constraints                                                      
+create unique index pk_flagimage on flagimage (id);                                             
+
+alter table flagimage                                                                                
+  add constraint pk_flagimage primary key (id) using index pk_flagimage;   
  
  
 ------------------------------------- Create table APPIMAGE ---------------------------------------
@@ -52,21 +73,26 @@ alter table appimage
 create table COUNTRY                                                                                  
 (                                                                                                          
    id         	NUMBER not null,  
-   name         VARCHAR2(200 CHAR) not null
+   name         VARCHAR2(200 CHAR) not null,
+   flagimageid  NUMBER
 );                                                                                                          
                                                                                                            
 -- Add comment to the table                                                                                
 comment on table COUNTRY is 'COUNTRY table' ;                                                       
                                                                                                      
 -- Add comments to the columns                                                                             
-comment on column COUNTRY.id is 'Id' ;                                                         
-comment on column COUNTRY.name is 'Name' ;                                                                  
+comment on column COUNTRY.id is 'Id';                                                         
+comment on column COUNTRY.name is 'Name';  
+comment on column COUNTRY.flagimageid is 'Flag image id';                                                                 
                                                                                                           
 -- Create primary, unique key constraints                                                     
 create unique index PK_COUNTRY ON COUNTRY (ID);
 
 alter table country                                                                                
   add constraint PK_COUNTRY primary key (ID) using index PK_COUNTRY; 
+  
+alter table country
+  add constraint fk_country_flagimage foreign key (flagimageid) references flagimage (id);
 
 ------------------------------------- Create table TOWN ---------------------------------------
 create table TOWN                                                                                  
@@ -417,12 +443,44 @@ alter table operator
 alter table operator
   add constraint fk_operator_address foreign key (addressid) references address (id); 
   
+  
+------------------------------------- Create table MANUFACTURER ---------------------------------------
+create table MANUFACTURER                                                                                  
+(                                                                                                          
+   id         	NUMBER not null,  
+   name         VARCHAR2(200 CHAR) not null,
+   email  		VARCHAR2(200 CHAR),
+   phone  		VARCHAR2(200 CHAR),
+   website 		VARCHAR2(200 CHAR),
+   addressid   	NUMBER not null
+);                                                                                                          
+                                                                                                           
+-- Add comment to the table                                                                                
+comment on table MANUFACTURER is 'Manufacturer company table';                                                        
+                                                                                                          
+-- Add comments to the columns                                                                             
+comment on column MANUFACTURER.id is 'Id';                                                                   
+comment on column MANUFACTURER.name is 'Name';                                                                   
+comment on column MANUFACTURER.email is 'Email';                                                                   
+comment on column MANUFACTURER.phone is 'Phone number'; 
+comment on column MANUFACTURER.website is 'Web site';                                                                   
+comment on column MANUFACTURER.addressid is 'Address id';                                                                   
+                                                                                                           
+-- Create primary, unique and foreign key constraints                                                      
+create unique index pk_manufacturer on manufacturer (id);                                             
+                                                                                                       
+alter table manufacturer                                                                                
+  add constraint pk_manufacturer primary key (id) using index pk_manufacturer;                            
+
+alter table manufacturer
+  add constraint fk_manufacturer_address foreign key (addressid) references address (id);
+  
 ------------------------------------- Create table TURBINETYPE --------------------------------------------
 create table TURBINETYPE                                                                                   
 (                                                                                                          
    id         		NUMBER not null,                                                                       
-   manufacturername VARCHAR2(200 CHAR) not null,                                                                    
-   model 			VARCHAR2(200 CHAR) not null,                                                                    
+   model 			VARCHAR2(200 CHAR) not null, 
+   manufacturerid   NUMBER not null,   
    capacity 		NUMBER(10) not null,                                                                            
    towerheight     	NUMBER(10)not null,                                                                            
    rotordiameter    NUMBER(10) not null,
@@ -434,8 +492,8 @@ comment on table TURBINETYPE is 'Wind turbine types table';
                                                                                                        
 -- Add comments to the columns                                                                             
 comment on column TURBINETYPE.id is 'Id';                                                                   
-comment on column TURBINETYPE.manufacturername is 'Manufacturer name';                                      
 comment on column TURBINETYPE.model is 'Model';  
+comment on column TURBINETYPE.manufacturerid is 'Manufacturer id';  
 comment on column TURBINETYPE.capacity is 'Capacity, kW';                                                           
 comment on column TURBINETYPE.towerheight is 'Tower height, m';                                                
 comment on column TURBINETYPE.rotordiameter is 'Rotor diameter, m'; 
@@ -446,6 +504,9 @@ create unique index pk_turbinetype on turbinetype (id);
                                                                                                        
 alter table turbinetype                                                                                
   add constraint pk_turbinetype primary key (id) using index pk_turbinetype; 
+  
+alter table turbinetype
+  add constraint fk_turbinetype_manufacturer foreign key (manufacturerid) references manufacturer(id);
 
 ------------------------------------- Create table TURBINE ------------------------------------------------
 
@@ -515,6 +576,7 @@ alter table turbine
 create table STOCKSHARE                                                                                  
 (                                                                                                          
    id         		NUMBER not null, 
+   serialnum        VARCHAR2(40 CHAR) not null,
    turbineid   		NUMBER,
    farmid   		NUMBER,
    shareholderid    NUMBER not null,
@@ -527,7 +589,8 @@ create table STOCKSHARE
 comment on table STOCKSHARE is 'Share table (stores data about turbine/farm shareholders)';                                                        
                                                                                                           
 -- Add comments to the columns                                                                             
-comment on column STOCKSHARE.id is 'Id';                                                                   
+comment on column STOCKSHARE.id is 'Id'; 
+comment on column STOCKSHARE.serialnum is 'Serial number';                                                                   
 comment on column STOCKSHARE.turbineid is 'Turbine id';                                                                   
 comment on column STOCKSHARE.farmid is 'Turbine farm id';                                                                   
 comment on column STOCKSHARE.shareholderid is 'Share holder id';                                                                   
@@ -536,7 +599,10 @@ comment on column STOCKSHARE.price is 'Price (euro)';
 comment on column STOCKSHARE.purchasedt is 'Purchase date';                                                                   
                                                                                                            
 -- Create primary, unique and foreign key constraints                                                      
-create unique index pk_stockshare on stockshare (id);                                             
+create unique index pk_stockshare on stockshare (id);  
+
+alter table stockshare
+    add constraint uk_stockshare_serialnum unique (serialnum);                                           
                                                                                                        
 alter table stockshare                                                                                
   add constraint pk_stockshare primary key (id) using index pk_stockshare;                            
@@ -554,13 +620,14 @@ alter table stockshare
 ------------------------------------- Create table METERITEM ---------------------------------------
 create table METERITEM                                                                                  
 (                                                                                                          
-   id         	NUMBER not null, 
-   turbineid   	NUMBER not null,
-   measuredt	DATE not null,
-   mvalue     NUMBER not null,
-   hourqty      NUMBER not null,
-   averWind     NUMBER not null,
-   averDensity  NUMBER not null
+   id         	        NUMBER not null, 
+   turbineid   	        NUMBER not null,
+   measuredt	        DATE not null,
+   mvalue               NUMBER not null,
+   curprodcapacity 		NUMBER not null, 
+   hourqty              NUMBER not null,
+   averWind             NUMBER not null,
+   averDensity          NUMBER not null
 );                                                                                                          
                                                                                                            
 -- Add comment to the table                                                                                
@@ -570,10 +637,11 @@ comment on table METERITEM is 'METERITEM table (stores data about produced energ
 comment on column METERITEM.id is 'Id';                                                                   
 comment on column METERITEM.turbineid is 'Turbine id';                                                                   
 comment on column METERITEM.measuredt is 'Measure date and time';                                                                   
-comment on column METERITEM.mvalue is 'Current produced energy (kW)';                                                                   
+comment on column METERITEM.mvalue is 'Total produced energy (kWh)';  
+comment on column METERITEM.curprodcapacity is 'Current produced capacity (kWh)';                                                             
 comment on column METERITEM.hourqty is 'Turbine working hour quantity per day';                                                                   
-comment on column METERITEM.averWind is 'Average wind power per day';                                                                   
-comment on column METERITEM.averDensity is 'Average air density per day';                                                                   
+comment on column METERITEM.averWind is 'Average wind power per day, m/s';                                                                   
+comment on column METERITEM.averDensity is 'Average air density per day, kg/cub.m';                                                                   
                                                                                                            
 -- Create primary, unique and foreign key constraints                                                      
 create unique index pk_meteritem on meteritem (id);                                             

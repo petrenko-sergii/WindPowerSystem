@@ -5,7 +5,7 @@ set wps_folder=D:\WPS\WindPowerSystem\sql\
 set result_file=%wps_folder%result.log
 
 set user_name=C##WPS
-set password=82385779
+set password=82385770
 set oracle_sid=wps
 
 cd C:\Users\Petrenko

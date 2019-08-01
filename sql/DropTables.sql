@@ -90,6 +90,27 @@ EXCEPTION
 END;
 /
 
+------------------------------- Drop table, sequence for table: FLAGIMAGE ---------------------------------
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE ' || 'FLAGIMAGE';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+  EXECUTE IMMEDIATE 'DROP SEQUENCE ' || 'FLAGIMAGE_SEQ';
+EXCEPTION
+  WHEN OTHERS THEN
+    IF SQLCODE != -2289 THEN
+      RAISE;
+    END IF;
+END;
+/
+
 ------------------------------- Drop table, sequence for table: APPIMAGE ---------------------------------
 BEGIN
    EXECUTE IMMEDIATE 'DROP TABLE ' || 'APPIMAGE';
@@ -314,6 +335,27 @@ END;
 
 BEGIN
   EXECUTE IMMEDIATE 'DROP SEQUENCE ' || 'OPERATOR_SEQ';
+EXCEPTION
+  WHEN OTHERS THEN
+    IF SQLCODE != -2289 THEN
+      RAISE;
+    END IF;
+END;
+/
+
+------------------------------- Drop table, sequence for table: MANUFACTURER ---------------------------------
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE ' || 'MANUFACTURER';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+  EXECUTE IMMEDIATE 'DROP SEQUENCE ' || 'MANUFACTURER_SEQ';
 EXCEPTION
   WHEN OTHERS THEN
     IF SQLCODE != -2289 THEN

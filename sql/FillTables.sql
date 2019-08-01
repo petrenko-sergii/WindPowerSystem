@@ -90,18 +90,46 @@ begin
 end;
 /
 
+------------------------------------- Fill table FLAGIMAGE ---------------------------------------
+
+declare
+    root_folder VARCHAR2(200) := 'Content\Images\CountryFlags\'; 
+	
+begin
+    insert into flagimage (path) values (root_folder || 'AustriaFlag.jpg');
+    insert into flagimage (path) values (root_folder || 'BelgiumFlag.jpg');
+    insert into flagimage (path) values (root_folder || 'DenmarkFlag.jpg');
+    insert into flagimage (path) values (root_folder || 'FinlandFlag.jpg');
+    insert into flagimage (path) values (root_folder || 'GermanyFlag.jpg');
+    insert into flagimage (path) values (root_folder || 'FranceFlag.jpg');
+    insert into flagimage (path) values (root_folder || 'NetherlandsFlag.jpg');
+    insert into flagimage (path) values (root_folder || 'NorwayFlag.jpg');
+    insert into flagimage (path) values (root_folder || 'PolandFlag.jpg');
+    insert into flagimage (path) values (root_folder || 'SwedenFlag.jpg');
+    insert into flagimage (path) values (root_folder || 'UnitedKingdomFlag.jpg');
+      
+    commit;
+    
+ exception
+     when others
+       then dbms_output.put_line('Unknown error occured. Could not insert data in the table: FLAGIMAGE');
+       rollback;
+end;
+/
+
 ------------------------------------- Fill table COUNTRY ---------------------------------------
-insert into country (name) values ('Austria');
-insert into country (name) values ('Belgium');
-insert into country (name) values ('Denmark');
-insert into country (name) values ('Finland');
-insert into country (name) values ('Germany');
-insert into country (name) values ('France');
-insert into country (name) values ('Netherlands');
-insert into country (name) values ('Norway');
-insert into country (name) values ('Poland');
-insert into country (name) values ('Sweden');
-insert into country (name) values ('United Kingdom');
+insert into country (name, flagimageid) values ('Austria', 1);
+insert into country (name, flagimageid) values ('Belgium', 2);
+insert into country (name, flagimageid) values ('Denmark', 3);
+insert into country (name, flagimageid) values ('Finland', 4);
+insert into country (name, flagimageid) values ('Germany', 5);
+insert into country (name, flagimageid) values ('France', 6);
+insert into country (name, flagimageid) values ('Netherlands', 7);
+insert into country (name, flagimageid) values ('Norway', 8);
+insert into country (name, flagimageid) values ('Poland', 9);
+insert into country (name, flagimageid) values ('Sweden', 10);
+insert into country (name, flagimageid) values ('United Kingdom', 11);
+
 
 ------------------------------------- Fill table TOWN ---------------------------------------
 -------For Denmark
@@ -1048,10 +1076,17 @@ insert into farm (name, addressid, imageid) values ('Samsø', 67, 2);
 insert into farm (name, addressid, imageid) values ('Frederikshavn', 100, 3);
 insert into farm (name, addressid, imageid) values ('Middelgrunden', 101, 4);
 insert into farm (name, addressid, imageid) values ('Vindeby', 102, 5);
+insert into farm (name, addressid, imageid) values ('Dithmarschen', 215, 6);
+insert into farm (name, addressid, imageid) values ('Wesselburen', 311, 7);
+insert into farm (name, addressid, imageid) values ('Jammerland Bugt', 354, 8);
+insert into farm (name, addressid, imageid) values ('Bedburg', 368, 9);
+insert into farm (name, addressid, imageid) values ('Bergheim', 404, 10);
+insert into farm (name, addressid, imageid) values ('Jülicher Börde', 547, 11);
 
 ------------------------------------- Fill table UNIT ---------------------------------
 
 insert into unit (name) values ('kWh');
+insert into unit (name) values ('kW');
 insert into unit (name) values ('m');
 insert into unit (name) values ('sq.m');
 insert into unit (name) values ('km/h');
@@ -1081,105 +1116,119 @@ insert into operator (name, email, phone, website, addressid)
     
 insert into operator (name, email, phone, website, addressid) 
     values ('WPD AG', 'info@wpd.de', '+494211686610','wpd.de', 869);
+	
+------------------------------------- Fill table MANUFACTURER ---------------------------------
+
+insert into manufacturer (name, email, phone, website, addressid) 
+    values ('Vestas', 'vestas@vestas.com', '+4597300000','vestas.com', 288);
+    
+insert into manufacturer (name, email, phone, website, addressid) 
+    values ('Siemens Gamesa', 'info@gamesacorp.com', '+4904028890','siemensgamesa.com', 521 );
+    
+insert into manufacturer (name, email, phone, website, addressid) 
+    values ('Nordex', 'info@nordex-online.com', '+4940300301000','nordex-online.com', 630);
+    
+insert into manufacturer (name, email, phone, website, addressid) 
+    values ('Enercon', 'hamburg@enercon.com', '+4938413042210','enercon.de', 829);
     
 ------------------------------------- Fill table TURBINETYPE ---------------------------------
 
 ---- Vestas
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Vestas', 'V39/600', 600, 40.5, 39, 1195);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (1, 'V39/600', 600, 40.5, 39, 1195);
     
-    insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Vestas', 'V39/600', 600, 53, 39, 1195);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (1, 'V39/600', 600, 53, 39, 1195);
 
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Vestas', 'V47/660', 660, 40, 47, 1735);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (1, 'V47/660', 660, 40, 47, 1735);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Vestas', 'V47/660', 660, 55, 47, 1735);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (1, 'V47/660', 660, 55, 47, 1735);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Vestas', 'V52/850', 850, 49, 52, 2124);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (1, 'V52/850', 850, 49, 52, 2124);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Vestas', 'V80/2000', 2000, 78, 80, 5027);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (1, 'V80/2000', 2000, 78, 80, 5027);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Vestas', 'V80/2000', 2000, 100, 80, 5027);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (1, 'V80/2000', 2000, 100, 80, 5027);
     
 ------Siemens Gamesa
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Siemens Gamesa', 'SG 2.1-114', 2100, 106, 114, 10207);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (2, 'SG 2.1-114', 2100, 106, 114, 10207);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Siemens Gamesa', 'SG 2.1-114', 2100, 125, 114, 10207);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (2, 'SG 2.1-114', 2100, 125, 114, 10207);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Siemens Gamesa', 'SG 2.1-114', 2100, 153, 114, 10207);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (2, 'SG 2.1-114', 2100, 153, 114, 10207);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Siemens Gamesa', 'SG 2.6-126', 2625, 102, 126, 12469);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (2, 'SG 2.6-126', 2625, 102, 126, 12469);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Siemens Gamesa', 'SG 2.6-126', 2625, 137, 126, 12469);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (2, 'SG 2.6-126', 2625, 137, 126, 12469);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Siemens Gamesa', 'SG 2.6-126', 2625, 153, 126, 12469);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (2, 'SG 2.6-126', 2625, 153, 126, 12469);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Siemens Gamesa', 'SWT-DD-120', 3900, 85, 120, 11300);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (2, 'SWT-DD-120', 3900, 85, 120, 11300);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Siemens Gamesa', 'SWT-DD-120', 3900, 125, 120, 11300);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (2, 'SWT-DD-120', 3900, 125, 120, 11300);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Siemens Gamesa', 'SWT-DD-120', 3900, 155, 120, 11300);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (2, 'SWT-DD-120', 3900, 155, 120, 11300);
     
 -----Nordex     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Nordex', 'N43', 600, 49, 43, 1453);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (3, 'N43', 600, 49, 43, 1453);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Nordex', 'N43', 600, 78, 43, 1453);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (3, 'N43', 600, 78, 43, 1453);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Nordex', 'N50', 800, 46, 50, 1964);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (3, 'N50', 800, 46, 50, 1964);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Nordex', 'N50', 800, 50, 50, 1964);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (3, 'N50', 800, 50, 50, 1964);
 
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Nordex', 'N50', 800, 70, 50, 1964);   
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (3, 'N50', 800, 70, 50, 1964);   
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Nordex', 'N52', 800, 60, 52, 2125);    
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (3, 'N52', 800, 60, 52, 2125);    
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Nordex', 'N52', 800, 70, 52, 2125);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (3, 'N52', 800, 70, 52, 2125);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Nordex', 'N80', 2500, 80, 80, 5026);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (3, 'N80', 2500, 80, 80, 5026);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Nordex', 'N80', 2500, 100, 80, 5026);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (3, 'N80', 2500, 100, 80, 5026);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Nordex', 'N80', 2500, 105, 80, 5026);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (3, 'N80', 2500, 105, 80, 5026);
     
 ----- Enercon
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Enercon', 'E-32', 300, 34, 32, 804);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (4, 'E-32', 300, 34, 32, 804);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Enercon', 'E-44', 900, 45, 44, 1521);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (4, 'E-44', 900, 45, 44, 1521);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Enercon', 'E-44', 900, 55, 44, 1521);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (4, 'E-44', 900, 55, 44, 1521);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Enercon', 'E-66', 1500, 67, 66, 3421.2);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (4, 'E-66', 1500, 67, 66, 3421.2);
     
-insert into turbinetype (manufacturername, model, capacity, towerheight, rotordiameter, sweptarea) 
-    values ('Enercon', 'E-66', 1500, 100, 66, 3421.2);
+insert into turbinetype (manufacturerid, model, capacity, towerheight, rotordiameter, sweptarea) 
+    values (4, 'E-66', 1500, 100, 66, 3421.2);
 
 
 ------------------------------------- Fill table APPUSER (not ready) --------------------------------- 

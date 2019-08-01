@@ -26,7 +26,7 @@ declare
     i_lastservdt date;
     i_lastyearservdt date;
 	
-    turbine_qty number := 1000;
+    turbine_qty number := 1004;
 	
 begin
     for i in 1..turbine_qty loop    
@@ -96,9 +96,11 @@ end;
 /
 
 ------------------------------------- Fill table STOCKSHARE ---------------------------------
+
 declare
     date_format VARCHAR2(20) := 'dd.mm.yyyy';
     i_purchasedt_str VARCHAR2(100);
+    i_serialnum VARCHAR2(40);
     i_purchasedt date;
     
     i_turbine_id number;
@@ -113,7 +115,7 @@ declare
     max_shareholder_id number;
     
     i_farm_id_exist number;
-    share_qty number := 1000;
+    share_qty number := 1007;
 		
 begin
     for i in 1..share_qty loop 
@@ -127,6 +129,7 @@ begin
         i_percent := TRUNC(dbms_random.value(1,30),0);
         
         select cost into i_turbine_cost from turbine where id = i_turbine_id;
+       
         
         i_price := (i_turbine_cost * i_percent)/100; 
     
@@ -142,11 +145,19 @@ begin
         i_purchasedt := to_date(i_purchasedt_str,date_format); 
         
         if i_farm_id IS NOT NULL then
-            insert into stockshare (turbineid, farmid, shareholderid, percent, price, purchasedt)
-                values (null, i_farm_id, i_shareholder_id, i_percent, i_price*5, i_purchasedt);
+            select name into i_serialnum from farm where id = i_farm_id;
+            i_serialnum := SUBSTR(i_serialnum, 1, 8) ||  SUBSTR(sys_guid(), 1, 16);
+            insert into stockshare (serialnum, turbineid, farmid, shareholderid, percent, price, purchasedt)
+                values (i_serialnum, null, i_farm_id, i_shareholder_id, i_percent, i_price*5, i_purchasedt);
         else
-            insert into stockshare (turbineid, farmid, shareholderid, percent, price, purchasedt)
-                values (i_turbine_id, null, i_shareholder_id, i_percent, i_price, i_purchasedt);
+            select serialnum into i_serialnum from turbine where id = i_turbine_id;
+            i_serialnum := SUBSTR(i_serialnum, 1, 16);
+            i_serialnum := replace(i_serialnum, '-', null);
+            i_serialnum := replace(i_serialnum, '.', null);
+            i_serialnum := replace(i_serialnum, '/', null);
+            i_serialnum := i_serialnum || SUBSTR(sys_guid(), 1, 8);        
+            insert into stockshare (serialnum, turbineid, farmid, shareholderid, percent, price, purchasedt)
+                values (i_serialnum, i_turbine_id, null, i_shareholder_id, i_percent, i_price, i_purchasedt);
         end if;    
     end loop; 
     commit; 
