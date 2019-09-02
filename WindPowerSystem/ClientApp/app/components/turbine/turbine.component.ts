@@ -18,6 +18,7 @@ export class TurbineComponent {
 		@Inject('BASE_URL') private baseUrl: string) {
 
 		this.turbine = <Turbine>{};
+		this.turbine.TurbineType = <TurbineType>{};
 
 		var id = +this.activatedRoute.snapshot.params["id"];
 		console.log(id);

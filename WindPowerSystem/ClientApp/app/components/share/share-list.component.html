@@ -20,14 +20,14 @@
 				<td>{{share.Percent}}</td>
 				<td>{{formatNumberBySpaces(share.Price)}}</td>
 				<td>
-					<a class="a-dodgerblue-color" href="turbine/{{ share.TurbineId }}">{{ share.Turbine.SerialNumber }}</a>
+					<a class="a-dodgerblue-color" routerLink="/turbine/{{ share.TurbineId }}">{{ share.Turbine.SerialNumber }}</a>
 				</td>
 				<td>
-					<a class="a-dodgerblue-color" href="turbine-type/{{ share.TurbineType.Id }}">{{ share.TurbineType.Model }}</a>
+					<a class="a-dodgerblue-color" routerLink="/turbine-type/{{ share.TurbineType.Id }}">{{ share.TurbineType.Model }}</a>
 				</td>
 				<td>
-					<a href="share/edit/{{ share.Id }}">Edit</a> |
-					<a href="share/{{ share.Id }}">Details</a>
+					<a routerLink="/share/edit/{{ share.Id }}">Edit</a> |
+					<a routerLink="/share/{{ share.Id }}">Details</a>
 				</td>
 			</tr>
 		</tbody>

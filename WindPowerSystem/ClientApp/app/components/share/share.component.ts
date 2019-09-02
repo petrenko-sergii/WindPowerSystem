@@ -19,6 +19,7 @@ export class ShareComponent {
 
 		// create an empty object from the Share interface
 		this.share = <Share>{};
+		this.share.Turbine = <Turbine>{};
 
 		var id = +this.activatedRoute.snapshot.params["id"];
 		console.log(id);

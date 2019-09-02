@@ -20,11 +20,11 @@
 				<td>{{turbineType.Capacity}}</td>
 				<td>
 					<!--add tyrbineType/id -- TO DO -->
-					<a href="turbine-list">Turbines</a>
+					<a routerLink="/turbine-list">Turbines</a>
 				</td>
 				<td>
-					<a href="turbine-type/edit/{{ turbineType.Id }}">Edit</a> |
-					<a href="turbine-type/{{ turbineType.Id }}">Details</a>
+					<a routerLink="/turbine-type/edit/{{ turbineType.Id }}">Edit</a> |
+					<a routerLink="/turbine-type/{{ turbineType.Id }}">Details</a>
 				</td>
 			</tr>
 		</tbody>
@@ -32,7 +32,7 @@
 
 	<div class="row">
 		<div class="col-md-4 margin-top-20">
-			<a href="/turbine-type/create" class="btn btn-primary btn-large btn-block">
+			<a routerLink="/turbine-type/create" class="btn btn-primary btn-large btn-block">
 				<span class="glyphicon glyphicon-plus-sign"></span> Create a turbine type
 			</a>
 		</div>

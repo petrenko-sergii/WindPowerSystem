@@ -20,6 +20,8 @@ export class ShareListForTurbineComponent {
 		@Inject('BASE_URL') private baseUrl: string) {
 
 		var id = +this.activatedRoute.snapshot.params["id"];
+		this.shares = [];
+		this.totalPercentAndPrice = [];
 
 		if (id) {
 			var url = this.baseUrl + "api/Share/ShowSharesForTurbine/" + id;

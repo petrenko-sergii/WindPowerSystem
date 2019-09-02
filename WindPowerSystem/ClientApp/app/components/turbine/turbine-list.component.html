@@ -21,11 +21,11 @@
 				<td>{{ turbine.TurbineType.Model }}</td>
 				<td>{{ turbine.TurbineType.Capacity }}</td>
 				<td>
-					<a href="share-list-for-turbine/{{ turbine.Id }}">Shares</a>
+					<a routerLink="/share-list-for-turbine/{{ turbine.Id }}">Shares</a>
 				</td>
 				<td>
-					<a href="turbine/edit/{{ turbine.Id }}">Edit</a> |
-					<a href="turbine/{{ turbine.Id }}">Details</a>
+					<a routerLink="/turbine/edit/{{ turbine.Id }}">Edit</a> |
+					<a routerLink="/turbine/{{ turbine.Id }}">Details</a>
 				</td>
 			</tr>
 		</tbody>
@@ -33,18 +33,18 @@
 
 	<div class="row">
 		<div class="col-md-6 margin-top-20">
-			<a href="/turbine/create" class="btn btn-primary btn-large btn-block">
+			<a routerLink="/turbine/create" class="btn btn-primary btn-large btn-block">
 				<span class="glyphicon glyphicon-plus-sign"></span> Create a turbine
 			</a>
-			<a href="/turbine-type-list" class="btn btn-primary btn-large btn-block">
+			<a routerLink="/turbine-type-list" class="btn btn-primary btn-large btn-block">
 				<span class="glyphicon glyphicon-flash"></span> Turbine types
 			</a>
 		</div>
 		<div class="col-md-6 margin-top-20">
-			<a href="/share-list" class="btn btn-primary btn-large btn-block">
+			<a routerLink="/share-list" class="btn btn-primary btn-large btn-block">
 				<span class="glyphicon glyphicon-list-alt"></span> Shares
 			</a>
-			<a href="/windfarm-list" class="btn btn-primary btn-large btn-block">
+			<a routerLink="/windfarm-list" class="btn btn-primary btn-large btn-block">
 				<span class="glyphicon glyphicon-flash"></span> Wind farms
 			</a>
 		</div>
