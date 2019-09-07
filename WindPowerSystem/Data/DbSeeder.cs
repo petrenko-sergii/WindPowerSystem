@@ -77,7 +77,7 @@ namespace WindPowerSystem.Data
 			{
 				SecurityStamp = Guid.NewGuid().ToString(),
 				UserName = "Admin",
-				Email = "admin@testmakerfree.com",
+				Email = "admin@windpowersystem.com",
 				CreatedDate = createdDate,
 				LastModifiedDate = lastModifiedDate
 			};
@@ -100,7 +100,7 @@ namespace WindPowerSystem.Data
 			{
 				SecurityStamp = Guid.NewGuid().ToString(),
 				UserName = "Ryan",
-				Email = "ryan@testmakerfree.com",
+				Email = "ryan@windpowersystem.com",
 				CreatedDate = createdDate,
 				LastModifiedDate = lastModifiedDate
 			};
@@ -109,7 +109,7 @@ namespace WindPowerSystem.Data
 			{
 				SecurityStamp = Guid.NewGuid().ToString(),
 				UserName = "Solice",
-				Email = "solice@testmakerfree.com",
+				Email = "solice@windpowersystem.com",
 				CreatedDate = createdDate,
 				LastModifiedDate = lastModifiedDate
 			};
@@ -118,7 +118,7 @@ namespace WindPowerSystem.Data
 			{
 				SecurityStamp = Guid.NewGuid().ToString(),
 				UserName = "Vodan",
-				Email = "vodan@testmakerfree.com",
+				Email = "vodan@windpowersystem.com",
 				CreatedDate = createdDate,
 				LastModifiedDate = lastModifiedDate
 			};
