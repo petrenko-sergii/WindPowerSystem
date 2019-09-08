@@ -26,7 +26,9 @@ import { ResultListComponent } from './components/result/result-list.component';
 import { ResultEditComponent } from './components/result/result-edit.component';
 import { AboutComponent } from './components/about/about.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/user/register.component';
 import { PageNotFoundComponent } from './components/pagenotfound/pagenotfound.component';
+
 import { CountryComponent } from './components/address/country/country.component';
 import { TurbineComponent } from './components/turbine/turbine.component';
 import { TurbineListComponent } from './components/turbine/turbine-list.component';
@@ -63,6 +65,7 @@ import { AddressListComponent } from './components/address/address/address-list.
 		ResultEditComponent,
 		AboutComponent,
 		LoginComponent,
+		RegisterComponent,
 		PageNotFoundComponent,
 		CountryComponent,
 		TurbineComponent,
@@ -102,6 +105,7 @@ import { AddressListComponent } from './components/address/address/address-list.
 			{ path: 'result/edit/:id', component: ResultEditComponent },
 			{ path: 'about', component: AboutComponent },
 			{ path: 'login', component: LoginComponent },
+			{ path: 'register', component: RegisterComponent },
 			{ path: 'country/:id', component: CountryComponent },
 			{ path: 'turbine/create', component: TurbineEditComponent },   // we need to insert before     "path: 'turbine/:id'"
 			{ path: 'turbine/edit/:id', component: TurbineEditComponent }, // we need to insert before     "path: 'turbine/:id'"

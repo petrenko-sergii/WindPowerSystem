@@ -57,6 +57,7 @@
     <None Remove="ClientApp\app\components\turbinetype\turbine-type.component.ts" />
     <None Remove="ClientApp\app\components\turbine\turbine-edit.component.ts" />
     <None Remove="ClientApp\app\components\turbine\turbine.component.ts" />
+    <None Remove="ClientApp\app\components\user\register.component.ts" />
     <None Remove="ClientApp\app\interfaces\answer.ts" />
     <None Remove="ClientApp\app\interfaces\country.ts" />
     <None Remove="ClientApp\app\interfaces\question.ts" />
@@ -67,6 +68,7 @@
     <None Remove="ClientApp\app\interfaces\town.ts" />
     <None Remove="ClientApp\app\interfaces\turbine-type.ts" />
     <None Remove="ClientApp\app\interfaces\turbine.ts" />
+    <None Remove="ClientApp\app\interfaces\user.ts" />
     <None Remove="ClientApp\app\services\auth.interceptor.ts" />
     <None Remove="ClientApp\app\services\auth.response.interceptor.ts" />
     <None Remove="ClientApp\app\services\auth.service.ts" />
@@ -105,6 +107,7 @@
     <TypeScriptCompile Include="ClientApp\app\components\turbinetype\turbine-type.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\turbine\turbine-edit.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\turbine\turbine.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\user\register.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\answer.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\street.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\town.ts" />
@@ -115,6 +118,7 @@
     <TypeScriptCompile Include="ClientApp\app\interfaces\share.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\turbine.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\turbine-type.ts" />
+    <TypeScriptCompile Include="ClientApp\app\interfaces\user.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\auth.interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\auth.response.interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\auth.service.ts" />

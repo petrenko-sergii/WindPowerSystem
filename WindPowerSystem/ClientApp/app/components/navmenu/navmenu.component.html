@@ -25,7 +25,7 @@
 				<li *ngIf="!this.auth.isLoggedIn()"
 					[routerLinkActive]="['link-active']">
 					<a [routerLink]="['/login']">
-						<span class='glyphicon glyphicon-log-in'></span> Login
+						<span class='glyphicon glyphicon-log-in'></span> Login / Register
 					</a>
 				</li>
 				<li *ngIf="auth.isLoggedIn()">
