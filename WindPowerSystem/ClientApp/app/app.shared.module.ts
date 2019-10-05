@@ -26,6 +26,7 @@ import { ResultListComponent } from './components/result/result-list.component';
 import { ResultEditComponent } from './components/result/result-edit.component';
 import { AboutComponent } from './components/about/about.component';
 import { LoginComponent } from './components/login/login.component';
+import { LoginExternalProvidersComponent } from './components/login/login.externalproviders.component';
 import { RegisterComponent } from './components/user/register.component';
 import { PageNotFoundComponent } from './components/pagenotfound/pagenotfound.component';
 
@@ -65,6 +66,7 @@ import { AddressListComponent } from './components/address/address/address-list.
 		ResultEditComponent,
 		AboutComponent,
 		LoginComponent,
+		LoginExternalProvidersComponent,
 		RegisterComponent,
 		PageNotFoundComponent,
 		CountryComponent,
