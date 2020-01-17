@@ -1,0 +1,21 @@
+﻿.cookie-notification-container {
+	background-color: #f2f2f2;
+	border-radius: 5px;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.agree-button {
+	margin-top: 7px;
+	color: blue;
+	background-repeat: no-repeat;
+	background-color: Transparent;
+	float: right;
+	border: none;
+	cursor: pointer;
+}
+
+.cookie-wiki-link {
+	font-weight: bold;
+	color: blue;
+}

@@ -4,10 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { CookieService } from "ngx-cookie-service";
 
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { AuthResponseInterceptor } from './services/auth.response.interceptor';
+import { WebNotificationService } from './services/web-notification.service';
 
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -45,6 +47,7 @@ import { TurbineTypeEditComponent } from './components/turbinetype/turbine-type-
 import { TurbineEditComponent } from './components/turbine/turbine-edit.component';
 import { TurbineTypeListComponent } from './components/turbinetype/turbine-type-list.component';
 import { AddressListComponent } from './components/address/address/address-list.component';
+import { CookieUsingNotificationComponent } from './components/cookieUsingNotification/cookie-using-notification.component';
 
 
 @NgModule({
@@ -83,7 +86,8 @@ import { AddressListComponent } from './components/address/address/address-list.
 		TurbineTypeComponent,
 		TurbineTypeListComponent,
 		TurbineTypeEditComponent,
-		TurbineEditComponent
+		TurbineEditComponent,
+		CookieUsingNotificationComponent
     ],
     imports: [
 		CommonModule,
@@ -132,6 +136,7 @@ import { AddressListComponent } from './components/address/address/address-list.
 	],
 	providers: [
 		AuthService,
+		CookieService,
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: AuthInterceptor,
@@ -141,7 +146,8 @@ import { AddressListComponent } from './components/address/address/address-list.
 			provide: HTTP_INTERCEPTORS,
 			useClass: AuthResponseInterceptor,
 			multi: true
-		}
+		},
+		WebNotificationService
 	]
 })
 

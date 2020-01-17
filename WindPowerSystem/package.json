@@ -58,6 +58,7 @@
 		"webpack": "2.6.1",
 		"webpack-hot-middleware": "2.20.0",
 		"webpack-merge": "4.1.1",
-		"zone.js": "0.8.12"
+		"zone.js": "0.8.12",
+		"ngx-cookie-service": "^2.2.0"
 	}
 }

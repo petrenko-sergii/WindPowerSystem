@@ -1,0 +1,17 @@
+﻿<div *ngIf="showNotification" class="row cookie-notification-container">
+	<div  class="col-md-11">
+		<div>
+			<span>{{notificationText}}</span>
+			<a href={{cookieWikiLink}} class="email-link cookie-wiki-link" target="_blank" >
+				{{notificationTextForLink}}
+			</a>
+			<span>.</span>
+		</div>
+	</div>
+
+	<div class="col-md-1">
+		<button type="submit" (click)="onHideNotification()" class="agree-button">
+			<span style="font-weight:bold;">{{notificationButtonText}}</span>
+		</button>
+	</div>
+</div>
