@@ -5,6 +5,7 @@
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
+    <UseGlobalApplicationHostFile>True</UseGlobalApplicationHostFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +19,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="StackifyMiddleware" Version="3.0.4.2" />
 		<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
   </ItemGroup>
 
@@ -75,6 +77,8 @@
     <None Remove="ClientApp\app\services\auth.interceptor.ts" />
     <None Remove="ClientApp\app\services\auth.response.interceptor.ts" />
     <None Remove="ClientApp\app\services\auth.service.ts" />
+    <None Remove="ClientApp\app\services\idle.service.ts" />
+    <None Remove="ClientApp\app\services\page-title.service.ts" />
     <None Remove="ClientApp\app\services\token.response.ts" />
   </ItemGroup>
 
@@ -128,6 +132,8 @@
     <TypeScriptCompile Include="ClientApp\app\services\auth.response.interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\auth.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\token.response.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\idle.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\page-title.service.ts" />
   </ItemGroup>
 
   <ItemGroup>

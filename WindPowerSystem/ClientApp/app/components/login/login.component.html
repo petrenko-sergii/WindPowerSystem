@@ -12,6 +12,7 @@
 		<div class="form-group"
 			 [ngClass]="{ 'has-error has-feedback' : hasError('Username') }">
 			<input type="text" required
+				   id="login-user-name"
 				   formControlName="Username"
 				   class="form-control"
 				   placeholder="Username or Email address" />

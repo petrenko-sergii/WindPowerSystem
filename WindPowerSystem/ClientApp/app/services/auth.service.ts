@@ -115,4 +115,9 @@ export class AuthService {
 	isLoggedIn(): boolean {
 		return localStorage.getItem(this.authKey) != null;
 	}
+
+	clearLoginPasswordFields(): void {
+		//TO DO
+		//var userName = $("#login-user-name")[0];
+	}
 } 

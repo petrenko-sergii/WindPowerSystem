@@ -309,6 +309,12 @@
       "integrity": "sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=",
       "dev": true
     },
+    "angular-user-idle": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/angular-user-idle/-/angular-user-idle-1.1.0.tgz",
+      "integrity": "sha512-M1qJ2Pp+ALn6YaiLQNPcI5O5Eno6tuUFrBmOn/FMOIZscS8a+Cxe2zjI3jVMR3Zk08vTE8Na7GdYcafE0k/BuQ==",
+      "dev": true
+    },
     "angular2-router-loader": {
       "version": "0.3.5",
       "resolved": "https://registry.npmjs.org/angular2-router-loader/-/angular2-router-loader-0.3.5.tgz",

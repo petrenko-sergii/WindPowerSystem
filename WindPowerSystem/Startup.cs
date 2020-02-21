@@ -119,6 +119,9 @@ namespace WindPowerSystem
 			// Add the AuthenticationMiddleware to the pipeline
 			app.UseAuthentication();
 
+			//Add for StackifyMiddleware
+			app.UseMiddleware<StackifyMiddleware.RequestTracerMiddleware>();
+
 			app.UseMvc(routes =>
 			{
 				routes.MapRoute(

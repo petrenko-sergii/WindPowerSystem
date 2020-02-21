@@ -2,6 +2,7 @@
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { AuthService } from '../../services/auth.service';
+import { IdleService } from '../../services/idle.service';
 
 @Component({
 	selector: "login",
@@ -12,13 +13,16 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
 	title: string;
 	form: FormGroup;
+	private readonly _idleService: IdleService;
 
 	constructor(private router: Router,
 		private fb: FormBuilder,
 		private authService: AuthService,
+		idleService: IdleService,
 		@Inject('BASE_URL') private baseUrl: string) {
 
 		this.title = "User Login";
+		this._idleService = idleService;
 
 		// initialize the form
 		this.createForm();
@@ -47,6 +51,7 @@ export class LoginComponent {
 					+ " TOKEN: "
 					+ this.authService.getAuth()!.token);
 
+				this._idleService.startIdleWatching(true);
 				this.router.navigate(["home"]);
 			},
 				err => {

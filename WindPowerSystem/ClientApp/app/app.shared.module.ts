@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CookieService } from "ngx-cookie-service";
+import { UserIdleModule } from "angular-user-idle";
 
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth.interceptor';
@@ -48,6 +49,9 @@ import { TurbineEditComponent } from './components/turbine/turbine-edit.componen
 import { TurbineTypeListComponent } from './components/turbinetype/turbine-type-list.component';
 import { AddressListComponent } from './components/address/address/address-list.component';
 import { CookieUsingNotificationComponent } from './components/cookieUsingNotification/cookie-using-notification.component';
+import { IdleService } from './services/idle.service';
+import { PageTitleService } from './services/page-title.service';
+import { Title } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -95,6 +99,7 @@ import { CookieUsingNotificationComponent } from './components/cookieUsingNotifi
 		HttpModule,
 		FormsModule,
 		ReactiveFormsModule,
+		UserIdleModule.forRoot({ idle: 5, timeout: 7, ping: 20 }),
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
@@ -147,7 +152,10 @@ import { CookieUsingNotificationComponent } from './components/cookieUsingNotifi
 			useClass: AuthResponseInterceptor,
 			multi: true
 		},
-		WebNotificationService
+		WebNotificationService,
+		IdleService,
+		Title,
+		PageTitleService
 	]
 })
 
