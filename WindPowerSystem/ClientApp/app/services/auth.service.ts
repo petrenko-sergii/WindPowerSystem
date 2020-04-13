@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import 'rxjs/Rx';
+import * as $ from 'jquery';
 
 @Injectable()
 export class AuthService {
@@ -114,10 +115,5 @@ export class AuthService {
 	// Returns TRUE if the user is logged in, FALSE otherwise.
 	isLoggedIn(): boolean {
 		return localStorage.getItem(this.authKey) != null;
-	}
-
-	clearLoginPasswordFields(): void {
-		//TO DO
-		//var userName = $("#login-user-name")[0];
 	}
 } 

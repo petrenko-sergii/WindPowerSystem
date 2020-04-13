@@ -9,7 +9,6 @@ import { Router } from "@angular/router";
 export class IdleService {
 	private readonly _userIdle: UserIdleService;
 	private pageTitleWasChanged = false;
-	private timeToAutoLogOutMsg: string = 'until your session times out!';
 
 	public constructor(
 		private userIdle: UserIdleService,
@@ -41,7 +40,6 @@ export class IdleService {
 
 					this.pageTitleService.setTitleWithIdleTime(minutes, seconds);
 					this.pageTitleWasChanged = true;
-					console.log(`${minutes}:${seconds} ${this.timeToAutoLogOutMsg}`);
 				}
 			);
 
@@ -57,7 +55,6 @@ export class IdleService {
 			this._userIdle.stopTimer();
 			this._userIdle.stopWatching();
 			this.pageTitleService.setInitialTitle();
-			this.auth.clearLoginPasswordFields();
 		}
 	}
 

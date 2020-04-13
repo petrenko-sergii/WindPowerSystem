@@ -1,5 +1,6 @@
 ﻿import { Component, Inject } from '@angular/core';
 import { Http } from '@angular/http';
+import * as $ from 'jquery';
 
 @Component({
 	selector: 'share-list',

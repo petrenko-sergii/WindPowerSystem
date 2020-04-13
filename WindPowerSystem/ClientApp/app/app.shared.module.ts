@@ -99,7 +99,7 @@ import { Title } from '@angular/platform-browser';
 		HttpModule,
 		FormsModule,
 		ReactiveFormsModule,
-		UserIdleModule.forRoot({ idle: 5, timeout: 7, ping: 20 }),
+		UserIdleModule.forRoot({ idle: 3600, timeout: 3600, ping: 3600 }),
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
