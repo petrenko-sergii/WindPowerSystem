@@ -58,6 +58,7 @@
 		"webpack": "2.6.1",
 		"webpack-hot-middleware": "2.20.0",
 		"webpack-merge": "4.1.1",
+		"copy-webpack-plugin": "4.2.0",
 		"zone.js": "0.8.12",
 		"ngx-cookie-service": "^2.2.0",
 		"angular-user-idle": "1.1.0"

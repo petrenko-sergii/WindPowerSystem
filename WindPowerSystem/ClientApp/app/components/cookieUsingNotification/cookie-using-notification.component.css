@@ -1,8 +1,9 @@
 ﻿.cookie-notification-container {
 	background-color: #f2f2f2;
 	border-radius: 5px;
-	margin-left: 3px;
+	margin-left: 0px;
 	margin-right: 3px;
+	margin-bottom: 5px;
 }
 
 .agree-button {

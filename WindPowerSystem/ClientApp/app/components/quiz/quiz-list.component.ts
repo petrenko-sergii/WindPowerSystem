@@ -44,6 +44,7 @@ export class QuizListComponent implements OnInit {
 
 		this.http.get<Quiz[]>(url).subscribe(result => {
 			this.quizzes = result;
+			this.addQuizIcons();
 		}, error => console.error(error));
 	}
 
@@ -53,5 +54,12 @@ export class QuizListComponent implements OnInit {
 			+ this.selectedQuiz.Id
 			+ " has been selected.");
 		this.router.navigate(["quiz", this.selectedQuiz.Id]);
+	}
+
+	addQuizIcons() {
+		this.quizzes.forEach(q => {
+				q.IconPath = "dist/assets/images/quizIcons/" + q.Id % 16 + ".jpg";
+			}
+		);
 	}
 }

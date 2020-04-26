@@ -9,8 +9,7 @@
 				*ngFor="let quiz of quizzes"
 				[class.selected]="quiz === selectedQuiz"
 				(click)="onSelect(quiz)">
-				<img src="https://lorempixel.com/50/50/?random={{quiz.Id}}"
-					 alt="{{quiz.Title}}" class="img-circle" />
+				<img src="{{quiz.IconPath}}" alt="{{quiz.Title}}" class="img-circle quiz-icon"/>
 				<span>{{quiz.Title}}</span>
 			</li>
 		</ul>

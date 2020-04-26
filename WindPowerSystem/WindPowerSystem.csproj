@@ -33,6 +33,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\assets\images\quizIcons\0.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\1.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\10.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\11.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\12.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\13.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\14.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\15.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\2.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\3.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\4.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\5.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\6.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\7.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\8.jpg" />
+    <None Remove="ClientApp\app\assets\images\quizIcons\9.jpg" />
     <None Remove="ClientApp\app\components\about\about.component.ts" />
     <None Remove="ClientApp\app\components\address\address\address-list.component.ts" />
     <None Remove="ClientApp\app\components\address\country\country-list.component.ts" />
@@ -80,6 +96,25 @@
     <None Remove="ClientApp\app\services\idle.service.ts" />
     <None Remove="ClientApp\app\services\page-title.service.ts" />
     <None Remove="ClientApp\app\services\token.response.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ClientApp\app\assets\images\quizIcons\0.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\1.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\10.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\11.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\12.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\13.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\14.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\15.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\2.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\3.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\4.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\5.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\6.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\7.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\8.jpg" />
+    <Content Include="ClientApp\app\assets\images\quizIcons\9.jpg" />
   </ItemGroup>
 
   <ItemGroup>

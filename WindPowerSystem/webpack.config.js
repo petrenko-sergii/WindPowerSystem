@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const AotPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env) => {
     // Configuration in common to both client-side and server-side bundles
@@ -23,7 +24,11 @@ module.exports = (env) => {
                 { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
             ]
         },
-        plugins: [new CheckerPlugin()]
+		plugins: [new CheckerPlugin(),
+			new CopyPlugin([
+				{ from: 'ClientApp/app/assets/images/quizIcons', to: 'assets/images/quizIcons' }
+			])
+		]
     };
 
     // Configuration for client-side bundle suitable for running in browsers

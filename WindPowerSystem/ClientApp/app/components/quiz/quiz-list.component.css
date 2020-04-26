@@ -69,3 +69,7 @@
 .panel.random .panel-heading .glyphicon:before {
   content: "\e104";
 }
+.quiz-icon {
+  height: 50px !important;
+  width: 50px !important;
+}

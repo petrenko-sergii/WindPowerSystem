@@ -27,6 +27,7 @@ export class QuizComponent {
 			var url = this.baseUrl + "api/quiz/" + id;
 			this.http.get<Quiz>(url).subscribe(result => {
 				this.quiz = result;
+				this.addQuizIcon();
 			}, error => console.error(error));
 		}
 		else {
@@ -49,5 +50,9 @@ export class QuizComponent {
 					this.router.navigate(["home"]);
 				}, error => console.log(error));
 		}
+	}
+
+	addQuizIcon() {
+		this.quiz.IconPath = "dist/assets/images/quizIcons/" + this.quiz.Id % 16 + ".jpg";
 	}
 }
