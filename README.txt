@@ -7,7 +7,8 @@ Currently Single Page Application (SPA) "WindPowerSystem" is in development phas
 -- Typescript: Angular 5; 
 -- HTML, CSS/ LESS, Bootstrap;
 -- WebPack, Node.js;
--- Authentication (used token-based approach using JSON Web Tokens (JWT))
+-- Authentication (used token-based approach using JSON Web Tokens (JWT)), OAuth2 authorization (Facebook);
+-- Publishing: FTP, Folder, Jenkins;
 -- Mapster;
 
 The app manages by data from the database: 
