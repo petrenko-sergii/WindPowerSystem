@@ -202,7 +202,6 @@ namespace WindPowerSystem.Controllers
 				case "facebook":
 					// case "google":
 					// case "twitter":
-					// todo: add all supported providers here
 
 					// Redirect the request to the external provider.
 					var redirectUrl = Url.Action(

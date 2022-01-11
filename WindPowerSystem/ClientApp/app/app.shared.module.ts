@@ -22,7 +22,6 @@ import { AnswerEditComponent } from './components/answer/answer-edit.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { QuizListComponent } from './components/quiz/quiz-list.component';
 import { QuizEditComponent } from './components/quiz/quiz-edit.component';
-import { QuizSearchComponent } from './components/quiz/quiz-search.component';
 import { QuestionListComponent } from './components/question/question-list.component';
 import { QuestionEditComponent } from './components/question/question-edit.component';
 import { ResultListComponent } from './components/result/result-list.component';
@@ -66,7 +65,6 @@ import { Title } from '@angular/platform-browser';
 		QuizListComponent,
 		QuizComponent,
 		QuizEditComponent,
-		QuizSearchComponent,
 		QuestionListComponent,
 		QuestionEditComponent,
 		ResultListComponent,
