@@ -13,6 +13,6 @@ export class WebNotificationService {
   public async saveCookiesThatUserGotNotification()
     : Promise<void> {
     const cookieKey = "CurrentUser" + "-NotificationWasGot";
-    this._cookieService.set(cookieKey, "1");
+	  this._cookieService.set(cookieKey, "1", undefined, undefined, undefined, true, "Lax");
   }
 }

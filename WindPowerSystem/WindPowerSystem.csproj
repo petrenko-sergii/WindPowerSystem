@@ -117,10 +117,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\logo.svg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\about\about.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\address\address\address-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\address\country\country-list.component.ts" />
