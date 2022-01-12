@@ -15,8 +15,6 @@ import { WebNotificationService } from './services/web-notification.service';
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
-import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
-import { CounterComponent } from './components/counter/counter.component';
 import { AnswerListComponent } from './components/answer/answer-list.component';
 import { AnswerEditComponent } from './components/answer/answer-edit.component';
 import { QuizComponent } from './components/quiz/quiz.component';
@@ -57,8 +55,6 @@ import { Title } from '@angular/platform-browser';
     declarations: [
         AppComponent,
         NavMenuComponent,
-        CounterComponent,
-        FetchDataComponent,
 		HomeComponent,
 		AnswerListComponent,
 		AnswerEditComponent,
@@ -101,8 +97,6 @@ import { Title } from '@angular/platform-browser';
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
-			{ path: 'fetch-data', component: FetchDataComponent },
 			{ path: 'answer/create/:id', component: AnswerEditComponent },
 			{ path: 'answer/edit/:id', component: AnswerEditComponent },
 			{ path: 'quiz/create', component: QuizEditComponent }, // quiz/create should be upper then quiz/:id
