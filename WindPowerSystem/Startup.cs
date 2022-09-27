@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -14,6 +11,7 @@ using WindPowerSystem.Data.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using WindPowerSystem.Middleware;
 
 namespace WindPowerSystem
 {
@@ -35,9 +33,7 @@ namespace WindPowerSystem
 			services.AddEntityFrameworkSqlServer();
 			// Add ApplicationDbContext.
 			services.AddDbContext<ApplicationDbContext>(options =>
-			options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")
-			)
-			);
+				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 			// Add ASP.NET Identity support
 			services.AddIdentity<ApplicationUser, IdentityRole>(
@@ -86,6 +82,9 @@ namespace WindPowerSystem
 				opts.AppId = Configuration["Auth:Facebook:AppId"];
 				opts.AppSecret = Configuration["Auth:Facebook:AppSecret"];
 			});
+
+			services.AddSingleton<BlockAnonymousMiddleware>();
+			services.AddSingleton<SecurityHeadersMiddleware>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -101,6 +100,7 @@ namespace WindPowerSystem
 			}
 			else
 			{
+				app.UseMiddleware<BlockAnonymousMiddleware>();
 				app.UseExceptionHandler("/Home/Error");
 			}
 
@@ -121,6 +121,8 @@ namespace WindPowerSystem
 
 			//Add for StackifyMiddleware (uncomment the next line -- to run Stackify Prefix)
 			//app.UseMiddleware<StackifyMiddleware.RequestTracerMiddleware>();
+
+			app.UseMiddleware<SecurityHeadersMiddleware>();
 
 			app.UseMvc(routes =>
 			{
