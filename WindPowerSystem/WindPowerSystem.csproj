@@ -80,6 +80,7 @@
     <None Remove="ClientApp\app\components\user\register.component.ts" />
     <None Remove="ClientApp\app\interfaces\answer.ts" />
     <None Remove="ClientApp\app\interfaces\country.ts" />
+    <None Remove="ClientApp\app\interfaces\manufacturer.ts" />
     <None Remove="ClientApp\app\interfaces\question.ts" />
     <None Remove="ClientApp\app\interfaces\quiz.ts" />
     <None Remove="ClientApp\app\interfaces\result.ts" />
@@ -154,6 +155,7 @@
     <TypeScriptCompile Include="ClientApp\app\interfaces\quiz.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\result.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\share.ts" />
+    <TypeScriptCompile Include="ClientApp\app\interfaces\manufacturer.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\turbine.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\turbine-type.ts" />
     <TypeScriptCompile Include="ClientApp\app\interfaces\user.ts" />

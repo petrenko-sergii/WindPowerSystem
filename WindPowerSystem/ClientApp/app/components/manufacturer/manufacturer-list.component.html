@@ -1,0 +1,44 @@
+﻿<div>
+	<h3><strong>Manufacturers</strong></h3>
+
+	<p *ngIf="!manufacturers"><em>Loading...</em></p>
+
+	<table class='table table-hover row-bordered' *ngIf="manufacturers">
+		<thead class="gray-color-header">
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<th>Website</th>
+				<th>Phone</th>
+				<th>Email</th>
+				<th>Options</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let manufacturer of manufacturers; let i= index">
+				<td>{{i+1}}</td>
+				<td>{{manufacturer.Name}}</td>
+				<td>{{manufacturer.Website}}</td>
+				<td>{{manufacturer.Phone}}</td>
+				<td>{{manufacturer.Email}}</td>
+				<td>
+					<a routerLink="/manufacturer/edit/{{ manufacturer.Id }}">Edit</a> |
+					<a routerLink="/manufacturer/{{ manufacturer.Id }}">Details</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="row">
+		<div class="col-md-4 margin-top-20">
+			<a routerLink="/manufacturer/create" class="btn btn-primary btn-large btn-block">
+				<span class="glyphicon glyphicon-plus-sign"></span> Create a manufacturer
+			</a>
+		</div>
+	</div>
+	<br />
+
+	<a href="javascript:history.go(-1)" class="btn btn-link btn-large">
+		<span class=" glyphicon glyphicon-arrow-left"></span> <strong>Back to previous page</strong>
+	</a>
+</div>

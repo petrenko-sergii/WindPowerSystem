@@ -1,0 +1,12 @@
+﻿table.row-bordered > thead > tr {
+	border-bottom: 1px solid lightgrey;
+	border-top: 1px solid lightgrey;
+}
+
+table.row-bordered > tbody > tr {
+	border-bottom: 1px solid lightgrey;
+}
+
+.gray-color-header {
+	background-color: lightgray;
+}

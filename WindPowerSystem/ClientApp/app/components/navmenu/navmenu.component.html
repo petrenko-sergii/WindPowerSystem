@@ -44,22 +44,25 @@
 						<span class='glyphicon glyphicon-flash'></span> Turbine Types
 					</a>
 				</li>
-				<li 
-					*ngIf="this.auth.isLoggedIn()"
+				<li *ngIf="this.auth.isLoggedIn()"
 					[routerLinkActive]="['link-active']">
 					<a [routerLink]="['/turbine-list']">
 						<span class='glyphicon glyphicon-flash'></span> Turbines
 					</a>
 				</li>
-				<li 
-					*ngIf="this.auth.isLoggedIn()"
+				<li *ngIf="this.auth.isLoggedIn()"
 					[routerLinkActive]="['link-active']">
 					<a [routerLink]="['/share-list']">
 						<span class='glyphicon glyphicon-list-alt'></span> Shares
 					</a>
 				</li>
-				<li 
-					*ngIf="this.auth.isLoggedIn()"
+				<li *ngIf="this.auth.isLoggedIn()"
+					[routerLinkActive]="['link-active']">
+					<a [routerLink]="['/manufacturer-list']">
+						<span class='glyphicon glyphicon-blackboard'></span> Manufacturers
+					</a>
+				</li>
+				<li *ngIf="this.auth.isLoggedIn()"
 					[routerLinkActive]="['link-active']">
 					<a [routerLink]="['/address-list']">
 						<span class='glyphicon glyphicon-globe'></span> Find address
