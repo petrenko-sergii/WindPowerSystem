@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using WindPowerSystem.Data.Models;
 using WindPowerSystem.Data.Models.AddressModels;
 
@@ -62,6 +57,9 @@ namespace WindPowerSystem.Data
 			modelBuilder.Entity<Share>().Property(i => i.Id).ValueGeneratedOnAdd();
 			modelBuilder.Entity<Share>().HasOne(i => i.Turbine).WithMany(u => u.Shares);
 
+			modelBuilder.Entity<Manufacturer>().ToTable("Manufacturer");
+			modelBuilder.Entity<Manufacturer>().Property(i => i.Id).ValueGeneratedOnAdd();
+			
 			modelBuilder.Entity<Country>().ToTable("Country");
 			modelBuilder.Entity<Country>().Property(i => i.Id).ValueGeneratedOnAdd();
 			modelBuilder.Entity<Country>().HasMany(i => i.Towns).WithOne(c => c.Country);
@@ -83,6 +81,7 @@ namespace WindPowerSystem.Data
 		public DbSet<TurbineType> TurbineTypes { get; set; }
 		public DbSet<Turbine> Turbines { get; set; }
 		public DbSet<Share> Shares { get; set; }
+		public DbSet<Manufacturer> Manufacturers { get; set; }
 		public DbSet<Country> Countries { get; set; }
 		public DbSet<Town> Towns { get; set; }
 

@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "2c73f3f1-a1b5-4b3b-a759-649f3f0a824b",
+		"name": "WPS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create JWT",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"client_id\":\"e9d358d5-af1c-4edd-bc7b-13aee80dcf90\",\t\r\n\"username\":\"Admin\",\r\n\"password\":\"Pass4Admin\",\r\n\"grant_type\":\"password\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:49890/api/token/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49890",
+					"path": [
+						"api",
+						"token",
+						"auth"
+					]
+				},
+				"description": "Test"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:49890/api/turbine/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "userName",
+							"value": "Bob",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "userId",
+							"value": "7",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "TestTitle",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "body",
+							"value": "TestBody",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:49890/api/turbine/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49890",
+					"path": [
+						"api",
+						"turbine",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:49890/api/TurbineType/GetTurbineTypeList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:49890/api/TurbineType/GetTurbineTypeList",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49890",
+					"path": [
+						"api",
+						"TurbineType",
+						"GetTurbineTypeList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:49890/api/Turbine/GetTurbineList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:49890/api/Turbine/GetTurbineList",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49890",
+					"path": [
+						"api",
+						"Turbine",
+						"GetTurbineList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:49890/api/Share/GetShareList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:49890/api/share/showallshares",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49890",
+					"path": [
+						"api",
+						"share",
+						"showallshares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:49890/api/Share/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:49890/api/share/showallshares",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49890",
+					"path": [
+						"api",
+						"share",
+						"showallshares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:49890/api/turbine",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlOWQzNThkNS1hZjFjLTRlZGQtYmM3Yi0xM2FlZTgwZGNmOTAiLCJqdGkiOiIzZTE3NDk1NC0xNTdiLTQxZTctOWYyZC00NGQ2OGMyZWJhN2IiLCJpYXQiOiIxNjA5Njk4ODE5IiwibmJmIjoxNjA5Njk4ODE5LCJleHAiOjE2MDk3MDYwMTksImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDk4OTAvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0OTg5MC8ifQ.Nh9I0ON4vFfjCvt8ovPPP2c0oJKUedc11w0DFKTme6I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"SerialNumber\":\"Ololo9\",\r\n\t\"TurbineTypeId\":\"4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:49890/api/turbine",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49890",
+					"path": [
+						"api",
+						"turbine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:49890/api/Manufacturer/List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:49890/api/Manufacturer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49890",
+					"path": [
+						"api",
+						"Manufacturer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:49890/api/Manufacturer/Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:49890/api/Manufacturer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49890",
+					"path": [
+						"api",
+						"Manufacturer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

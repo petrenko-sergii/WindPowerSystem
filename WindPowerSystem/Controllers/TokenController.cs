@@ -88,7 +88,7 @@ namespace WindPowerSystem.Controllers
 				var t = CreateAccessToken(user.Id, rt.Value);
 				return Json(t);
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				return new UnauthorizedResult();
 			}
@@ -137,7 +137,7 @@ namespace WindPowerSystem.Controllers
 				// ... and send it to the client
 				return Json(response);
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				return new UnauthorizedResult();
 			}

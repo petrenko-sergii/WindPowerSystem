@@ -43,6 +43,9 @@ namespace WindPowerSystem.Data
 
 			// Create default Towns (if there are none)
 			if (!dbContext.Towns.Any()) CreateTowns(dbContext);
+
+			// Create default Manufacturers (if there are none)
+			if (!dbContext.Manufacturers.Any()) CreateManufacturers(dbContext);
 		}
 
 		#endregion
@@ -334,6 +337,19 @@ namespace WindPowerSystem.Data
 
 			// Insert turbines into the Database
 			dbContext.Turbines.AddRange(turbineV, turbineSG, turbineN, turbineE);
+
+			dbContext.SaveChanges();
+		}
+
+
+		private static void CreateManufacturers(ApplicationDbContext dbContext)
+		{
+			dbContext.Manufacturers.AddRange(
+					new Manufacturer() { Name = "Vestas", Email = "vestas@vestas.com", Phone = "+4597300000", Website = "vestas.com" },
+					new Manufacturer() { Name = "Siemens Gamesa", Email = "info@gamesacorp.com", Phone = "+4904028890", Website = "siemensgamesa.com" },
+					new Manufacturer() { Name = "Nordex", Email = "info@nordex-online.com", Phone = "+4940300301000", Website = "nordex-online.com" },
+					new Manufacturer() { Name = "Enercon", Email = "hamburg@enercon.com", Phone = "+4938413042210", Website = "enercon.de" }
+			);
 
 			dbContext.SaveChanges();
 		}
