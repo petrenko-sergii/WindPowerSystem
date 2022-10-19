@@ -83,8 +83,8 @@ namespace WindPowerSystem.Controllers
 
 			DbContext.SaveChanges();
 
-			// return the newly-created Quiz to the client.
-			return new JsonResult(turbineType.Adapt<QuizViewModel>(),
+			// return the newly-created TurbineType to the client.
+			return new JsonResult(turbineType.Adapt<TurbineTypeViewModel>(),
 				JsonSettings);
 		}
 

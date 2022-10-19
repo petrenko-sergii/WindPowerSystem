@@ -1,0 +1,87 @@
+﻿<div class="manufacturer-edit">
+	<h2>{{title}}</h2>
+	<form [formGroup]="form" (ngSubmit)="onSubmit()">
+		<div class="form-group div-width-50-percent"
+			 [ngClass]="{ 'has-error has-feedback' : hasError('Model') }">
+			<label for="model">Name:</label>
+			<br />
+			<input type="text" id="name"
+				   formControlName="Name" required
+				   [(ngModel)]="manufacturer.Name"
+				   placeholder="Enter text..."
+				   class="form-control" />
+			<span *ngIf="hasError('Model')"
+				  class="glyphicon glyphicon-remove form-control-feedback"
+				  aria-hidden="true"></span>
+			<div *ngIf="hasError('Name')"
+				 class="help-block">
+				Name is a required field: please insert a valid name.
+			</div>
+		</div>
+		<div class="form-group div-width-50-percent"
+			 [ngClass]="{ 'has-error has-feedback' : hasError('Capacity') }">
+			<label for="Website">Website:</label>
+			<br />
+			<input type="text" id="Website" name="Website"
+				   formControlName="Website" required
+				    placeholder="Enter text..."
+				   class="form-control" />
+			<span *ngIf="hasError('Website')"
+				  class="glyphicon glyphicon-remove form-control-feedback"
+				  aria-hidden="true"></span>
+			<div *ngIf="hasError('Website')"
+				 class="help-block">
+				Website is a required field: please insert a valid name.
+			</div>
+		</div>
+		<div class="form-group div-width-50-percent"
+			 [ngClass]="{ 'has-error has-feedback' : hasError('Phone') }">
+			<label for="Phone">Phone:</label>
+			<br />
+			<input type="text" id="Phone" name="Phone"
+				   formControlName="Phone" required
+				    placeholder="Enter text..."
+				   class="form-control" />
+			<span *ngIf="hasError('Phone')"
+				  class="glyphicon glyphicon-remove form-control-feedback"
+				  aria-hidden="true"></span>
+			<div *ngIf="hasError('Phone')"
+				 class="help-block">
+				Phone is a required field: please insert a valid phone number.
+			</div>
+		</div>
+		<div class="form-group div-width-50-percent"
+			 [ngClass]="{ 'has-error has-feedback' : hasError('Email') }">
+			<label for="Email">Email:</label>
+			<br />
+			<input type="text" id="Email" name="Email"
+				   formControlName="Email" required
+				    placeholder="Enter text..."
+				   class="form-control" />
+			<span *ngIf="hasError('Email')"
+				  class="glyphicon glyphicon-remove form-control-feedback"
+				  aria-hidden="true"></span>
+			<div *ngIf="hasError('Email')"
+				 class="help-block">
+				Email is a required field: please insert a valid email.
+			</div>
+		</div>
+		<div class="form-group commands">
+			<button *ngIf="editMode" type="submit"
+					[disabled]="form.invalid"
+					class="btn btn-success">
+				Apply Changes
+			</button>
+			<button *ngIf="!editMode" type="submit"
+					[disabled]="form.invalid"
+					class="btn btn-success">
+				Create the manufacturer!
+			</button>
+			<button *ngIf="!editMode" type="submit"
+					(click)="onBack()"
+					class="btn btn-default">
+				Cancel
+			</button>
+		</div>
+	</form>
+</div>

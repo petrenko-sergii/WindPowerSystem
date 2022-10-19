@@ -36,7 +36,6 @@ import { TurbineListComponent } from './components/turbine/turbine-list.componen
 import { CountryListComponent } from './components/address/country/country-list.component';
 import { ShareComponent } from './components/share/share.component';
 import { ShareListComponent } from './components/share/share-list.component';
-import { ManufacturerListComponent } from './components/manufacturer/manufacturer-list.component';
 import { ShareEditComponent } from './components/share/share-edit.component';
 import { ShareListForTurbineComponent } from './components/share/share-list-for-turbine.component';
 import { TownComponent } from './components/address/town/town.component';
@@ -46,6 +45,10 @@ import { TurbineTypeEditComponent } from './components/turbinetype/turbine-type-
 import { TurbineEditComponent } from './components/turbine/turbine-edit.component';
 import { TurbineTypeListComponent } from './components/turbinetype/turbine-type-list.component';
 import { AddressListComponent } from './components/address/address/address-list.component';
+import { ManufacturerListComponent } from './components/manufacturer/manufacturer-list.component';
+import { ManufacturerEditComponent } from './components/manufacturer/manufacturer-edit.component';
+import { ManufacturerComponent } from './components/manufacturer/manufacturer.component';
+
 import { CookieUsingNotificationComponent } from './components/cookieUsingNotification/cookie-using-notification.component';
 import { IdleService } from './services/idle.service';
 import { PageTitleService } from './services/page-title.service';
@@ -80,13 +83,15 @@ import { Title } from '@angular/platform-browser';
 		ShareEditComponent,
 		ShareListComponent,
 		ShareListForTurbineComponent,
-		ManufacturerListComponent,
 		TownComponent,
 		TownListComponent,
 		TurbineTypeComponent,
 		TurbineTypeListComponent,
 		TurbineTypeEditComponent,
 		TurbineEditComponent,
+		ManufacturerListComponent,
+		ManufacturerEditComponent,
+		ManufacturerComponent,
 		CookieUsingNotificationComponent
     ],
     imports: [
@@ -130,6 +135,9 @@ import { Title } from '@angular/platform-browser';
 			{ path: 'share-list-for-turbine/:id', component: ShareListForTurbineComponent },
 			{ path: 'turbine-type-list', component: TurbineTypeListComponent },
 			{ path: 'manufacturer-list', component: ManufacturerListComponent },
+			{ path: 'manufacturer/create', component: ManufacturerEditComponent },   // we need to insert before     "path: 'manufacturer/:id'"
+			{ path: 'manufacturer/edit/:id', component: ManufacturerEditComponent }, // we need to insert before     "path: 'manufacturer/:id'"
+			{ path: 'manufacturer/:id', component: ManufacturerComponent },
 			{ path: '**', component: PageNotFoundComponent } // should be the last router
             //{ path: '**', redirectTo: 'home' } -- redirect to home page
         ])
