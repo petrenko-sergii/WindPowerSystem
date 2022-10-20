@@ -17,9 +17,9 @@
 		<tbody>
 			<tr *ngFor="let turbine of turbines; let i= index">
 				<td> {{i+1}}</td>
-				<td>{{ turbine.SerialNumber }}</td>
-				<td>{{ turbine.TurbineType.Model }}</td>
-				<td>{{ turbine.TurbineType.Capacity }}</td>
+				<td>{{turbine.SerialNumber}}</td>
+				<td>{{turbine.TurbineType.Model}}</td>
+				<td>{{turbine.TurbineType.Capacity}}</td>
 				<td>
 					<a routerLink="/share-list-for-turbine/{{ turbine.Id }}">Shares</a>
 				</td>

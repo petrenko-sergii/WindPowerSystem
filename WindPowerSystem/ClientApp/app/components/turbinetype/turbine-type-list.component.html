@@ -9,6 +9,7 @@
 				<th>#</th>
 				<th>Model</th>
 				<th>Capacity</th>
+				<th>Manufacturer</th>
 				<th>Turbines</th>
 				<th>Options</th>
 			</tr>
@@ -18,8 +19,8 @@
 				<td>{{i+1}}</td>
 				<td>{{turbineType.Model}}</td>
 				<td>{{turbineType.Capacity}}</td>
+				<td>{{turbineType.Manufacturer.Name}}</td>
 				<td>
-					<!--add tyrbineType/id -- TO DO -->
 					<a routerLink="/turbine-list">Turbines</a>
 				</td>
 				<td>

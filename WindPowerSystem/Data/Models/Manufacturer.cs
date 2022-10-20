@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WindPowerSystem.Data.Models
 {
@@ -24,5 +26,7 @@ namespace WindPowerSystem.Data.Models
 
 		[Required]
 		public string Website { get; set; }
+
+		public virtual List<TurbineType> TurbineTypes { get; set; }
 	}
 }

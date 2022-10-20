@@ -38,6 +38,9 @@ namespace WindPowerSystem.Controllers
 		{
 			var turbineTypes = DbContext.TurbineTypes.OrderBy(t => t.Id).ToArray();
 
+			foreach (var t in turbineTypes)
+				t.Manufacturer = DbContext.Manufacturers.Where(x => x.Id == t.ManufacturerId).FirstOrDefault();
+
 			// output the result in JSON format
 			return new JsonResult(
 				turbineTypes.Adapt<TurbineTypeViewModel[]>(),
@@ -63,8 +66,17 @@ namespace WindPowerSystem.Controllers
 				});
 			}
 
-			return new JsonResult(turbineType.Adapt<TurbineTypeViewModel>(),
-				JsonSettings);
+			var turbineTypeModel = turbineType.Adapt<TurbineTypeViewModel>();
+			var manufacturers = DbContext.Manufacturers.ToList();
+
+			foreach (var m in manufacturers)
+				turbineTypeModel.Manufacturers.Add(m.Adapt<ManufacturerViewModel>());
+
+			turbineTypeModel.Manufacturer = manufacturers.
+				Where(i => i.Id == turbineTypeModel.ManufacturerId).FirstOrDefault().
+				Adapt<ManufacturerViewModel>();
+
+			return new JsonResult(turbineTypeModel, JsonSettings);
 		}
 
 		/// <summary>
@@ -111,6 +123,7 @@ namespace WindPowerSystem.Controllers
 
 			turbineType.Model = model.Model;
 			turbineType.Capacity = model.Capacity;
+			turbineType.ManufacturerId = model.ManufacturerId;
 
 			DbContext.SaveChanges();
 
@@ -142,6 +155,23 @@ namespace WindPowerSystem.Controllers
 			DbContext.SaveChanges();
 
 			return new NoContentResult();
+		}
+
+		/// <summary>
+		/// GET: api/turbineType/getManufacturerList
+		/// Retrieves a List of manufacturers
+		/// </summary>
+		/// <returns>a List of manufacturers</returns>
+		[HttpGet("[action]")]
+		public IActionResult GetManufacturerList()
+		{
+			var turbineTypeModel = new TurbineTypeViewModel();
+			var manufacturers = DbContext.Manufacturers.OrderBy(t => t.Id).ToArray();
+
+			foreach (var t in manufacturers)
+				turbineTypeModel.Manufacturers.Add(t.Adapt<ManufacturerViewModel>());
+
+			return new JsonResult(turbineTypeModel, JsonSettings);
 		}
 	}
 }

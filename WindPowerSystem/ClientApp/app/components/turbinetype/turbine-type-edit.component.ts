@@ -13,6 +13,7 @@ export class TurbineTypeEditComponent {
 	title: string;
 	turbineType: TurbineType;
 	form: FormGroup;
+	manufacturers: Manufacturer[];
 
 	editMode: boolean;
 
@@ -34,6 +35,7 @@ export class TurbineTypeEditComponent {
 			this.http.get<TurbineType>(url).subscribe(result => {
 				this.turbineType = result;
 				this.title = "Edit turbine type: " + this.turbineType.Model;
+				this.manufacturers = this.turbineType.Manufacturers;
 
 				this.updateForm();
 			}, error => console.error(error));
@@ -41,6 +43,10 @@ export class TurbineTypeEditComponent {
 		else {
 			this.editMode = false;
 			this.title = "Create a new TurbineType";
+
+			http.get<TurbineType>(baseUrl + 'api/TurbineType/GetManufacturerList').subscribe(result => {
+				this.manufacturers = result.Manufacturers as Manufacturer[];
+			}, error => console.error(error));
 		}
 	}
 
@@ -54,6 +60,10 @@ export class TurbineTypeEditComponent {
 					Validators.min(1),
 					Validators.max(999999999)
 				]
+			],
+			ManufacturerId: ['',
+				[Validators.required,
+				Validators.min(1)]
 			]
 		});
 	}
@@ -61,7 +71,8 @@ export class TurbineTypeEditComponent {
 	updateForm() {
 		this.form.setValue({
 			Model: this.turbineType.Model,
-			Capacity: this.turbineType.Capacity
+			Capacity: this.turbineType.Capacity,
+			ManufacturerId: this.turbineType.ManufacturerId || 0
 		});
 	}
 
@@ -69,6 +80,7 @@ export class TurbineTypeEditComponent {
 		var tempTurbineType = <TurbineType>{};
 		tempTurbineType.Model = this.form.value.Model;
 		tempTurbineType.Capacity = this.form.value.Capacity;
+		tempTurbineType.ManufacturerId = this.form.value.ManufacturerId;
 
 		var url = this.baseUrl + "api/turbinetype";
 

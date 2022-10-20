@@ -29,6 +29,9 @@ namespace WindPowerSystem.Data
 			// Create default Quizzes (if there are none) together with their set of Q&A
 			if (!dbContext.Quizzes.Any()) CreateQuizzes(dbContext);
 
+			// Create default Manufacturers (if there are none)
+			if (!dbContext.Manufacturers.Any()) CreateManufacturers(dbContext);
+
 			// Create default TurbineTypes (if there are none)
 			if (!dbContext.TurbineTypes.Any()) CreateTurbineTypes(dbContext);
 
@@ -43,9 +46,6 @@ namespace WindPowerSystem.Data
 
 			// Create default Towns (if there are none)
 			if (!dbContext.Towns.Any()) CreateTowns(dbContext);
-
-			// Create default Manufacturers (if there are none)
-			if (!dbContext.Manufacturers.Any()) CreateManufacturers(dbContext);
 		}
 
 		#endregion
@@ -317,10 +317,10 @@ namespace WindPowerSystem.Data
 
 		private static void CreateTurbineTypes(ApplicationDbContext dbContext)
 		{
-			var typeV = new TurbineType() { Model = "V39/600", Capacity = 600 };
-			var typeSG = new TurbineType() { Model = "SG 2.1-114", Capacity = 1140 };
-			var typeN = new TurbineType() { Model = "N43", Capacity = 800 };
-			var typeE = new TurbineType() { Model = "E-44", Capacity = 900 };
+			var typeV = new TurbineType() { Model = "V39/600", Capacity = 600, ManufacturerId = 1 };
+			var typeSG = new TurbineType() { Model = "SG 2.1-114", Capacity = 1140, ManufacturerId = 2 };
+			var typeN = new TurbineType() { Model = "N43", Capacity = 800, ManufacturerId = 3 };
+			var typeE = new TurbineType() { Model = "E-44", Capacity = 900, ManufacturerId = 4 };
 
 			// Insert turbine types into the Database
 			dbContext.TurbineTypes.AddRange(typeV, typeSG, typeN, typeE);

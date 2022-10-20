@@ -8,7 +8,7 @@
 			<input type="text" id="model"
 				   formControlName="Model" required
 				   [(ngModel)]="turbineType.Model"
-				   placeholder="choose a model..."
+				   placeholder="Enter a model..."
 				   class="form-control" />
 			<span *ngIf="hasError('Model')"
 				  class="glyphicon glyphicon-remove form-control-feedback"
@@ -18,11 +18,11 @@
 				Title is a required field: please insert a valid model.
 			</div>
 		</div>
-		<div class="form-group div-width-50-percent" 
+		<div class="form-group div-width-50-percent"
 			 [ngClass]="{ 'has-error has-feedback' : hasError('Capacity') }">
 			<label for="Capacity">Capacity, kW:</label>
 			<br />
-			<input type="number" id="Capacity" name="Capacity" 
+			<input type="number" id="Capacity" name="Capacity"
 				   formControlName="Capacity" required
 				   class="form-control" />
 			<span *ngIf="hasError('Capacity')"
@@ -31,6 +31,25 @@
 			<div *ngIf="hasError('Capacity')"
 				 class="help-block">
 				Insert a numeric value: must be more then 0 and max 9 digits.
+			</div>
+		</div>
+		<div class="form-group"
+			 [ngClass]="{ 'has-error has-feedback' : hasError('ManufacturerId') }">
+			<label for="ManufacturerId">Manufacturer:</label>
+			<br />
+			<select id="ManufacturerId"
+					formControlName="ManufacturerId" required
+					class="form-control">
+
+				<option value="">Pick a manufacturer...</option>
+				<option *ngFor="let manufacturer of manufacturers"
+						[value]="manufacturer.Id">
+					{{manufacturer.Name}}
+				</option>
+			</select>
+			<div *ngIf="hasError('ManufacturerId')"
+				 class="help-block">
+				Please, select a valid manufacturer.
 			</div>
 		</div>
 		<div class="form-group commands">

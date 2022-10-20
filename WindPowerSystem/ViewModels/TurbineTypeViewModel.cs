@@ -13,6 +13,7 @@ namespace WindPowerSystem.ViewModels
 
 		public TurbineTypeViewModel()
 		{
+			Manufacturers = new List<ManufacturerViewModel>();
 		}
 
 		#endregion
@@ -22,6 +23,11 @@ namespace WindPowerSystem.ViewModels
 		public int Id { get; set; }
 		public string Model { get; set; }
 		public float Capacity { get; set; }
+		public int ManufacturerId { get; set; }
+
+		public ManufacturerViewModel Manufacturer { get; set; }
+
+		public List<ManufacturerViewModel> Manufacturers { get; set; }
 
 		#endregion
 	}

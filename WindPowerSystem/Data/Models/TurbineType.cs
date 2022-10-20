@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WindPowerSystem.Data.Models
 {
 	public class TurbineType
 	{
-		#region Constructor
-
 		public TurbineType()
 		{
 
 		}
-
-		#endregion
 
 		#region Properties
 
@@ -29,15 +23,17 @@ namespace WindPowerSystem.Data.Models
 		[Required]
 		public float Capacity { get; set; }
 
-		#region Lazy-Load Properties
+		[Required]
+		public int ManufacturerId { get; set; }
+
+		[ForeignKey("ManufacturerId")]
+		public virtual Manufacturer Manufacturer { get; set; }
 
 		/// <summary>
 		/// A list containing all the turbines related to this turbine type.
 		/// </summary>
 		public virtual List<Turbine> Turbines { get; set; }
-
-		#endregion
-
+		
 		#endregion
 	}
 }

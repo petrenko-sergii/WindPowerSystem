@@ -47,6 +47,7 @@ namespace WindPowerSystem.Data
 			modelBuilder.Entity<TurbineType>().ToTable("TurbineType");
 			modelBuilder.Entity<TurbineType>().Property(i => i.Id).ValueGeneratedOnAdd();
 			modelBuilder.Entity<TurbineType>().HasMany(i => i.Turbines).WithOne(c => c.TurbineType);
+			modelBuilder.Entity<TurbineType>().HasOne(i => i.Manufacturer).WithMany(u => u.TurbineTypes);
 
 			modelBuilder.Entity<Turbine>().ToTable("Turbine");
 			modelBuilder.Entity<Turbine>().Property(i => i.Id).ValueGeneratedOnAdd();
@@ -59,7 +60,8 @@ namespace WindPowerSystem.Data
 
 			modelBuilder.Entity<Manufacturer>().ToTable("Manufacturer");
 			modelBuilder.Entity<Manufacturer>().Property(i => i.Id).ValueGeneratedOnAdd();
-			
+			modelBuilder.Entity<Manufacturer>().HasMany(i => i.TurbineTypes).WithOne(c => c.Manufacturer);
+
 			modelBuilder.Entity<Country>().ToTable("Country");
 			modelBuilder.Entity<Country>().Property(i => i.Id).ValueGeneratedOnAdd();
 			modelBuilder.Entity<Country>().HasMany(i => i.Towns).WithOne(c => c.Country);
